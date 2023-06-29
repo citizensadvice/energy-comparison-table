@@ -1,4 +1,5 @@
 from aws_cdk import (
+    Duration,
     RemovalPolicy,
     Stack,
 )
@@ -55,6 +56,7 @@ class EnergyComparisonTableStack(Stack):
             code=DockerImageCode.from_ecr(
                 repository=image.repository, tag=image.image_tag
             ),
+            timeout=Duration.seconds(50),
         )
 
         # the lambda must write to the bucket
