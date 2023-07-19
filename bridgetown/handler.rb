@@ -2,6 +2,7 @@ require 'aws-sdk-s3'
 require 'aws-sdk-cloudfront'
 require 'bridgetown'
 require 'pathname'
+require 'pry'
 
 SITE_ROOT  = ENV['LAMBDA_TASK_ROOT']
 
@@ -19,6 +20,14 @@ module EnergyTableComparison
 
   # generates the bridgetown site
   class SiteGenerator
+    MIME_TYPES = {
+      js: "text/javascript",
+      css: "text/css",
+      map: "application/json",
+      html: "text/html",
+      svg: "image/svg+xml"
+    }.freeze
+
     # @return [Array]: the list of site files
     def self.generate
       config = Bridgetown.configuration({
@@ -36,21 +45,25 @@ module EnergyTableComparison
       # e.g ["index.html", "css/stylesheet.css",......]
       # but for now we mock it:
 
-      index = '/tmp/index.html'
-      IO.write(index, <<~EOF
-        <!DOCTYPE html>
-        <html>
-        <body>
+      static_files = Dir.glob("./energy_tables/output/**/*").map do |path|
+        content_type = infer_content_type(path)
 
-        <h1>Ha!</h1>
-        la la la
-        <p>42</p>
+        next if content_type.nil?
+        pathname = Pathname.new(File.expand_path(path))
 
-        </body>
-        </html>
-      EOF
-      )
-      [index]
+        {
+          filename: pathname.basename.to_path,
+          file_path: pathname.to_path,
+          content_type: infer_content_type(path),
+        }
+      end
+      
+      static_files.compact
+    end
+
+    def self.infer_content_type(filename)
+      ext = filename.split(".").last
+      MIME_TYPES[ext.to_sym]
     end
   end
 end
@@ -63,10 +76,8 @@ def handler(event:, context:)
   contents = ::EnergyTableComparison::SiteGenerator.generate
 
   # AWS SDKs don't support recursive copy / sync
-  contents.each do |filename|
-    file_path = Pathname.new(File.expand_path(filename))
-    obj_key = file_path.basename
-    $s3_client.put_object(body: file_path.read, bucket: bucket_name, key: obj_key.to_path, content_type: 'text/html')
+  contents.each do |file|
+    $s3_client.put_object(body: File.new(file[:file_path]).read, bucket: bucket_name, key: file[:filename], content_type: file[:content_type])
   end
   $cdn_client.create_invalidation(distribution_id: distribution_id,
                                   invalidation_batch: {
