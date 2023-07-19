@@ -1,0 +1,12 @@
+---
+layout: page
+title: Suppliers
+---
+
+<ul>
+  <% collections.suppliers.resources.each do |supplier| %>
+    <li>
+      <%= link_to supplier.data.name, "/suppliers/#{supplier.data.slug}" %>
+    </li>
+  <% end %>
+</ul>
