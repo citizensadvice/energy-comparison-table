@@ -73,6 +73,7 @@ class EnergyComparisonTableStack(Stack):
         )
         cdn.grant_create_invalidation(site_generator)
         site_generator.add_environment("DISTRIBUTION_ID", cdn.distribution_id)
+        self.lambda_function = site_generator
 
         CfnOutput(self, "WebsiteBucket", value=bucket.bucket_name)
         CfnOutput(self, "LambdaArn", value=site_generator.function_arn)

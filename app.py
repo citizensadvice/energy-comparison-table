@@ -2,6 +2,7 @@
 import os
 
 import aws_cdk as cdk
+from aws_cdk.aws_iam import Role
 
 from energy_comparison_table.energy_comparison_table_stack import (
     EnergyComparisonTableStack,
@@ -9,19 +10,19 @@ from energy_comparison_table.energy_comparison_table_stack import (
 
 
 app = cdk.App()
-EnergyComparisonTableStack(
+stack = EnergyComparisonTableStack(
     app,
     "EnergyComparisonTableStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
     env=cdk.Environment(account="979633842206", region="eu-west-1"),
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-    # env=cdk.Environment(account='123456789012', region='us-east-1'),
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
 )
 
+content_platform_sso_role = Role.from_role_arn(
+    stack,
+    "CPRoleLookup",
+    role_arn="arn:aws:iam::979633842206:role/aws-reserved/sso.amazonaws.com/eu-west-1/AWSReservedSSO_ContentPlatformKubernetesAccess_bf30f39d4ac36a3d",
+)
+stack.lambda_function.grant_invoke(content_platform_sso_role)
+stack.lambda_function.grant_invoke_url(content_platform_sso_role)
+
+cdk.Tags.of(app).add("Product", "energy_tables_comparison")
 app.synth()
