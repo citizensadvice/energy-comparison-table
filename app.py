@@ -19,10 +19,11 @@ stack = EnergyComparisonTableStack(
 content_platform_sso_role = Role.from_role_arn(
     stack,
     "CPRoleLookup",
-    role_arn="arn:aws:iam::979633842206:role/aws-reserved/sso.amazonaws.com/eu-west-1/AWSReservedSSO_ContentPlatformKubernetesAccess_bf30f39d4ac36a3d",
+    role_arn="arn:aws:iam::979633842206:role/aws-reserved/sso.amazonaws.com/eu-west-1/AWSReservedSSO_DeveloperAccess_01b2760b4a4ce7c9",
 )
-stack.lambda_function.grant_invoke(content_platform_sso_role)
-stack.lambda_function.grant_invoke_url(content_platform_sso_role)
+stack.lambda_function.add_permission(
+    "LetDevsInvokeIt", principal=content_platform_sso_role, action=["lambda:Invoke*"]
+)
 
 cdk.Tags.of(app).add("Product", "energy_tables_comparison")
 app.synth()
