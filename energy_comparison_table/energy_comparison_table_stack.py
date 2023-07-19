@@ -1,4 +1,5 @@
 from aws_cdk import (
+    CfnOutput,
     Duration,
     RemovalPolicy,
     Stack,
@@ -72,3 +73,7 @@ class EnergyComparisonTableStack(Stack):
         )
         cdn.grant_create_invalidation(site_generator)
         site_generator.add_environment("DISTRIBUTION_ID", cdn.distribution_id)
+
+        CfnOutput(self, "WebsiteBucket", value=bucket.bucket_name)
+        CfnOutput(self, "LambdaArn", value=site_generator.function_arn)
+        CfnOutput(self, "Endpoint", value=cdn.domain_name)
