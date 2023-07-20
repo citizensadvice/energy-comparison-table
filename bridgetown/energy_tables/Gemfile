@@ -31,3 +31,10 @@ gem "bridgetown", "~> 1.2.0"
 # Puma is a Rack-compatible server used by Bridgetown
 # (you can optionally limit this to the "development" group)
 gem "puma", "~> 6"
+
+gem "citizens_advice_components",
+    github: "citizensadvice/design-system",
+    tag: "v5.4.0",
+    glob: "engine/*.gemspec"
+
+gem "bridgetown-view-component", "~> 2.0"

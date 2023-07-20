@@ -24,7 +24,9 @@ module EnergyTableComparison
       css: "text/css",
       map: "application/json",
       html: "text/html",
-      svg: "image/svg+xml"
+      svg: "image/svg+xml",
+      woff: "application/font-woff",
+      woff2: "application/font-woff2"
     }.freeze
 
     # @return [Array]: the list of site files
@@ -57,6 +59,7 @@ module EnergyTableComparison
         }
       end
       
+      puts static_files.compact.to_json
       static_files.compact
     end
 
