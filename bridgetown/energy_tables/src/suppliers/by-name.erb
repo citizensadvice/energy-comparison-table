@@ -1,0 +1,23 @@
+---
+layout: page
+title: Suppliers
+---
+
+<h2>suppliers by name</h2>
+<a href="/suppliers/by-rank">sort by rank</a>
+<ul>
+  <% collections.suppliers.resources.select{|s| s.data.ranked }.sort {|a, b| a <=> b }.each do |supplier| %> 
+    <li>
+      <%= link_to supplier.data.name, "/suppliers/#{supplier.data.slug}" %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Whitelabelled suppliers</h2>
+<ul>
+  <% collections.suppliers.resources.select{|s| s.data.whitelabelled }.each do |supplier| %>
+    <li>
+      <%= link_to supplier.data.name, "/suppliers/#{supplier.data.slug}" %>
+    </li>
+  <% end %>
+</ul>
