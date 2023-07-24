@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "bundler/setup"
 require "view_component/engine"
 require "citizens_advice_components"
 

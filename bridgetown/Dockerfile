@@ -8,9 +8,10 @@ COPY energy_tables/Gemfile ${LAMBDA_TASK_ROOT}/
 
 # Install Bundler and the specified gems
 RUN gem install bundler:2.4.14 && \
-    bundle config set --local path 'vendor/bundle'
+    bundle config set --local path 'vendor/bundle' && \
+    bundle config set cache_all true 
 
-RUN cd ${LAMBDA_TASK_ROOT} && bundle package --all && bundle install
+RUN cd ${LAMBDA_TASK_ROOT} && bundle package && bundle install --local
 
 # Copy function code
 COPY handler.rb ${LAMBDA_TASK_ROOT}/
