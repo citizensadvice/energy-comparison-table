@@ -2,6 +2,8 @@ require 'aws-sdk-s3'
 require 'aws-sdk-cloudfront'
 require 'bridgetown'
 require 'pathname'
+require 'bundler/setup'
+
 
 SITE_ROOT  = ENV['LAMBDA_TASK_ROOT']
 

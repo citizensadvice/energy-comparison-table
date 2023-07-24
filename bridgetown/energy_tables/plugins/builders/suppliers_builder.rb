@@ -1,5 +1,3 @@
-require 'bundler/setup'
-
 module Builders
   class SuppliersBuilder < SiteBuilder
     def build
