@@ -8,10 +8,9 @@ COPY energy_tables/Gemfile ${LAMBDA_TASK_ROOT}/
 
 # Install Bundler and the specified gems
 RUN gem install bundler:2.4.14 && \
-    bundle config set --local path 'vendor/bundle' && \
-    bundle config set cache_all true 
+    bundle config set --local path 'vendor/bundle'
 
-RUN cd ${LAMBDA_TASK_ROOT} && bundle package && bundle install
+RUN cd ${LAMBDA_TASK_ROOT} && bundle install
 
 # Copy function code
 COPY handler.rb ${LAMBDA_TASK_ROOT}/
@@ -19,4 +18,4 @@ COPY handler.rb ${LAMBDA_TASK_ROOT}/
 COPY energy_tables/ ${LAMBDA_TASK_ROOT}/
 
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
-CMD [ "bundle", "exec", "handler.handler" ]
+CMD [ "handler.handler" ]
