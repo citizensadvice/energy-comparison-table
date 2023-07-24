@@ -270,7 +270,9 @@ DEPENDENCIES
   bridgetown (~> 1.2.0)
   bridgetown-view-component (~> 2.0)
   citizens_advice_components!
+  public_suffix
   puma (~> 6)
+  roda
 
 BUNDLED WITH
    2.4.10

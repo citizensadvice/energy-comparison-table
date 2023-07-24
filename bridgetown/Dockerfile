@@ -11,7 +11,7 @@ RUN gem install bundler:2.4.14 && \
     bundle config set --local path 'vendor/bundle' && \
     bundle config set cache_all true 
 
-RUN cd ${LAMBDA_TASK_ROOT} && bundle package && bundle install --local
+RUN cd ${LAMBDA_TASK_ROOT} && bundle package && bundle install
 
 # Copy function code
 COPY handler.rb ${LAMBDA_TASK_ROOT}/

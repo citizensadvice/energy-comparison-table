@@ -38,3 +38,5 @@ gem "citizens_advice_components",
     glob: "engine/*.gemspec"
 
 gem "bridgetown-view-component", "~> 2.0"
+gem "roda"
+gem "public_suffix"
