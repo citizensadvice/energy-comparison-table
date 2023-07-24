@@ -47,7 +47,7 @@ module EnergyTableComparison
       # e.g ["index.html", "css/stylesheet.css",......]
       # but for now we mock it:
 
-      static_files = Dir.glob("./energy_tables/output/**/*").map do |path|
+      static_files = Dir.glob("/tmp/dist/**/*").map do |path|
         content_type = infer_content_type(path)
 
         next if content_type.nil?
