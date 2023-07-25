@@ -2,6 +2,8 @@ require 'aws-sdk-s3'
 require 'aws-sdk-cloudfront'
 require 'bridgetown'
 require 'pathname'
+require 'pry'
+require 'rake'
 
 
 SITE_ROOT  = ENV['LAMBDA_TASK_ROOT']
@@ -20,6 +22,9 @@ module EnergyTableComparison
 
   # generates the bridgetown site
   class SiteGenerator
+
+    Bridgetown.load_tasks
+
     MIME_TYPES = {
       js: "text/javascript",
       css: "text/css",
@@ -40,8 +45,13 @@ module EnergyTableComparison
                                           'skip_config_files' => true,
                                           'disable_disk_cache' => true
                                         })
-      site = Bridgetown::Site.new(config)
-      site.generate
+
+      Bridgetown::Commands::Clean.start
+      `yarn run webpack-build`
+      Bridgetown::Commands::Build.start
+
+
+
 
       # need to return list of all generated files
       # e.g ["index.html", "css/stylesheet.css",......]
