@@ -13,7 +13,7 @@ RUN gem install bundler:2.4.14 && \
 RUN cd ${LAMBDA_TASK_ROOT} && bundle install
 
 # Copy function code
-COPY handler.rb ${LAMBDA_TASK_ROOT}/
+# COPY handler.rb ${LAMBDA_TASK_ROOT}/
 
 COPY energy_tables/ ${LAMBDA_TASK_ROOT}/
 
