@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'aws-sdk-s3'
 require 'aws-sdk-cloudfront'
 require 'bridgetown'
