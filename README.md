@@ -1,22 +1,9 @@
-# Energy Supplier Comparison Table static website
+# Energy Supplier Comparison Table app
 
 - [Deploy](#deploy)
 - [TODO](#todo)
 - [Welcome to your CDK Python project!](#welcome-to-your-cdk-python-project)
   - [Useful commands](#useful-commands)
-
-
-The idea is as follows:
-
-- bridgetown static website hosted on S3 and fronted by a cloudfront distribution
-- the infra is deployed with the AWS CDK, see [./energy_comparison_table/energy_comparison_table_stack.py](./energy_comparison_table/energy_comparison_table_stack.py)
-
-- the bridgetown site is under [./bridgetown/energy_tables](./bridgetown/energy_tables) and is maintained by the devs.
-- the site is packaged in an AWS Lambda docker image along with a [Lambda handler](./bridgetown/handler.rb) that:
-  - is triggered by a Contentful webhook
-  - processes the webhook event and extracts the data to `/tmp` ( the only writable location in Lambda) for use by a e.g bridgetown Builder plugin in [./bridgetown/energy_tables/plugins/builders](./bridgetown/energy_tables/plugins/builders) that reads the file and generates content
-  - rebuilds the bridgetown site using the newly generated data
-  - invalidates the cloudfront cache
 
 ## Deploy
 
