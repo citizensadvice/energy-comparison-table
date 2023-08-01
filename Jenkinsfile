@@ -8,7 +8,7 @@ node("docker && awsaccess") {
   isDeployment = !isPullRequest
   cdkContextArgs = "--ci --no-color"
 
-  withAwsCdk(".", ["docker_args": "-v /var/run/docker.sock:/var/run/docker.sock"]) {
+  withAwsCdk("infrastructure", ["docker_args": "-v /var/run/docker.sock:/var/run/docker.sock"]) {
     stage("test") {
         sh "python -m pip install -r requirements.txt -r requirements-dev.txt"
         sh "python -m pytest --junitxml results.xml"
