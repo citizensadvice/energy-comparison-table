@@ -2,11 +2,20 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@citizensadvice/design-system": "^5.5.0-alpha.5",
     "esbuild": "^0.18.17",
     "sass": "^1.64.2"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "lint:scss": "stylelint 'app/assets/stylesheets/**/*.scss'"
+  },
+  "devDependencies": {
+    "eslint": "^8.46.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-selector-bem-pattern": "^3.0.0"
   }
 }
