@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["airbnb", "airbnb/hooks", "prettier"],
+  extends: ["airbnb-base", "prettier"],
   overrides: [
     {
       env: {
