@@ -14,6 +14,10 @@ RUN bundle config set --local deployment 'true' && \
 COPY package.json yarn.lock /app/
 RUN yarn install --frozen-lockfile
 
+RUN mkdir /.cache
+RUN mkdir /.cache/yarn
+RUN chmod 777 -R /.cache/yarn
+
 COPY ./ /app
 
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
