@@ -27,11 +27,9 @@ node("docker && awsaccess") {
   }
 
   stage("Lint") {
-    steps {
-      dockerImage.inside {
-        sh 'yarn run lint:scss'
-        sh 'yarn run lint:js'
-      }
+    dockerImage.inside {
+      sh 'yarn run lint:scss'
+      sh 'yarn run lint:js'
     }
   }
 
