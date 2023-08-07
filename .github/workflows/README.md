@@ -1,12 +1,12 @@
 # Github Action Workflows
 
-This README details information on the workflows and anciliary files for this repository.
+This README details information on the workflows and ancillary files for this repository.
 
 ## Review App Workflows
 
 Implemented as part of epic [OPS-4891](https://citizensadvice.atlassian.net/browse/OPS-4891). Please see the epic and related tickets for information on their development.
 
-For a diagramatic representation of the review app workflows, please see [this Confluence document](https://citizensadvice.atlassian.net/wiki/spaces/OPS/pages/3479699470/Review+Apps#Workflow-Diagrams).
+For a diagrammatic representation of the review app workflows, please see [this Confluence document](https://citizensadvice.atlassian.net/wiki/spaces/OPS/pages/3479699470/Review+Apps#Workflow-Diagrams).
 
 ### review-app-create
 
@@ -21,7 +21,7 @@ The workflow contains two jobs. In order, the workflow will:
 5. Install additional dependencies and configure the kube config
 6. Optionally create a namespace if there is none that match the name
 7. Deploy Casebook using Helm with a variety of overrides
-8. Add or ammend a comment on the PR with information on how to access the environment
+8. Add or amend a comment on the PR with information on how to access the environment
 
 ### review-app-destroy
 
@@ -35,12 +35,6 @@ In order, the workflow will:
 
 1. Removed the `Review app` label if it has not already been removed
 2. Ensure the required dependencies are installed (aws-cli, kubectl) and configure AWS credentials
-3. Configre the kube config file using the AWS cli
+3. Configure the kube config file using the AWS cli
 4. Use Helm to uninstall the app from the kubernetes namespace and use Helm to remove any remaining volumes and jobs
-5. Add a comment to the PR to alert contributers that the environment is no longer available
-
-## Miscellaneous Workflows
-
-### Autoupdate
-
-TODO
+5. Add a comment to the PR to alert contributors that the environment is no longer available
