@@ -10,7 +10,7 @@
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
     "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "lint": "yarn run lint:scss || yarn run lint:js",
+    "lint": "yarn run lint:scss && yarn run lint:js",
     "lint:scss": "stylelint 'app/assets/stylesheets/**/*.scss'",
     "lint:js": "eslint 'app/javascript/**/*.js'"
   },
