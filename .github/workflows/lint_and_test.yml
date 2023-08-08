@@ -58,3 +58,27 @@ jobs:
 
       - name: "Rspec"
         run: bundle exec rspec
+
+  audit:
+    runs-on: ubuntu-22.04
+    needs: lint
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Setup ruby"
+        uses: ruby/setup-ruby@v1
+
+      - name: "Install gems"
+        run: |
+          bundle lock --add-platform x86_64-linux
+          bundle install
+
+      - name: "Bundle audit"
+        run: bundle audit
+
+      - name: "Brakeman audit"
+        run: bundle exec brakeman
+
+      - name: "License audit"
+        run: bundle exec license_finder
