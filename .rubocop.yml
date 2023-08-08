@@ -1,0 +1,7 @@
+require:
+  - rubocop-rails
+
+inherit_gem:
+  citizens-advice-style:
+    - default.yml
+    - default-rails.yml
