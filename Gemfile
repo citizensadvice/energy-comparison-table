@@ -70,3 +70,5 @@ group :test do
 end
 
 gem "bundler-audit", "~> 0.9.1", :groups => [:development, :test]
+
+gem "brakeman", "~> 6.0", :group => :development
