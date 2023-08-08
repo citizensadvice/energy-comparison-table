@@ -44,10 +44,11 @@ gem "view_component", "~> 3.5"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "bundler-audit"
   gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby"
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "haml-lint", require: false
-  gem "rubocop-rails", "~> 2.20"
+  gem "rubocop-rails"
 end
 
 group :development do
@@ -59,6 +60,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "brakeman"
+  gem "license_finder"
 end
 
 group :test do
@@ -68,7 +71,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "bundler-audit", "~> 0.9.1", :groups => [:development, :test]
-
-gem "brakeman", "~> 6.0", :group => :development
