@@ -1,0 +1,6 @@
+linters:
+  LineLength:
+    enabled: false
+
+  ClassesBeforeIds:
+    EnforcedStyle: "id"

@@ -102,6 +102,23 @@ GEM
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    haml (6.1.1)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    haml-lint (0.999.999)
+      haml_lint
+    haml-rails (2.1.0)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6)
+      railties (>= 5.1)
+    haml_lint (0.49.2)
+      haml (>= 4.0, < 6.2)
+      parallel (~> 1.10)
+      rainbow
+      rubocop (>= 1.0)
+      sysexits (~> 1.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -222,7 +239,10 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sysexits (1.2.0)
+    temple (0.10.2)
     thor (1.2.2)
+    tilt (2.2.0)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -257,6 +277,8 @@ DEPENDENCIES
   citizens-advice-style!
   cssbundling-rails
   debug
+  haml-lint
+  haml-rails (~> 2.0)
   jsbundling-rails
   puma (~> 5.0)
   rails (~> 7.0.6)
