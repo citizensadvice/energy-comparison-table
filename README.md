@@ -1,24 +1,11 @@
-# README
+# Energy Supplier Comparison Table
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A small rails app that generates the energy supplier comparison table found in the Consumer section of Citizens Advice public site.
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+See [getting-started.md](./docs/getting-started.md)
 
-* System dependencies
+## View components
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project uses view components for front end logic and rendering - see [view-components.md](./docs/view-components.md)
