@@ -26,3 +26,8 @@ jobs:
         with:
           path: rubocop.json
         if: ${{ failure() }}
+  haml-lint:
+    uses: andrewmcodes/haml-lint-action@v0.0.2
+    with:
+      file_paths: "app/**/*.haml"
+      fail_level: "error"
