@@ -38,6 +38,5 @@ module EnergyComparisonTable
     # View component previews
     config.view_component.preview_route = "/components/previews"
     config.view_component.default_preview_layout = "component_preview"
-
   end
 end
