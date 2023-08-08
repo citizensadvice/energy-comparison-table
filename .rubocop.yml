@@ -1,5 +1,6 @@
 require:
   - rubocop-rails
+  - rubocop-capybara
 
 inherit_gem:
   citizens-advice-style:
