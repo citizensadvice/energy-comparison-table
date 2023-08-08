@@ -2,14 +2,16 @@
 
 require "rails_helper"
 
-RSpec.describe Example2Component, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe ExampleComponent, type: :component do
+  subject { page }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  context "when a title is specified" do
+    before do 
+      render_inline(described_class.new(title: "This is a great title"))
+    end
+
+    it { is_expected.to have_text "This is a great title" }
+    it { is_expected.to have_text "This is an example view component" }
+
+  end
 end
