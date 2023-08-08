@@ -7,6 +7,17 @@ GIT
       rubocop-rails (~> 2.17)
       rubocop-rspec (~> 2.18)
 
+GIT
+  remote: https://github.com/citizensadvice/design-system.git
+  revision: 6a09f5a9a812200acbd1eedcd2e9bcaceb724e4e
+  tag: v5.5.0-alpha.5
+  glob: engine/*.gemspec
+  specs:
+    citizens_advice_components (0.1.0)
+      actionpack (>= 6.0.0, < 8.0)
+      railties (>= 6.0.0, < 8.0)
+      view_component (>= 2.0.0, < 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -249,6 +260,10 @@ GEM
     tzinfo-data (1.2023.3)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.4.2)
+    view_component (3.5.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -275,6 +290,7 @@ DEPENDENCIES
   bootsnap
   capybara
   citizens-advice-style!
+  citizens_advice_components!
   cssbundling-rails
   debug
   haml-lint
@@ -286,6 +302,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   tzinfo-data
+  view_component (~> 3.5)
   web-console
   webdrivers
 

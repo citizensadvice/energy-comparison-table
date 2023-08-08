@@ -31,6 +31,12 @@ gem "tzinfo-data"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "citizens_advice_components",
+    github: "citizensadvice/design-system",
+    tag: "v5.5.0-alpha.5",
+    glob: "engine/*.gemspec"
+gem "view_component", "~> 3.5"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
