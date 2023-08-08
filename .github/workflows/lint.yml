@@ -27,7 +27,10 @@ jobs:
           path: rubocop.json
         if: ${{ failure() }}
   haml-lint:
-    uses: andrewmcodes/haml-lint-action@v0.0.2
-    with:
-      file_paths: "app/**/*.haml"
-      fail_level: "error"
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+      - run: bundle lock --add-platform x86_64-linux
+      - run: bundle install
+      - run: bundle exec haml-lint app/**/*.html.haml
