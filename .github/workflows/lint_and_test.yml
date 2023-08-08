@@ -1,10 +1,10 @@
-name: Linting
+name: Lint and test
 on:
   pull_request:
     types: ["opened", "synchronize"]
 
 jobs:
-  Lint:
+  lint:
     runs-on: ubuntu-22.04
     steps:
       - name: "Checkout"
@@ -40,3 +40,21 @@ jobs:
 
       - name: "Haml lint"
         run: bundle exec haml-lint app/**/*.html.haml
+
+  test:
+    runs-on: ubuntu-22.04
+    needs: lint
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Setup ruby"
+        uses: ruby/setup-ruby@v1
+
+      - name: "Install gems"
+        run: |
+          bundle lock --add-platform x86_64-linux
+          bundle install
+
+      - name: "Rspec"
+        run: bundle exec rspec
