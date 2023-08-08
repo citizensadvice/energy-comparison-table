@@ -1,0 +1,15 @@
+!!!
+%html.no-js{ lang: I18n.locale }
+  %head{ profile: "http://www.w3.org/2005/10/profile" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %script{ id: "script-no-js" }
+      document.querySelector('html').classList.remove('no-js');
+
+    = stylesheet_link_tag "application"
+  %body
+    %main.cads-grid-container
+      .cads-grid-row
+        .cads-grid-col-lg-12
+          = yield
+
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true

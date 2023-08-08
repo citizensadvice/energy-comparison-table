@@ -34,5 +34,10 @@ module EnergyComparisonTable
     # config.eager_load_paths << Rails.root.join("extras")
     # Asset pipeline
     config.assets.paths << Rails.root.join("node_modules/@citizensadvice/design-system/assets/")
+
+    # View component previews
+    config.view_component.preview_route = "/components/previews"
+    config.view_component.default_preview_layout = "component_preview"
+
   end
 end
