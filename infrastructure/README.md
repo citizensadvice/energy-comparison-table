@@ -1,23 +1,14 @@
 # Energy Supplier Comparison Table app
 
 - [Deploy](#deploy)
-- [TODO](#todo)
 - [Welcome to your CDK Python project!](#welcome-to-your-cdk-python-project)
   - [Useful commands](#useful-commands)
 
 ## Deploy
 
-Follow the steps in [Welcome to your CDK Python project!](#welcome-to-your-cdk-python-project) to install the cdk cli, Python venv and the required packages, then login to aws ( `aws sso login` ) and:
+Follow the steps in [Welcome to your CDK Python project!](#welcome-to-your-cdk-python-project) to install the cdk cli, Python venv and the required packages, then login to aws ( `aws sso login` ) and deploy e.g:
 
 `AWS_PROFILE=cita-devops.AWSAdministratorAccess cdk deploy --all --require-approval never`
-
-## TODO
-
-- CI/CD
-- Real bridgetown site
-- use CA domain
-- don't allow concurrent Lambda runs
-- find a better way to invalidate the cache when the site is rebuilt
 
 ## Welcome to your CDK Python project!
 
