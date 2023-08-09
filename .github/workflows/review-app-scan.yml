@@ -1,0 +1,65 @@
+name: review-app-scan
+run-name: Checking for expired review app environments
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+env:
+  NAMESPACE_REGEX: ^review-[0-9]{0,4}-{0,1}energy-comparison-table$
+  MAX_AGE: 72 # Age in hours after last update
+  CLUSTER: dev-eks-platform
+
+jobs:
+  scan:
+    name: Scan Review Environments
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+    outputs:
+      matrix: ${{ steps.scan.outputs.matrix }}
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: 'arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps'
+          role-session-name: energy-comparison-table-actions-workflow
+          aws-region: eu-west-1
+
+      - name: Get Kube Config
+        run: aws eks update-kubeconfig --name=${{ env.CLUSTER }}
+
+      - name: Check Review Environments
+        id: scan
+        run: |
+          NAMESPACES=$(kubectl get subnamespaceanchors.hnc.x-k8s.io -n dev-energy-comparison-table -o json | jq -r '.items[].metadata.name')
+          for NS in $NAMESPACES; do
+              helm list --all-namespaces -o json --time-format 2006-01-02T15:04:05Z07:00 | jq  -r '.[]|[.namespace, .updated]|join(" ")' | while read -r NAMESPACE TIMESTAMP; do
+                if [[ $NAMESPACE =~ ${{ env.NAMESPACE_REGEX }} ]]; then
+                  echo Checking review app $NAMESPACE...
+                  AGE=$(( $(( $(date +%s) - $(date --date=$TIMESTAMP +%s))) / 3600))
+                  if [[ $AGE -ge ${{ env.MAX_AGE }} ]]; then
+                    PR_NUM=$(helm get values -o json --namespace $NAMESPACE $NAMESPACE | jq -r '.metadata.pullRequestNumber')
+                    PR_NAME=$(helm get values -o json --namespace $NAMESPACE $NAMESPACE | jq -r '.metadata.pullRequestName')
+                    echo "Release in namespace '$NAMESPACE' was updated $AGE hours ago. Max is ${{ env.MAX_AGE }} hours. Adding PR '$PR_NUM' to destroy list"
+                    echo $PR_NUM >> _PULL_REQUESTS
+                  fi
+                fi
+              done
+            done
+          echo "matrix={\"pr_numbers\":$(cat _PULL_REQUESTS | jq --null-input --compact-output '[inputs]' | jq --raw-input --raw-output)}" >> OUTPUT
+          cat OUTPUT
+          cat OUTPUT >> $GITHUB_OUTPUT
+
+  trigger_destroy:
+    if: needs.scan.outputs.matrix != '{"pr_numbers":[]}'
+    needs: scan
+    secrets: inherit
+    strategy:
+      matrix: ${{ fromJson(needs.scan.outputs.matrix) }}
+      fail-fast: false
+    uses: ./.github/workflows/review-app-destroy.yml
+    with:
+      pr_number: ${{ matrix.pr_numbers }}

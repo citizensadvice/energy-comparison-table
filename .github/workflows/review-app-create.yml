@@ -1,0 +1,152 @@
+name: review-app-create
+run-name: Creating, updating or testing review app for PR "${{ github.event.pull_request.title }}"
+on:
+  pull_request:
+    types: ['labeled', 'ready_for_review', 'synchronize', 'opened']
+
+concurrency:
+  group: review-app-${{ github.event.pull_request.number }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+env:
+  NAMESPACE: review-${{ github.event.pull_request.number }}-energy-comparison-table
+  HOST_NAME: review-${{ github.event.pull_request.number }}-energy-comparison-table.qa.citizensadvice.org.uk
+  IMAGE_TAG: ${{ github.sha }}
+  CLUSTER: dev-eks-platform
+
+jobs:
+  build:
+    name: Build Image
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+      issues: read
+    # This can be removed once tests are working. At the moment it just means that environments
+    # are created and destroyed on every push for no reason.
+    if: contains(github.event.pull_request.labels.*.name, 'Review app')
+    steps:
+      - name: Build and push to ECR
+        uses: citizensadvice/build-and-push-private-action@v1
+        with:
+          dockerfile_context: '.'
+          repository_name: energy-comparison-table
+          multiarch_build: 'disabled'
+          role_arn: 'arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps'
+          auth_token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: Deploy Review Environment
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+      issues: write
+      pull-requests: write
+    needs: build
+    steps:
+      - name: Git Checkout energy comparison table
+        uses: actions/checkout@v3
+        with:
+          path: energy-comparison-table
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: 'arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps'
+          role-session-name: energy-comparison-table-actions-workflow
+          aws-region: eu-west-1
+
+      - name: Get Kube Config
+        run: aws eks update-kubeconfig --name=${{ env.CLUSTER }}
+
+      - name: Create Sub-namespace
+        run: |
+          kubectl apply -f - << EOF
+          apiVersion: hnc.x-k8s.io/v1alpha2
+          kind: SubnamespaceAnchor
+          metadata:
+            name: ${{ env.NAMESPACE }}
+            namespace: "dev-energy-comparison-table"
+          EOF
+
+      - name: Escape Characters
+        id: escape_chars
+        run: |
+          echo "title=$(echo "${{ github.event.pull_request.title }}" | tr -d ',')" >> $GITHUB_OUTPUT
+
+      - name: Helm Deploy
+        run: |
+          helm upgrade --install \
+          --namespace=${{ env.NAMESPACE }} \
+          --values energy-comparison-table/.github/resources/preview-overrides.yaml \
+          --set metadata.pullRequestNumber=${{ github.event.pull_request.number }} \
+          --set metadata.pullRequestName="${{ steps.escape_chars.outputs.title }}" \
+          --set image.tag=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table:${{ env.IMAGE_TAG }} \
+          --set env.URL_HOST=${{ env.HOST_NAME }} \
+          --set env.IMAGE_TAG=${{ env.IMAGE_TAG }} \
+          --set web.ingress.hostname=${{ env.HOST_NAME }} \
+          --set minio.ingress.hostname=minio-${{ env.HOST_NAME }} \
+          ${{ env.NAMESPACE }} \
+          infrastructure/chart/energy-comparison-table
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: find-comment
+        if: contains(github.event.pull_request.labels.*.name, 'Review app')
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: A review app has been created in the Kubernetes namespace
+          direction: last
+
+      - name: Add New Comment
+        uses: peter-evans/create-or-update-comment@v2
+        if: steps.find-comment.outputs.comment-id == 0 && contains(github.event.pull_request.labels.*.name, 'Review app')
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            A review app has been created in the Kubernetes namespace `${{ env.NAMESPACE }}` in the `${{ env.CLUSTER }}` cluster.
+
+            It can be accessed at https://${{ env.HOST_NAME }}. Please note you will need to be assigned to the `Mokta` app in Okta Sandbox in order to sign in.
+
+            On first-time startup the environment may take 15-20 minutes to become accessable. Please see the [FAQ](https://citizensadvice.atlassian.net/wiki/spaces/OPS/pages/3769204741/Casebook+Review+Apps+FAQ) for more information.
+
+            Tests are now running and can be viewed [here.](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            To destroy the review app remove the label `Review app`, close this PR or convert it to draft.
+
+      - name: Update Comment
+        uses: peter-evans/create-or-update-comment@v2
+        if: steps.find-comment.outputs.comment-id && contains(github.event.pull_request.labels.*.name, 'Review app')
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          edit-mode: replace
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          body: |
+            A review app has been created in the Kubernetes namespace `${{ env.NAMESPACE }}` in the `${{ env.CLUSTER }}` cluster.
+
+            It can be accessed at https://${{ env.HOST_NAME }}. Please note you will need to be assigned to the `Mokta` app in Okta Sandbox in order to sign in.
+
+            Please see the [FAQ](https://citizensadvice.atlassian.net/wiki/spaces/OPS/pages/3769204741/Casebook+Review+Apps+FAQ) for more information.
+
+            Tests are now running and can be viewed [here.](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            To destroy the review app remove the label `Review app`, close this PR or convert it to draft.
+
+            ---
+
+            Edit: A new version of the review app has been deployed based off the latest commit: [${{ github.event.pull_request.head.sha }}](https://github.com/citizensadvice/energy-comparison-table/pull/${{ github.event.pull_request.number }}/commits/${{ github.event.pull_request.head.sha }})
+
+
+  trigger_destroy:
+    # if: (contains(github.event.pull_request.labels.*.name, 'Review app') == false) || failure()
+    # While tests are not enabled, we only want the destroy job to be triggered from this workfow
+    # when a deployment fails, otherwise it will run the destroy job on every PR even when the
+    # environment doesn't exist
+    if: failure()
+    needs: test
+    secrets: inherit
+    uses: ./.github/workflows/review-app-destroy.yml
+    with:
+      pr_number: ${{ github.event.pull_request.number }}
