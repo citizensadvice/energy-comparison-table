@@ -1,5 +1,5 @@
 !!!
-%html
+%html.no-js
   %head
     %meta{ content: "text/html; charset=UTF-8", "http-equiv": "Content-Type" }
     %title EnergyComparisonTable
@@ -7,6 +7,10 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application"
-    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+  %script{ id: "script-no-js", nonce: content_security_policy_nonce }
+    document.querySelector('html').classList.remove('no-js');
+
   %body
     = yield
+    = javascript_include_tag "application", defer: true
