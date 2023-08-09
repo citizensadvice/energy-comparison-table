@@ -82,7 +82,8 @@ jobs:
           --values energy-comparison-table/.github/resources/preview-overrides.yaml \
           --set metadata.pullRequestNumber=${{ github.event.pull_request.number }} \
           --set metadata.pullRequestName="${{ steps.escape_chars.outputs.title }}" \
-          --set image.tag=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table:${{ env.IMAGE_TAG }} \
+          --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
+          --set image.tag=${{ env.IMAGE_TAG }} \
           --set env.URL_HOST=${{ env.HOST_NAME }} \
           --set env.IMAGE_TAG=${{ env.IMAGE_TAG }} \
           --set web.ingress.hostname=${{ env.HOST_NAME }} \
