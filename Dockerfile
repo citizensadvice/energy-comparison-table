@@ -16,4 +16,18 @@ RUN yarn install --frozen-lockfile
 
 COPY ./ /app
 
+
+# Add user group
+RUN addgroup ruby
+
+# Add user
+RUN adduser -h /home/ruby -D 3000 ruby 
+
+# Change temp and log dir perms
+RUN rm -rf /app/tmp /app/log \
+&& mkdir /app/tmp /app/log \
+&& chmod -R 777 /app/tmp /app/log
+
+USER 3000
+
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
