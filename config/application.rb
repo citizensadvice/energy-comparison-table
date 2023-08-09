@@ -32,8 +32,6 @@ module EnergyComparisonTable
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    # Asset pipeline
-    config.assets.paths << Rails.root.join("node_modules/@citizensadvice/design-system/assets/")
 
     # View component previews
     config.view_component.preview_route = "/components/previews"
