@@ -140,13 +140,16 @@ jobs:
 
 
   trigger_destroy:
-    # if: (contains(github.event.pull_request.labels.*.name, 'Review app') == false) || failure()
-    # While tests are not enabled, we only want the destroy job to be triggered from this workfow
-    # when a deployment fails, otherwise it will run the destroy job on every PR even when the
-    # environment doesn't exist
-    if: failure()
-    needs: test
-    secrets: inherit
-    uses: ./.github/workflows/review-app-destroy.yml
-    with:
-      pr_number: ${{ github.event.pull_request.number }}
+    if: (contains(github.event.pull_request.labels.*.name, 'Review app') == false) || failure()
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: explorium-ai/wait-github-status-action@v1.0.2
+      with:
+        name: test
+        token: ${{ secrets.GITHUB_TOKEN }}
+        sha: ${{ github.event.pull_request.head.sha }}
+        secrets: inherit
+    - uses: ./.github/workflows/review-app-destroy.yml
+      with:
+        pr_number: ${{ github.event.pull_request.number }}
+        secrets: inherit
