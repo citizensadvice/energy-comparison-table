@@ -18,5 +18,16 @@
     document.querySelector('html').classList.remove('no-js');
 
   %body
-    = yield
+    -# header goes here
+
+    .wrapper
+      #cads-main-content
+        .cads-page-content
+          .cads-grid-container
+            .cads-grid-row
+              %main.cads-grid-col-md-12
+                = yield
+
+    -# footer goes here
+
     = javascript_include_tag "application", defer: true
