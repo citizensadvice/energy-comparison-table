@@ -62,6 +62,7 @@ group :development do
   # gem "spring"
   gem "brakeman"
   gem "license_finder"
+  gem "pry-remote"
 end
 
 group :test do
