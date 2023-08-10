@@ -10,6 +10,24 @@ RSpec.describe "Suppliers" do
       expect(response).to have_http_status :successful
     end
 
+    it "render the switftype search type advice metatag" do
+      get "/suppliers"
+
+      expect(response.body).to include("<meta class='swiftype' content='advice' data-type='string' name='search_type_filter'>")
+    end
+
+    it "render the switftype search type everything metatag" do
+      get "/suppliers"
+
+      expect(response.body).to include("<meta class='swiftype' content='everything' data-type='string' name='search_type_filter'>")
+    end
+
+    it "render the switftype audience england metatag" do
+      get "/suppliers"
+
+      expect(response.body).to include("<meta class='swiftype' content='england' data-type='string' name='audience_filter'>")
+    end
+
     it "responds successfully to the supplier detail route" do
       get "/suppliers/an-energy-supplier"
 
@@ -42,6 +60,12 @@ RSpec.describe "Suppliers" do
       get "/wales/suppliers/an-energy-supplier"
 
       expect(response).to have_http_status :successful
+    end
+
+    it "renders the switftype meta tags" do
+      get "/wales/suppliers"
+
+      expect(response.body).to include("<meta class='swiftype' content='wales' data-type='string' name='audience_filter'>")
     end
   end
 
