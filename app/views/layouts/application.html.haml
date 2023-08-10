@@ -14,6 +14,9 @@
     = csrf_meta_tags
     = csp_meta_tag
     = display_meta_tags(default_meta_tags)
+    - if swiftype_meta.present?
+      - swiftype_meta.each do |item|
+        %meta.swiftype{ name: item[:name], data: { type: item[:type] }, content: item[:content] }
     = stylesheet_link_tag "application"
 
   %script{ id: "script-no-js", nonce: content_security_policy_nonce }
