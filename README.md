@@ -12,4 +12,4 @@ This project uses view components for front end logic and rendering - see [view-
 
 ## Static assets
 
-See [static-assets-pipeline.md](./docs//static-asset-pipeline.md).
+See [static-assets-pipeline.md](./docs//static-asset-pipeline.md)
