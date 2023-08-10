@@ -11,7 +11,7 @@ concurrency:
 env:
   NAMESPACE: review-${{ github.event.pull_request.number }}-energy-comparison-table
   HOST_NAME: review-${{ github.event.pull_request.number }}-energy-comparison-table.qa.citizensadvice.org.uk
-  IMAGE_TAG: ${{ github.sha }}
+  IMAGE_TAG: dev_${{ github.sha }}
   CLUSTER: dev-eks-platform
 
 jobs:
