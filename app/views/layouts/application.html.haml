@@ -1,12 +1,35 @@
 !!!
-%html
+%html.no-js
   %head
     %meta{ content: "text/html; charset=UTF-8", "http-equiv": "Content-Type" }
-    %title EnergyComparisonTable
     %meta{ content: "width=device-width,initial-scale=1", name: "viewport" }
+
+    -# Preload fonts
+    %link{ href: "/assets/fontxs/open-sans-v26-latin-700.woff2", rel: "preload", as: "font", type: "font/woff2", crossorigin: true }
+    %link{ href: "/assets/fonts/open-sans-v26-latin-regular.woff2", rel: "preload", as: "font", type: "font/woff2", crossorigin: true }
+    %link{ href: "/assets/fonts/cads.woff?d7dccfce9cf3c38908cc8e38fb40341b", rel: "preload", as: "font", type: "font/woff", crossorigin: true }
+
+    %link{ rel: "canonical", href: format_canonical_url }
+
     = csrf_meta_tags
     = csp_meta_tag
+    = display_meta_tags(default_meta_tags)
     = stylesheet_link_tag "application"
-    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+  %script{ id: "script-no-js", nonce: content_security_policy_nonce }
+    document.querySelector('html').classList.remove('no-js');
+
   %body
-    = yield
+    -# header goes here
+
+    .wrapper
+      #cads-main-content
+        .cads-page-content
+          .cads-grid-container
+            .cads-grid-row
+              %main.cads-grid-col-md-12
+                = yield
+
+    -# footer goes here
+
+    = javascript_include_tag "application", defer: true
