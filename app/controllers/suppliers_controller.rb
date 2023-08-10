@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class SuppliersController < ApplicationController
+  include SwiftypeMeta
+
   before_action :set_supplier, only: :show
-  before_action :set_page_meta_tags
+  before_action :set_page_meta_tags, :set_swiftype_meta_tags
 
   attr_accessor :supplier
 
@@ -24,6 +26,14 @@ class SuppliersController < ApplicationController
     }
   end
 
+  def set_swiftype_meta_tags
+    add_swiftype_meta([
+      { name: "search_type_filter", content: "everything", type: "string" },
+      { name: "search_type_filter", content: "advice", type: "string" },
+      { name: "audience_filter", content: current_country, type: "string" }
+    ])
+  end
+
   def set_page_meta_tags
     # meta tags are set by the meta-tags gem.  See https://github.com/kpumuk/meta-tags
     set_meta_tags(
@@ -35,5 +45,9 @@ class SuppliersController < ApplicationController
     return "Compare energy suppliers' customer service" if supplier.blank?
 
     "#{supplier[:name]} customer service performance"
+  end
+
+  def current_country
+    request.params[:country]&.downcase || "england"
   end
 end
