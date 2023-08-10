@@ -40,5 +40,8 @@ module EnergyComparisonTable
 
     # add rspec test generator
     config.generators.test_framework = :rspec
+
+    # Review apps have dynamic subdomains
+    Rails.application.config.hosts << /.*\.qa\.citizensadvice\.org\.uk/
   end
 end
