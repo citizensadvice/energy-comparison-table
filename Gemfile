@@ -39,9 +39,6 @@ gem "citizens_advice_components",
     glob: "engine/*.gemspec"
 gem "view_component", "~> 3.5"
 
-# Use Sass to process CSS
-# gem "sassc-rails"
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "bundler-audit"
