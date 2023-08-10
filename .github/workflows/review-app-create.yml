@@ -86,7 +86,7 @@ jobs:
           --set image.tag=${{ env.IMAGE_TAG }} \
           --set env.URL_HOST=${{ env.HOST_NAME }} \
           --set env.IMAGE_TAG=${{ env.IMAGE_TAG }} \
-          --set web.ingress.hostname=${{ env.HOST_NAME }} \
+          --set ingress.hostname=${{ env.HOST_NAME }} \
           --set minio.ingress.hostname=minio-${{ env.HOST_NAME }} \
           ${{ env.NAMESPACE }} \
           energy-comparison-table/infrastructure/chart/energy-comparison-table
