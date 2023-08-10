@@ -180,6 +180,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.3-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -325,7 +329,11 @@ GEM
 PLATFORMS
   aarch64-linux-musl
   arm64-darwin-20
+  arm64-darwin-21
   arm64-darwin-22
+  x86_64-darwin-22
+  x86_64-linux
+  x86_64-linux-musl
 
 DEPENDENCIES
   bootsnap
@@ -356,4 +364,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.3.21
+   2.4.18
