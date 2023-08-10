@@ -30,5 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/status", to: "status#index"
+
   match "*path", to: "application#not_found", via: :all
 end
