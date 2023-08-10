@@ -17,9 +17,6 @@ RUN bundle config set --local deployment 'true' && \
 COPY package.json yarn.lock /app/
 RUN yarn install --frozen-lockfile
 
-# compile assets
-RUN bundle exec rails assets:precompile
-
 COPY ./ /app
 
 
