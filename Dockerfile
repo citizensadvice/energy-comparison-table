@@ -8,11 +8,17 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock /app/
 
+# install gems
 RUN bundle config set --local deployment 'true' && \  
     bundle install
 
+
+# install node packages
 COPY package.json yarn.lock /app/
 RUN yarn install --frozen-lockfile
+
+# compile assets
+RUN bundle exec rails assets:precompile
 
 COPY ./ /app
 
