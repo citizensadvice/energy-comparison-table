@@ -16,6 +16,7 @@ RUN yarn install --frozen-lockfile
 
 COPY ./ /app
 
+RUN bundle exec rake assets:precompile RAILS_ENV=production
 
 # Add user group
 RUN addgroup ruby
