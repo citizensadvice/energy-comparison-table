@@ -2,7 +2,7 @@ name: review-app-create
 run-name: Creating, updating or testing review app for PR "${{ github.event.pull_request.title }}"
 on:
   pull_request:
-    types: ['labeled', 'ready_for_review', 'synchronize', 'opened']
+    types: ["labeled", "ready_for_review", "synchronize", "opened"]
 
 concurrency:
   group: review-app-${{ github.event.pull_request.number }}-${{ github.workflow }}
@@ -29,10 +29,10 @@ jobs:
       - name: Build and push to ECR
         uses: citizensadvice/build-and-push-private-action@v1
         with:
-          dockerfile_context: '.'
+          dockerfile_context: "."
           repository_name: energy-comparison-table
-          multiarch_build: 'disabled'
-          role_arn: 'arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps'
+          multiarch_build: "disabled"
+          role_arn: "arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps"
           auth_token: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
@@ -53,7 +53,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
-          role-to-assume: 'arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps'
+          role-to-assume: "arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps"
           role-session-name: energy-comparison-table-actions-workflow
           aws-region: eu-west-1
 
@@ -97,7 +97,7 @@ jobs:
         if: contains(github.event.pull_request.labels.*.name, 'Review app')
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'github-actions[bot]'
+          comment-author: "github-actions[bot]"
           body-includes: A review app has been created in the Kubernetes namespace
           direction: last
 
@@ -139,14 +139,12 @@ jobs:
 
             Edit: A new version of the review app has been deployed based off the latest commit: [${{ github.event.pull_request.head.sha }}](https://github.com/citizensadvice/energy-comparison-table/pull/${{ github.event.pull_request.number }}/commits/${{ github.event.pull_request.head.sha }})
 
-
   trigger_destroy:
     # if: (contains(github.event.pull_request.labels.*.name, 'Review app') == false) || failure()
     # While tests are not enabled, we only want the destroy job to be triggered from this workfow
     # when a deployment fails, otherwise it will run the destroy job on every PR even when the
     # environment doesn't exist
     if: failure()
-    needs: test
     secrets: inherit
     uses: ./.github/workflows/review-app-destroy.yml
     with:
