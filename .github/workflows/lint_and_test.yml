@@ -56,6 +56,9 @@ jobs:
           bundle lock --add-platform x86_64-linux
           bundle install
 
+      - name: "Precompile assets"
+        run: bundle exec rails assets:precompile
+
       - name: "Rspec"
         run: bundle exec rspec
 
