@@ -32,7 +32,7 @@ jobs:
           dockerfile_context: "."
           repository_name: energy-comparison-table
           multiarch_build: "disabled"
-          role_arn: "arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps"
+          role_arn: "arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment"
           auth_token: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
@@ -53,7 +53,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
-          role-to-assume: "arn:aws:iam::979633842206:role/EnergyComparisonTableReviewApps"
+          role-to-assume: "arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment"
           role-session-name: energy-comparison-table-actions-workflow
           aws-region: eu-west-1
 
