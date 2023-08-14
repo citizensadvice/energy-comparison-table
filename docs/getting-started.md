@@ -26,7 +26,7 @@ All example commands should be run from the root of the project directory once y
 
 ### Run the Rails setup script
 
-Running the following from the root of the project will install all ruby and client-side dependencies, and prepare the database. This can be run at any time.
+Running the following from the root of the project will install all ruby and client-side dependencies. This can be run at any time.
 
 ```sh
 ./bin/setup
