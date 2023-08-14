@@ -10,18 +10,18 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
 
+      - name: "Setup ruby"
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
       - name: "Setup node"
         uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
 
       - name: "Install npm packages"
-        run: yarn install
-
-      - name: "Setup ruby"
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
+        uses: bahmutov/npm-install@v1
 
       - name: "Node lint"
         run: yarn run lint
@@ -43,6 +43,14 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - name: "Setup node"
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: "Install npm packages"
+        uses: bahmutov/npm-install@v1
 
       - name: "Precompile assets"
         run: bundle exec rails assets:precompile
