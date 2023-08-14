@@ -20,11 +20,8 @@ jobs:
 
       - name: "Setup ruby"
         uses: ruby/setup-ruby@v1
-
-      - name: "Install gems"
-        run: |
-          bundle lock --add-platform x86_64-linux
-          bundle install
+        with:
+          bundler-cache: true
 
       - name: "Node lint"
         run: yarn run lint
@@ -50,11 +47,8 @@ jobs:
 
       - name: "Setup ruby"
         uses: ruby/setup-ruby@v1
-
-      - name: "Install gems"
-        run: |
-          bundle lock --add-platform x86_64-linux
-          bundle install
+        with:
+          bundler-cache: true
 
       - name: "Precompile assets"
         run: bundle exec rails assets:precompile
@@ -71,11 +65,8 @@ jobs:
 
       - name: "Setup ruby"
         uses: ruby/setup-ruby@v1
-
-      - name: "Install gems"
-        run: |
-          bundle lock --add-platform x86_64-linux
-          bundle install
+        with:
+          bundler-cache: true
 
       - name: "Bundle audit"
         run: bundle audit
