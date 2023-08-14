@@ -44,21 +44,15 @@ yarn build --watch
 
 This will watch for changes to `.js` files and transpile the applicaiton js automatically. Currently, there is no hot-reloading function.
 
-## Foreman
+## Running with `bin/dev`
 
-A `.foreman` config file has been included for development convenience. To use foreman you will need to install the `foreman` gem on your system. Do not add it to the `Gemfile`.
+You can run the application along with asset compilation using the following dev script:
 
-```
-gem install foreman
-```
-
-Once you've done that, you can run
-
-```
-foreman start
+```sh
+./bin/dev
 ```
 
-This will start three processes simultaneously:
+This will start three processes simultaneously using `foreman`:
 
 - the SCSS compilation (`yarn build:css --watch`)
 - the JS transpilation (`yarn build --watch`)
@@ -66,9 +60,9 @@ This will start three processes simultaneously:
 
 ### Debugging with foreman
 
-`pry-remote` has been added to the development group of the `Gemfile`. You can follow these steps to debugging when using foreman:
+The `pry-remote` gem has been added to the development group of the `Gemfile`. You can follow these steps to debugging when using foreman:
 
-1. add `binding.pry_remote` where you want your breakpoint to be
+1. Add `binding.pry_remote` where you want your breakpoint to be
 2. `[pry-remote] Waiting for client on druby://127.0.0.1:9876` will appear in the foreman output
 3. in a new terminal, enter `pry-remote`
 4. you can then interact with the binding as normal
