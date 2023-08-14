@@ -63,7 +63,7 @@ jobs:
           bundler-cache: true
 
       - name: "Bundle audit"
-        run: bundle audit
+        run: bundle exec bundle-audit
 
       - name: "Brakeman audit"
         run: bundle exec brakeman
