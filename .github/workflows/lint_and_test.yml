@@ -27,13 +27,7 @@ jobs:
         run: yarn run lint
 
       - name: "Ruby lint"
-        run: bundle exec rubocop --format progress --format json --out rubocop.json
-
-      - name: "Annotate rubocop failures"
-        uses: duderman/rubocop-annotate-action@v0.1.0
-        with:
-          path: rubocop.json
-        if: ${{ failure() }}
+        run: bundle exec rubocop --format progress --format github
 
       - name: "Haml lint"
         run: bundle exec haml-lint app/**/*.html.haml
