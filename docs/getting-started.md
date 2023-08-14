@@ -1,37 +1,59 @@
 # Getting started
 
-## Pre-requisites
+The following guide runs you through getting the application set up and working with the application in development.
 
-### Node
+## Prerequisites
 
-Node v20+ is required. There is an `.nvmrc` file that contains the version currently used by this project. It is recommended to install and use [node version manager](https://github.com/nvm-sh/nvm) to manage the node versions you have installed on your machine, especially if you are working across products.
+Running the project locally requires a few dependencies.
 
-### Yarn
+### Ruby
 
-Yarn v1+ is required. This project does not use `npm` to manage js dependencies.
+Ruby version 3.2+ is required. We include a `.ruby-version` file in the root of the project so if you are using a version manager like [rvm](https://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv) it should pick this up.
 
-### Ruby
+### Node and Yarn
 
-Ruby v3.2+ is required. There is a `.ruby-version` file that contains the version currently used by this project. It is recommended to install and use [ruby version manager](https://rvm.io/) to manage the ruby versions you have installed on your machine, especially if you are working across products.
+Node 20+ is required. We include a `.nvmrc` file in the root of the project so if you are using [nvm](https://github.com/nvm-sh/nvm) it should pick this up.
+
+The project uses `yarn`. Recent versions of node include a tool called `corepack` which [includes yarn](https://nodejs.org/tr/blog/release/v14.19.0#corepack). You can enable yarn on your system by running the following:
+
+```
+corepack enable
+```
 
 ## Setup
 
-All example commands should be run from the root of the project directory.
+All example commands should be run from the root of the project directory once you have installed the pre-requisites above.
 
-1. Install the pre-requisites above
-2. Make sure you're running the correct ruby version
+### Run the Rails setup script
 
-   ```
-   rvm use
-   ```
+Running the following from the root of the project will install all ruby and client-side dependencies, and prepare the database. This can be run at any time.
 
-3. Make sure you're running the correct node version
+```sh
+./bin/setup
+```
 
-   ```
-   nvm use
-   ```
+### Pre-compile assets
 
-4. Run the rails setup script
-   ```
-   bin/setup
-   ```
+When running the specs for the first time you may need to pre-compile assets using:
+
+```sh
+./bin/rails assets:precompile
+```
+
+### Running the specs
+
+A good way to quickly check that the local setup is working correctly is to run the specs. This can be done with:
+
+```sh
+./bin/rails spec
+```
+
+### Run the application
+
+You can run the application along with asset compilation using the following dev script:
+
+```sh
+./bin/dev
+```
+
+If all is working you should be able to access the application at `http://localhost:3000/`
