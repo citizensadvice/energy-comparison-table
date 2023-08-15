@@ -30,6 +30,8 @@ gem "tzinfo-data"
 
 gem "haml-rails", "~> 2.0"
 
+gem "meta-tags", "~> 2.18"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -41,10 +43,12 @@ gem "view_component", "~> 3.5"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+
   gem "bundler-audit"
   gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby"
-  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "haml-lint", require: false
+  gem "rspec-rails"
   gem "rubocop-rails"
 end
 
@@ -65,9 +69,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "rspec-rails"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "meta-tags", "~> 2.18"

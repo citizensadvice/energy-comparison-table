@@ -12,7 +12,7 @@ We build our views using ViewComponents that tend to fall into two categories: D
 
 The core set of components that make up our application come from our internal `citizens_advice_components` gem.
 
-See the [Design System guide](./design-system.md) for more information on how the Design System works.
+See the [design system architecture guide](https://github.com/citizensadvice/design-system/blob/main/contributing/architecture.md) for more information on how the Design System works.
 
 These can be used directly within views or composed within other ViewComponents. For example:
 
@@ -26,7 +26,7 @@ These can be used directly within views or composed within other ViewComponents.
 
 For anything that doesn't come from the design system we also write app-specific ViewComponents under `app/components`.
 
-These can do small things like wrap Design System components to customise them, such as [this footer component](../app/components/footer_component.rb), up to providing whole page layouts.
+These can do small things like wrap Design System components to customise them up to providing whole page layouts.
 
 By using the same framework for both our Design System components and our app-specific components it makes it much simpler to upstream components to the Design System if we need to.
 
