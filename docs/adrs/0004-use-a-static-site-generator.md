@@ -21,7 +21,7 @@ Optional: use a lambda function to handle publishing events from Contentful so t
 
 ## Consequences
 
-### Positive
+### Positive
 
 - lower infrastructure maintenance outlay and a simpler architecture
 - Bridgetown is well suited to consuming CSV data and creating the required markup from structured data

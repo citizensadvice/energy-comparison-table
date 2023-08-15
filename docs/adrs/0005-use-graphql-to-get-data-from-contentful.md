@@ -15,7 +15,8 @@ The energy supplier comparison table is currently hosted in episerver and needs 
 
 Previously the content platform team has used the Contentful CDA and CMA gems to interact with Contentful.
 
-## Decision
+## Decision
+
 Use GraphQL API to retrieve supplier data from the public advice space of Contentful, instead of using the existing content API or the Contentful CDA gem.
 
 ## Consequences

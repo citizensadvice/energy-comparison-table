@@ -10,33 +10,24 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
 
+      - name: "Setup ruby"
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
       - name: "Setup node"
         uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
 
       - name: "Install npm packages"
-        run: yarn install
-
-      - name: "Setup ruby"
-        uses: ruby/setup-ruby@v1
-
-      - name: "Install gems"
-        run: |
-          bundle lock --add-platform x86_64-linux
-          bundle install
+        uses: bahmutov/npm-install@v1
 
       - name: "Node lint"
         run: yarn run lint
 
       - name: "Ruby lint"
-        run: bundle exec rubocop --format progress --format json --out rubocop.json
-
-      - name: "Annotate rubocop failures"
-        uses: duderman/rubocop-annotate-action@v0.1.0
-        with:
-          path: rubocop.json
-        if: ${{ failure() }}
+        run: bundle exec rubocop --format progress --format github
 
       - name: "Haml lint"
         run: bundle exec haml-lint app/**/*.html.haml
@@ -50,11 +41,16 @@ jobs:
 
       - name: "Setup ruby"
         uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
-      - name: "Install gems"
-        run: |
-          bundle lock --add-platform x86_64-linux
-          bundle install
+      - name: "Setup node"
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: "Install npm packages"
+        uses: bahmutov/npm-install@v1
 
       - name: "Precompile assets"
         run: bundle exec rails assets:precompile
@@ -71,14 +67,11 @@ jobs:
 
       - name: "Setup ruby"
         uses: ruby/setup-ruby@v1
-
-      - name: "Install gems"
-        run: |
-          bundle lock --add-platform x86_64-linux
-          bundle install
+        with:
+          bundler-cache: true
 
       - name: "Bundle audit"
-        run: bundle audit
+        run: bundle exec bundle-audit
 
       - name: "Brakeman audit"
         run: bundle exec brakeman
