@@ -6,3 +6,7 @@ inherit_gem:
   citizens-advice-style:
     - default.yml
     - default-rails.yml
+
+Lint/Void:
+  Exclude:
+    - lib/tasks/update_schema.rake
