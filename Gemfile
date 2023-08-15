@@ -39,14 +39,19 @@ gem "citizens_advice_components",
     github: "citizensadvice/design-system",
     tag: "v5.5.0-alpha.5",
     glob: "engine/*.gemspec"
+
 gem "view_component", "~> 3.5"
+
+gem "faraday"
+gem "faraday-net_http_persistent"
+gem "graphql-client"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[mri mingw x64_mingw]
-
   gem "bundler-audit"
   gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby"
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "dotenv-rails"
   gem "haml-lint", require: false
   gem "rspec-rails"
   gem "rubocop-rails"
