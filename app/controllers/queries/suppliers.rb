@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  Suppliers = Contentful::Graphql::Client.parse <<-GRAPHQL
+  Suppliers = Contentful::Graphql::Client.new.parse <<-GRAPHQL
     query {
       energySupplierCollection {
         items {
