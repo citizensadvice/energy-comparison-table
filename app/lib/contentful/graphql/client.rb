@@ -5,16 +5,12 @@ module Contentful
     class Client
       attr_reader :http, :schema, :client
 
-      delegate :parse, to: :client
+      delegate :parse, :query, to: :client
 
       def initialize
         @http = Contentful::Graphql::Adapter.new
         @schema = load_schema
         @client = GraphQL::Client.new(schema:, execute: http)
-      end
-
-      def query(query, variables: {}, context: {})
-        @client.query(query, variables:, context:)
       end
 
       private
