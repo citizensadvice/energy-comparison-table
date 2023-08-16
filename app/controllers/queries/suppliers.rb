@@ -3,11 +3,18 @@
 module Queries
   Suppliers = Contentful::Graphql::Client.new.parse <<-GRAPHQL
     query {
-      energySupplierCollection {
+      energySupplierCollection (
+        order:rank_ASC
+      ) {
+        total,
         items {
           name,
+          slug,
           rank,
-          overallRating
+          previousRank,
+          complaintsRating,
+          overallRating,
+          dataAvailable
         }
       }
     }
