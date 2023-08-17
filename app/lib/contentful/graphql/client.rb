@@ -3,14 +3,24 @@
 module Contentful
   module Graphql
     class Client
+      class QueryError < StandardError; end
+
       attr_reader :http, :schema, :client
 
-      delegate :parse, :query, to: :client
+      delegate :parse, to: :client
 
       def initialize
         @http = Contentful::Graphql::Adapter.new
         @schema = load_schema
         @client = GraphQL::Client.new(schema:, execute: http)
+      end
+
+      def query(definition, variables: {}, context: {})
+        response = client.query(definition, variables:, context:)
+
+        raise QueryError, response.errors[:data].join(", ") if response.errors[:data].present?
+
+        response.data
       end
 
       private
