@@ -52,6 +52,8 @@ group :development, :test do
   gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby"
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails"
+  gem "factory_bot_rails"
+
   gem "haml-lint", require: false
   gem "rspec-rails"
   gem "rubocop-rails"
