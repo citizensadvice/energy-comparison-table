@@ -2,7 +2,14 @@
 
 module Contentful
   module Graphql
-    HTTP = Contentful::Graphql::Adapter.new
+    class SillyClass < Contentful::Graphql::Adapter
+      def hai
+        puts "hai"
+      end
+    end
+
+
+    HTTP = SillyClass.new
     SCHEMA = GraphQL::Client.load_schema("db/schema.json")
     Client = GraphQL::Client.new(schema: SCHEMA, execute: HTTP)
   end
