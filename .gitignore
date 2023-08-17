@@ -18,6 +18,8 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Editor / Hidden files
+.idea
 
 /public/assets
 
