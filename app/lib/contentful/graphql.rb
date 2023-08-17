@@ -2,7 +2,7 @@
 
 module Contentful
   module Graphql
-    class SillyClass < Contentful::Graphql::Adapter
+    class SillyClass < Contentful::GraphqlAdapter
       def hai
         puts "hai"
       end
