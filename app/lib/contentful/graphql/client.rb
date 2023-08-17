@@ -16,6 +16,8 @@ module Contentful
       end
 
       def query(definition, variables: {}, context: {})
+        variables.merge!({ tag_filter: })
+
         response = client.query(definition, variables:, context:)
 
         raise QueryError, response.errors[:data].join(", ") if response.errors[:data].present?
@@ -30,6 +32,15 @@ module Contentful
           GraphQL::Client.load_schema(http)
         else
           GraphQL::Client.load_schema("db/schema.json")
+        end
+      end
+
+      # We use tag filters to fetch test or production data
+      def tag_filter
+        if Feature.enabled? "USE_TEST_SUPPLIERS"
+          { id_contains_some: "test" }
+        else
+          { id_contains_none: "test" }
         end
       end
     end
