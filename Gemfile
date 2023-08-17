@@ -55,6 +55,8 @@ group :development, :test do
   gem "haml-lint", require: false
   gem "rspec-rails"
   gem "rubocop-rails"
+  gem "vcr"
+  gem "webmock"
 end
 
 group :development do
