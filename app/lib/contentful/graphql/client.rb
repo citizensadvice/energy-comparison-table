@@ -2,8 +2,26 @@
 
 module Contentful
   module Graphql
-    HTTP = Contentful::Graphql::Adapter.new
-    SCHEMA = GraphQL::Client.load_schema("db/schema.json")
-    Client = GraphQL::Client.new(schema: SCHEMA, execute: HTTP)
+    class Client
+      attr_reader :http, :schema, :client
+
+      delegate :parse, :query, to: :client
+
+      def initialize
+        @http = Contentful::Graphql::Adapter.new
+        @schema = load_schema
+        @client = GraphQL::Client.new(schema:, execute: http)
+      end
+
+      private
+
+      def load_schema
+        if Feature.enabled? "LOAD_SCHEMA_DYNAMICALLY"
+          GraphQL::Client.load_schema(http)
+        else
+          GraphQL::Client.load_schema("db/schema.json")
+        end
+      end
+    end
   end
 end
