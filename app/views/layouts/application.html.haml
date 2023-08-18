@@ -23,9 +23,10 @@
     document.querySelector('html').classList.remove('no-js');
 
   %body
-    -# header goes here
 
     .wrapper
+      = render HeaderComponent.new
+
       #cads-main-content
         .cads-page-content
           .cads-grid-container
