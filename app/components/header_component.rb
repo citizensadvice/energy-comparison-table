@@ -13,7 +13,7 @@ class HeaderComponent < ViewComponent::Base
   def logo
     {
       url: logo_url,
-      title: I18n.t("header.homepage_title")
+      title: "Citizens Advice Homepage"
     }
   end
 
