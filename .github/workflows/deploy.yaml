@@ -1,0 +1,74 @@
+name: Deploy
+on:
+  workflow_run:
+    workflows: ["Lint and test"]
+    branches: [main]
+    types:
+      - completed
+
+env:
+    IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  build:
+    name: Build Image
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+      issues: read
+    steps:
+      - name: Build and push to ECR
+        uses: citizensadvice/build-and-push-private-action@v1
+        with:
+          dockerfile_context: "."
+          repository_name: energy-comparison-table
+          multiarch_build: "disabled"
+          prod_image: true
+          role_arn: "arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment"
+          auth_token: ${{ secrets.GITHUB_TOKEN }}
+  deploy-energy-supplier-comparison:
+    name: Deploy chart
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        stage: ["qa"] #, "prod"]
+    environment:
+      name: ${{ matrix.stage }}
+    steps:
+      - name: Git Checkout energy comparison table
+        uses: actions/checkout@v3
+        with:
+          path: energy-comparison-table
+      - name: Set environment variables from cdk context
+        run: |
+          context_file=energy-comparison-table/infrastructure/cdk/cdk.json
+          for s in $(cat $context_file | jq -r ".context.${{matrix.stage}} | to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s" >> $GITHUB_ENV
+          done
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: "arn:aws:iam::${{env.AWS_ACCOUNT}}:role/EnergyComparisonTableDeployment"
+          role-session-name: ${{matrix.stage}}-energy-comparison-table-actions-workflow
+          aws-region: eu-west-1
+      - name: Generate Kube Config
+        run: aws eks update-kubeconfig --name=${{ env.EKS_CLUSTER }}
+      - name: Helm Deploy
+        run: |
+            helm upgrade --install \
+            --namespace=${{matrix.stage}}-energy-comparison-table\
+            --values energy-comparison-table/infrastructure/app/stages/${{matrix.stage}}.yaml \
+            --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
+            --set image.tag=${{ env.IMAGE_TAG }} \
+            --set ingress.hostname=energy-comparison-table.${{env.HOSTED_ZONE}} \
+            --set env.CONTENTFUL_ENVIRONMENT_ID=${{ vars.CONTENTFUL_ENVIRONMENT_ID }} \
+            --set secrets.CONTENTFUL_CDA_TOKEN=${{ secrets.CONTENTFUL_CDA_TOKEN }} \
+            --set secrets.CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }} \
+            ${{matrix.stage}}-energy-comparison-table \
+            energy-comparison-table/infrastructure/app/chart/energy-comparison-table
