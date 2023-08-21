@@ -10,7 +10,9 @@ EcrRepository(
     app,
     "EnergyComparisonTableEcrRepo",
     # cita-devops
-    env=cdk.Environment(account="979633842206", region="eu-west-1"),
+    env=cdk.Environment(
+        account=app.node.get_context("qa")["AWS_ACCOUNT"], region="eu-west-1"
+    ),
     tags={"Environment": "prod"},
 )
 
