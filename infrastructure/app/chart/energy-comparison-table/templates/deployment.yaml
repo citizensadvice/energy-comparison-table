@@ -37,7 +37,12 @@ spec:
           {{- range $name, $val := .Values.envVars }}
             - name: {{ $name }}
               value: {{ $val }}
-          {{ end -}}
+          {{ end }}
+          {{ if .Values.secrets -}}
+          envFrom:
+            - secretRef:
+                name: {{ include "energy-comparison-table.fullname" . }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

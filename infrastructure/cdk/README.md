@@ -1,14 +1,26 @@
 # Energy Supplier Comparison Table app
 
-- [Deploy](#deploy)
+- [Folder structure](#folder-structure)
+- [Deployment](#deployment)
 - [Welcome to your CDK Python project!](#welcome-to-your-cdk-python-project)
   - [Useful commands](#useful-commands)
 
-## Deploy
+## Folder structure
 
-Follow the steps in [Welcome to your CDK Python project!](#welcome-to-your-cdk-python-project) to install the cdk cli, Python venv and the required packages, then login to aws ( `aws sso login` ) and deploy e.g:
+- [cdk](./cdk) - AWS CDK IaC
+- [chart](./app) - Helm chart
+
+## Deployment
+
+Currently deployments are manual and involve:
+
+1. Create / update the AWS Infrastructure ( currently only an ECR repo for the docker images)
+
+- Follow the steps in [Welcome to your CDK Python project!](#welcome-to-your-cdk-python-project) to install the cdk cli, Python venv and the required packages, then login to aws ( `aws sso login` ) and deploy e.g:
 
 `AWS_PROFILE=cita-devops.AWSAdministratorAccess cdk deploy --all --require-approval never`
+
+2. Deploy the Helm chart
 
 ## Welcome to your CDK Python project!
 

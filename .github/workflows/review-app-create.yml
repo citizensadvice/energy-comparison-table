@@ -89,7 +89,7 @@ jobs:
           --set ingress.hostname=${{ env.HOST_NAME }} \
           --set minio.ingress.hostname=minio-${{ env.HOST_NAME }} \
           ${{ env.NAMESPACE }} \
-          energy-comparison-table/infrastructure/chart/energy-comparison-table
+          energy-comparison-table/infrastructure/app/chart/energy-comparison-table
 
       - name: Find Comment
         uses: peter-evans/find-comment@v2
