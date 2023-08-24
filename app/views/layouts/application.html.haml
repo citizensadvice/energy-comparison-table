@@ -5,7 +5,7 @@
     %meta{ content: "width=device-width,initial-scale=1", name: "viewport" }
 
     -# Preload fonts
-    %link{ href: "/assets/fontxs/open-sans-v26-latin-700.woff2", rel: "preload", as: "font", type: "font/woff2", crossorigin: true }
+    %link{ href: "/assets/fonts/open-sans-v26-latin-700.woff2", rel: "preload", as: "font", type: "font/woff2", crossorigin: true }
     %link{ href: "/assets/fonts/open-sans-v26-latin-regular.woff2", rel: "preload", as: "font", type: "font/woff2", crossorigin: true }
     %link{ href: "/assets/fonts/cads.woff?d7dccfce9cf3c38908cc8e38fb40341b", rel: "preload", as: "font", type: "font/woff", crossorigin: true }
 
@@ -25,14 +25,15 @@
   %body
 
     .wrapper
-      = render HeaderComponent.new
+      %div{class: ("ect-header-scotland" if scotland?)}
+        = render HeaderComponent.new
 
-      #cads-main-content
-        .cads-page-content
-          .cads-grid-container
-            .cads-grid-row
-              %main.cads-grid-col-md-12
-                = yield
+        #cads-main-content
+          .cads-page-content
+            .cads-grid-container
+              .cads-grid-row
+                %main.cads-grid-col-md-12
+                  = yield
 
     -# footer goes here
 
