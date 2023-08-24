@@ -27,6 +27,7 @@
     .wrapper
       %div{class: ("ect-header-scotland" if scotland?)}
         = render HeaderComponent.new
+        = render CitizensAdviceComponents::Navigation.new(links: navigation_links)
 
         #cads-main-content
           .cads-page-content
