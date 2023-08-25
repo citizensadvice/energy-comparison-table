@@ -5,7 +5,7 @@ class HeaderComponent < ViewComponent::Base
 
   def call
     render CitizensAdviceComponents::Header.new do |c|
-      c.with_logo(url: logo_url, title: 'Citizens Advice Homepage')
+      c.with_logo(url: logo_url, title: "Citizens Advice Homepage")
       c.with_search_form(search_action_url: search_url)
     end
   end
