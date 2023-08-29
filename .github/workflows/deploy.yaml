@@ -1,10 +1,8 @@
 name: Deploy
 on:
-  workflow_run:
-    workflows: ["Lint and test"]
-    branches: [main]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 env:
     IMAGE_TAG: ${{ github.sha }}
