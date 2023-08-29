@@ -5,7 +5,7 @@ module FooterHelper
     [
       {
         title: "Advice",
-        links: format_links(common_links).map(&:symbolize_keys)
+        links: format_links(navigation_links).map(&:symbolize_keys)
       },
       {
         title: "Resources and tools",
@@ -46,7 +46,7 @@ module FooterHelper
     [
       {
         title: "Advice",
-        links: format_links(common_links).map(&:symbolize_keys)
+        links: format_links(navigation_links).map(&:symbolize_keys)
       },
       {
         title: "Resources and tools",
