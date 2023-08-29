@@ -34,6 +34,8 @@
               %main.cads-grid-col-md-12
                 = yield
 
-    -# footer goes here
+    = render FooterComponent.new(current_path: request.path,
+                                 feedback_survey_id: Rails.configuration.x.feedback_survey.public_website,
+                                 columns: public_website_footer_nav_links)
 
     = javascript_include_tag "application", defer: true
