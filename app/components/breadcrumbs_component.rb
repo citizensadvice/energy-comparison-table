@@ -5,7 +5,7 @@ class BreadcrumbsComponent < ViewComponent::Base
   delegate :scotland?, to: :helpers
 
   def call
-    render CitizensAdviceComponents::Breadcrumbs.new(type: :no_collapse, links: links)
+    render CitizensAdviceComponents::Breadcrumbs.new(type: :no_collapse, links:)
   end
 
   def links
