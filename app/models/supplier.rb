@@ -8,9 +8,9 @@ class Supplier
   delegate :name, :slug, :rank, :previous_rank, :complaints_rating, :overall_rating, to: :data
 
   def self.fetch_all
-    data = Contentful::Graphql::Client.new.query(Queries::Suppliers)
+    response = Contentful::Graphql::Client.query(Queries::Suppliers)
 
-    data.energy_supplier_collection.items.map do |item|
+    response.data.energy_supplier_collection.items.map do |item|
       Supplier.new(data: item)
     end
   end
