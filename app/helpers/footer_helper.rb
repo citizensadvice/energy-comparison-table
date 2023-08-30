@@ -75,4 +75,14 @@ module FooterHelper
       }
     ]
   end
+
+  def format_links(links)
+    return links if current_request_country == "england"
+
+    links.each { |link| link["url"]&.prepend("/#{current_request_country}") }
+  end
+
+  def current_request_country
+    request.params[:country].presence || "england"
+  end
 end

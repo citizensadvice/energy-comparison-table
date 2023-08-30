@@ -12,12 +12,12 @@ class FooterComponent < ViewComponent::Base
 
   def call
     render CitizensAdviceComponents::Footer.new do |c|
-      c.feedback_link(url: research_uri.to_s,
-                      title: @feedback_title,
-                      external: true,
-                      new_tab: true)
-      c.columns(@columns)
-      c.legal_summary(@legal_summary)
+      c.with_feedback_link(url: research_uri.to_s,
+                           title: @feedback_title,
+                           external: true,
+                           new_tab: true)
+      c.with_columns(@columns)
+      c.with_legal_summary(@legal_summary)
     end
   end
 
