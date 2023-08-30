@@ -27,6 +27,8 @@ jobs:
           auth_token: ${{ secrets.GITHUB_TOKEN }}
   deploy-energy-supplier-comparison:
     name: Deploy chart
+    needs:
+      - build
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
@@ -60,7 +62,7 @@ jobs:
       - name: Helm Deploy
         run: |
             helm upgrade --install \
-            --namespace=${{matrix.stage}}-energy-comparison-table\
+            --namespace=${{matrix.stage}}-energy-comparison-table \
             --values energy-comparison-table/infrastructure/app/stages/${{matrix.stage}}.yaml \
             --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
             --set image.tag=${{ env.IMAGE_TAG }} \
