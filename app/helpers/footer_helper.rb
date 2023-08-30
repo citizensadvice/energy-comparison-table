@@ -2,6 +2,8 @@
 
 module FooterHelper
   def public_website_footer_nav_links
+    host_path = 'https://www.citizensadvice.org.uk'
+
     [
       {
         title: "Advice",
@@ -10,39 +12,41 @@ module FooterHelper
       {
         title: "Resources and tools",
         links: [
-          { title: "Adviser resources", url: "/about-us/adviser-resources/" },
-          { title: "Education resources", url: "/about-us/how-we-provide-advice/our-prevention-work/education/" },
-          { title: "Site search", url: "/s" },
-          { title: "A to Z of advice", url: "/resources-and-tools/search-navigation-tools/a-to-z-of-advice/" }
+          { title: "Adviser resources", url: "#{host_path}/about-us/adviser-resources/" },
+          { title: "Education resources", url: "#{host_path}/about-us/how-we-provide-advice/our-prevention-work/education/" },
+          { title: "Site search", url: "#{host_path}/s" },
+          { title: "A to Z of advice", url: "#{host_path}/resources-and-tools/search-navigation-tools/a-to-z-of-advice/" }
         ]
       },
       {
         title: "More from us",
         links: [
-          { title: "About us", url: "/about-us/" },
-          { title: "Contact us", url: "/about-us/contact-us/contact-us/contact-us/" },
-          { title: "Support us", url: "/about-us/support-us/" },
-          { title: "Annual reports", url: "/about-us/our-work/annual-reports/" },
-          { title: "Complaints", url: "/about-us/contact-us/contact-us/make-a-complaint-about-us/" },
-          { title: "Media", url: "/about-us/about-us1/media/" },
-          { title: "Modern slavery statement", url: "/about-us/modern-slavery-statement/" },
-          { title: "Policy research", url: "/about-us/policy/" },
-          { title: "Volunteering", url: "/about-us/support-us/volunteering/" },
-          { title: "Jobs", url: "/about-us/job-and-voluntary-opportunities/" }
+          { title: "About us", url: "#{host_path}/about-us/" },
+          { title: "Contact us", url: "#{host_path}/about-us/contact-us/contact-us/contact-us/" },
+          { title: "Support us", url: "#{host_path}/about-us/support-us/" },
+          { title: "Annual reports", url: "#{host_path}/about-us/our-work/annual-reports/" },
+          { title: "Complaints", url: "#{host_path}/about-us/contact-us/contact-us/make-a-complaint-about-us/" },
+          { title: "Media", url: "#{host_path}/about-us/about-us1/media/" },
+          { title: "Modern slavery statement", url: "#{host_path}/about-us/modern-slavery-statement/" },
+          { title: "Policy research", url: "#{host_path}/about-us/policy/" },
+          { title: "Volunteering", url: "#{host_path}/about-us/support-us/volunteering/" },
+          { title: "Jobs", url: "#{host_path}/about-us/job-and-voluntary-opportunities/" }
         ]
       },
       {
         title: "About this site",
         links: [
-          { title: "Accessibility statement", url: "/resources-and-tools/about-this-site/accessibility/" },
-          { title: "Terms and conditions", url: "/resources-and-tools/about-this-site/terms-and-conditions/" },
-          { title: "Privacy and cookies", url: "/about-us/citizens-advice-privacy-policy/" }
+          { title: "Accessibility statement", url: "#{host_path}/resources-and-tools/about-this-site/accessibility/" },
+          { title: "Terms and conditions", url: "#{host_path}/resources-and-tools/about-this-site/terms-and-conditions/" },
+          { title: "Privacy and cookies", url: "#{host_path}/about-us/citizens-advice-privacy-policy/" }
         ]
       }
     ]
   end
 
   def scotland_public_website_footer_nav_links
+    host_path = 'https://www.citizensadvice.org.uk/scotland'
+
     [
       {
         title: "Advice",
@@ -51,15 +55,15 @@ module FooterHelper
       {
         title: "Resources and tools",
         links: [
-          { title: "Where to get advice", url: "/scotland/about-us/get-advice-s/" },
-          { title: "Template letters", url: "/scotland/consumer/template-letters/letters/" },
-          { title: "A to Z of advice", url: "/scotland/resources-and-tools/search-navigation-tools/a-to-z-of-advice/" }
+          { title: "Where to get advice", url: "#{host_path}/about-us/get-advice-s/" },
+          { title: "Template letters", url: "#{host_path}/consumer/template-letters/letters/" },
+          { title: "A to Z of advice", url: "#{host_path}/resources-and-tools/search-navigation-tools/a-to-z-of-advice/" }
         ]
       },
       {
         title: "More from us",
         links: [
-          { title: "More help", url: "/scotland/about-us/" },
+          { title: "More help", url: "#{host_path}/about-us/" },
           { title: "Complaints", url: "https://www.cas.org.uk/complaints" },
           { title: "Campaigns", url: "https://www.cas.org.uk/campaigns" },
           { title: "Publications", url: "https://www.cas.org.uk/publications" },
@@ -70,7 +74,7 @@ module FooterHelper
       {
         title: "About this site",
         links: [
-          { title: "Disclaimer and copyright", url: "/scotland/resources-and-tools/about-this-site/terms-and-conditions/" }
+          { title: "Disclaimer and copyright", url: "#{host_path}/resources-and-tools/about-this-site/terms-and-conditions/" }
         ]
       }
     ]
