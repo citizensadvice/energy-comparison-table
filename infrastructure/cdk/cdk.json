@@ -49,7 +49,7 @@
     "@aws-cdk/aws-apigateway:requestValidatorUniqueId": true,
     "@aws-cdk/aws-kms:aliasNameRef": true,
     "@aws-cdk/core:includePrefixInUniqueNameGeneration": true,
-    "qa": {
+    "dev": {
       "AWS_ACCOUNT": "979633842206",
       "EKS_CLUSTER": "dev-eks-platform",
       "HOSTED_ZONE": "qa.citizensadvice.org.uk"
