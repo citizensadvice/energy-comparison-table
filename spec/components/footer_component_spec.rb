@@ -9,7 +9,7 @@ RSpec.describe FooterComponent, type: :component do
     render_inline described_class.new(
       current_path: "/immigration",
       feedback_survey_id: "1234",
-      columns: columns
+      columns:
     )
   end
 

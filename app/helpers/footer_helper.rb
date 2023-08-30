@@ -2,7 +2,7 @@
 
 module FooterHelper
   def public_website_footer_nav_links
-    host_path = 'https://www.citizensadvice.org.uk'
+    host_path = "https://www.citizensadvice.org.uk"
 
     [
       {
@@ -45,7 +45,7 @@ module FooterHelper
   end
 
   def scotland_public_website_footer_nav_links
-    host_path = 'https://www.citizensadvice.org.uk/scotland'
+    host_path = "https://www.citizensadvice.org.uk/scotland"
 
     [
       {
