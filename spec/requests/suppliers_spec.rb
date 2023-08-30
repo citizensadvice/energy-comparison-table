@@ -3,6 +3,10 @@
 require "rails_helper"
 
 RSpec.describe "Suppliers" do
+  before do
+    allow(Supplier).to receive(:fetch_all).and_return([])
+  end
+
   context "when no country is specified" do
     it "responds successfully to the suppliers route" do
       get "/suppliers"

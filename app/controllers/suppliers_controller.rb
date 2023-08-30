@@ -4,13 +4,19 @@ class SuppliersController < ApplicationController
   include SwiftypeMeta
 
   before_action :set_supplier, only: :show
+  before_action :set_suppliers, only: :index
   before_action :set_page_meta_tags, :set_swiftype_meta_tags
 
   attr_accessor :supplier
 
   helper_method :supplier
 
-  def index; end
+  def index
+    ranked_suppliers = @suppliers.select(&:data_available)
+    unranked_suppliers = @suppliers.reject(&:data_available)
+
+    render "index", locals: { ranked_suppliers:, unranked_suppliers: }
+  end
 
   def show; end
 
@@ -24,6 +30,10 @@ class SuppliersController < ApplicationController
     @supplier = {
       name: permitted_params[:id]
     }
+  end
+
+  def set_suppliers
+    @suppliers = Supplier.fetch_all
   end
 
   def set_swiftype_meta_tags
