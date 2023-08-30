@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-    IMAGE_TAG: ${{ github.sha }}
+  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   build:
@@ -62,13 +62,14 @@ jobs:
         run: aws eks update-kubeconfig --name=${{ env.EKS_CLUSTER }}
       - name: Helm Deploy
         run: |
-            helm upgrade --install \
-            --namespace=${{matrix.stage}}-energy-comparison-table \
-            --values energy-comparison-table/infrastructure/app/stages/${{matrix.stage}}.yaml \
-            --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
-            --set image.tag=${{ env.IMAGE_TAG }} \
-            --set ingress.hostname=energy-comparison-table.${{env.HOSTED_ZONE}} \
-            --set secrets.CONTENTFUL_CDA_TOKEN=${{ secrets.CONTENTFUL_CDA_TOKEN }} \
-            --set secrets.CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }} \
-            ${{matrix.stage}}-energy-comparison-table \
-            energy-comparison-table/infrastructure/app/chart/energy-comparison-table
+          helm upgrade --install \
+          --namespace=${{matrix.stage}}-energy-comparison-table \
+          --values energy-comparison-table/infrastructure/app/stages/${{matrix.stage}}.yaml \
+          --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
+          --set image.tag=${{ env.IMAGE_TAG }} \
+          --set ingress.hostname=energy-comparison-table.${{env.HOSTED_ZONE}} \
+          --set secrets.CONTENTFUL_CDA_TOKEN=${{ secrets.CONTENTFUL_CDA_TOKEN }} \
+          --set secrets.CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }} \
+          --set secrets.CONTENTFUL_ENVIRONMENT_ID=${{ secrets.CONTENTFUL_ENVIRONMENT_ID }} \
+          ${{matrix.stage}}-energy-comparison-table \
+          energy-comparison-table/infrastructure/app/chart/energy-comparison-table
