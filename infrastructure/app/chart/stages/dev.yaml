@@ -1,3 +1,0 @@
-secrets:
-  create: true
-  name: app_secrets
