@@ -22,7 +22,7 @@
   %script{ id: "script-no-js", nonce: content_security_policy_nonce }
     document.querySelector('html').classList.remove('no-js');
 
-  %body
+  %body.cas
 
     .wrapper
       = render HeaderComponent.new
@@ -36,8 +36,6 @@
               %main.cads-grid-col-md-12
                 = yield
 
-    = render FooterComponent.new(current_path: request.path,
-                                 feedback_survey_id: Rails.configuration.x.feedback_survey.public_website,
-                                 columns: public_website_footer_nav_links)
+    -# footer goes here
 
     = javascript_include_tag "application", defer: true

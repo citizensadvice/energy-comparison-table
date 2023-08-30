@@ -3,17 +3,15 @@
 class ApplicationController < ActionController::Base
   include SwiftypeMeta
 
-  helper_method :homepage_url
+  layout :layout_type
 
   def not_found
     render "errors/not_found", status: :not_found, format: :html
   end
 
-  def homepage_url
-    if request.params[:country].present?
-      extent_root_path(country: request.params[:country])
-    else
-      root_path
-    end
+  private
+
+  def layout_type
+    request.path.starts_with?("/scotland") ? "energy_comparison_table_scotland" : "application"
   end
 end
