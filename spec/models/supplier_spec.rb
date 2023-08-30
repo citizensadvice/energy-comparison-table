@@ -10,7 +10,7 @@ RSpec.describe(Supplier) do
 
       around do |example|
         ClimateControl.modify(USE_TEST_SUPPLIERS: "true") do
-          VCR.use_cassette("supplier/fetch_all") do
+          VCR.use_cassette("supplier/fetch_all", match_requests_on: [:method]) do
             example.run
           end
         end
