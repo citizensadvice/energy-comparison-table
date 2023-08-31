@@ -9,10 +9,14 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "main"
 
+# plain env vars. Take precedence over any secrets with the same name!
 envVars: {}
 
 # values to store in a secret. Only intended to be set with helm --set at e.g. deployment time!!
-secrets: {}
+secrets:
+  # CONTENTFUL_ENVIRONMENT_ID: contentful-env-id
+  # CONTENTFUL_SPACE_ID: contentful-space-id
+  # CONTENTFUL_CONTENTFUL_CDA_TOKEN: contentful-cda-token
 
 imagePullSecrets: []
 nameOverride: ""
