@@ -15,4 +15,9 @@ class ScoreComponentPreview < ViewComponent::Preview
     component = ScoreComponent.new(score: 3.8, highlight_stars: true)
     render component
   end
+
+  def with_link
+    component = ScoreComponent.new(score: 1, highlight_stars: true).with_content(tag.a("More details", href: "https://www.example.com"))
+    render component
+  end
 end
