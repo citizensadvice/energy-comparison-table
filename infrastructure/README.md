@@ -24,7 +24,7 @@ Stage (environment) specific env vars can be set in the stage-specific helm over
 
 - secrets
 
-Secrets are set in GH for each environment. To be used by the deployment, secrets have to be explicitly referenced in the helm deployment action
+Secrets set in GH environments are automatically passed to the helm chart which deploys them as a K8s secret.
 
 ## Deployment
 
