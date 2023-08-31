@@ -9,7 +9,7 @@ class SuppliersController < ApplicationController
 
   attr_accessor :supplier
 
-  helper_method :supplier
+  helper_method :supplier, :current_country
 
   def index
     ranked_suppliers = @suppliers.select(&:data_available)
@@ -23,7 +23,7 @@ class SuppliersController < ApplicationController
   private
 
   def permitted_params
-    params.permit(:id)
+    params.permit(:id, :country)
   end
 
   def set_supplier
@@ -40,7 +40,7 @@ class SuppliersController < ApplicationController
     add_swiftype_meta([
       { name: "search_type_filter", content: "everything", type: "string" },
       { name: "search_type_filter", content: "advice", type: "string" },
-      { name: "audience_filter", content: current_country, type: "string" }
+      { name: "audience_filter", content: current_country || "england", type: "string" }
     ])
   end
 
@@ -58,6 +58,6 @@ class SuppliersController < ApplicationController
   end
 
   def current_country
-    request.params[:country]&.downcase || "england"
+    permitted_params[:country]&.downcase
   end
 end

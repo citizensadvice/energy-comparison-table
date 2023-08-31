@@ -6,7 +6,7 @@
   %ol
     - ranked_suppliers.each do |supplier|
       %li
-        = link_to("#{supplier.name}, overall rating: #{supplier.overall_rating}", supplier)
+        = link_to("#{supplier.name}, overall rating: #{supplier.overall_rating}", supplier_path(supplier, country: current_country))
 
   %h2 Unranked suppliers
   %ul
