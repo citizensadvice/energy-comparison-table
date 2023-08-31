@@ -22,7 +22,7 @@
   %script{ id: "script-no-js", nonce: content_security_policy_nonce }
     document.querySelector('html').classList.remove('no-js');
 
-  %body
+  %body{ class: ("cas" if scotland?) }
 
     .wrapper
       = render HeaderComponent.new
