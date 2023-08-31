@@ -12,8 +12,8 @@ class SuppliersController < ApplicationController
   helper_method :supplier
 
   def index
-    ranked_suppliers = @suppliers.select(&:data_available)
-    unranked_suppliers = @suppliers.reject(&:data_available)
+    ranked_suppliers = @suppliers.select(&:ranked?)
+    unranked_suppliers = @suppliers.reject(&:ranked?)
 
     render "index", locals: { ranked_suppliers:, unranked_suppliers: }
   end
