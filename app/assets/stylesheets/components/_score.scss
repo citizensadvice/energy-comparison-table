@@ -1,0 +1,13 @@
+.score .stars {
+  margin: $cads-spacing-2 0;
+}
+
+.score__text {
+  @extend %cads-paragraph;
+
+  margin: 0;
+}
+
+.score__content {
+  @extend %cads-paragraph;
+}

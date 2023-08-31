@@ -1,6 +1,6 @@
 .score
-  .score__text
+  %p.score__text
     = score_text
   = render StarsComponent.new(highlight_stars: highlight_stars?, score: score_number)
-  .score__other
+  %p.score__content
     = content
