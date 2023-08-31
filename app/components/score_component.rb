@@ -5,7 +5,7 @@ class ScoreComponent < ViewComponent::Base
 
   def initialize(score:, highlight_stars: false, round_score: true)
     @score = score
-    @highlight_stars =  highlight_stars
+    @highlight_stars = highlight_stars
     @round_score = round_score
   end
 
@@ -19,20 +19,23 @@ class ScoreComponent < ViewComponent::Base
     @highlight_stars
   end
 
-  def round_score? 
+  def round_score?
     @round_score
-  end
-
-  def star_classes
-    [
-      "stars",
-      ("stars--highlight" if highlight_stars?)
-    ]
   end
 
   def score
     return "#{@score.round} out of 5" if round_score?
 
     "#{@score.round(2)} out of 5"
+  end
+
+  def stars
+    %i[
+      full
+      full
+      half
+      empty
+      empty
+    ]
   end
 end

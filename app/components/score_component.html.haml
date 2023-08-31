@@ -1,5 +1,4 @@
 .score
   .score__text
     = score
-  .stars{ class: star_classes }
-    
+  = render StarsComponent.new(stars: stars, highlight_stars: highlight_stars?)
