@@ -36,6 +36,6 @@
               %main.cads-grid-col-md-12
                 = yield
 
-    -# footer goes here
+    = render FooterComponent.new(current_path: request.path)
 
     = javascript_include_tag "application", defer: true
