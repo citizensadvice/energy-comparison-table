@@ -36,6 +36,14 @@
               %main.cads-grid-col-md-12
                 = yield
 
-    = render FooterComponent.new(current_path: request.path)
+    - if scotland?
+      = render FooterComponent.new(current_path: request.path,
+                                   feedback_survey_id: "SCX56FR",
+                                   columns: scotland_public_website_footer_nav_links,
+                                   feedback_title: "Your feedback helps us make our digital services better. Give us feedback")
+    - else
+      = render FooterComponent.new(current_path: request.path,
+                                   feedback_survey_id: "J8PLH2H",
+                                   columns: public_website_footer_nav_links)
 
     = javascript_include_tag "application", defer: true
