@@ -15,7 +15,7 @@ class SuppliersController < ApplicationController
     ranked_suppliers = @suppliers.select(&:ranked?)
     unranked_suppliers = @suppliers.reject(&:ranked?)
 
-    render "index", locals: { ranked_suppliers:, unranked_suppliers: }
+    render "index", locals: { ranked_suppliers:, unranked_suppliers:, current_country: }
   end
 
   def show; end
