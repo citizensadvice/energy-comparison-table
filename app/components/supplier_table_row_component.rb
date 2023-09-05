@@ -2,7 +2,7 @@
 
 class SupplierTableRowComponent < ViewComponent::Base
   attr_reader :supplier
-  
+
   def initialize(supplier)
     @supplier = supplier
   end

@@ -6,11 +6,11 @@
     .supplier-table__response,
     .supplier-table__complaints {
       display: none;
-    }
-  }
 
-  .stars {
-    display: none;
+      @include cads-media-breakpoint-up(md) {
+        display: table-cell;
+      }
+    }
   }
 }
 
