@@ -9,14 +9,9 @@ class SuppliersController < ApplicationController
 
   attr_accessor :supplier
 
-  helper_method :supplier
+  helper_method :supplier, :ranked_suppliers
 
-  def index
-    ranked_suppliers = @suppliers.select(&:ranked?)
-    unranked_suppliers = @suppliers.reject(&:ranked?)
-
-    render "index", locals: { ranked_suppliers:, unranked_suppliers: }
-  end
+  def index; end
 
   def show; end
 
@@ -34,6 +29,14 @@ class SuppliersController < ApplicationController
 
   def set_suppliers
     @suppliers = Supplier.fetch_all
+  end
+
+  def ranked_suppliers
+    @suppliers.select(&:data_available)
+  end
+
+  def unranked_suppliers
+    @suppliers.reject(&:data_available)
   end
 
   def set_swiftype_meta_tags

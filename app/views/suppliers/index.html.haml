@@ -1,15 +1,5 @@
 %h1.cads-page-title
   Energy Supplier Comparison Table
 
-.cads-prose
-  %h2 Ranked suppliers
-  %ol
-    - ranked_suppliers.each do |supplier|
-      %li
-        = link_to("#{supplier.name}, overall rating: #{supplier.overall_rating}", supplier_path(supplier, country: current_country))
 
-  %h2 Unranked suppliers
-  %ul
-    - unranked_suppliers.each do |supplier|
-      %li
-        = link_to(supplier.name, supplier)
+= render SupplierTableComponent.new(ranked_suppliers)
