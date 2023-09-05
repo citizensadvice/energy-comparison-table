@@ -1,6 +1,8 @@
 .supplier-table__row {
   td {
     display: table-cell;
+    vertical-align: top;
+    line-height: $cads-spacing-5;
   }
 
   .supplier-table__bill,
@@ -8,8 +10,8 @@
   .supplier-table__complaints {
     display: none;
   }
-}
 
-.supplier-table__rank {
-  text-align: center;
+  .supplier-table__name {
+    max-width: 100px;
+  }
 }
