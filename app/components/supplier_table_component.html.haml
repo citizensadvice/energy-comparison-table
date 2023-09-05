@@ -1,6 +1,6 @@
 .cads-table-container
-  %table.cads-table.cads-table--captioned
-    %thead
+  %table.cads-table.cads-table--captioned.supplier-table
+    %thead.supplier-table__head
       %tr
         %th{ scope: "col" }
           %span.cads-table__content
@@ -8,18 +8,18 @@
         %th{ scope: "col" }
           %span.cads-table__content
             Supplier
-        %th{ scope: "col" }
+        %th.supplier-table__complaints{ scope: "col" }
           %span.cads-table__content
             Fewer complaints
-        %th{ scope: "col" }
+        %th.supplier-table__response{ scope: "col" }
           %span.cads-table__content
             Response times
-        %th{ scope: "col" }
+        %th.supplier-table__bill{ scope: "col" }
           %span.cads-table__content
             Bill accuracy
         %th{ scope: "col" }
           %span.cads-table__content
             Overall rating
-    %tbody
+    %tbody.supplier-table__body
       - suppliers.each do |supplier|
-        = render SupplierTableRowComponent.new
+        = render SupplierTableRowComponent.new(supplier)

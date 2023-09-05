@@ -1,19 +1,20 @@
-%tr
+%tr.supplier-table__row
+  %td.supplier-table__rank
+    %span.cads-table__content
+      %strong
+        1
   %td
     %span.cads-table__content
-      Rank
+      An Energy Supplier
+  %td.supplier-table__complaints
+    %span.cads-table__content
+      = render ScoreComponent.new(score: 2.3)
+  %td.supplier-table__response
+    %span.cads-table__content
+      = render ScoreComponent.new(score: 4.5)
+  %td.supplier-table__bill
+    %span.cads-table__content
+      = render ScoreComponent.new(score: 2.3)
   %td
     %span.cads-table__content
-      Supplier
-  %td
-    %span.cads-table__content
-      Fewer complaints
-  %td
-    %span.cads-table__content
-      Response times
-  %td
-    %span.cads-table__content
-      Bill accuracy
-  %td
-    %span.cads-table__content
-      Overall rating
+      = render ScoreComponent.new(score: 4.3, show_decimal_score: true).with_content(tag.a("More details", href: "https:://www.example.com"))

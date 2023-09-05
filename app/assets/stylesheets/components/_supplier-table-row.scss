@@ -1,0 +1,15 @@
+.supplier-table__row {
+  td {
+    display: table-cell;
+  }
+
+  .supplier-table__bill,
+  .supplier-table__response,
+  .supplier-table__complaints {
+    display: none;
+  }
+}
+
+.supplier-table__rank {
+  text-align: center;
+}
