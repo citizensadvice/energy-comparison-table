@@ -33,7 +33,7 @@ RSpec.describe ScoreComponent, type: :component do
   end
 
   context "when the 'not scored' score is provided" do
-    let(:score) { -2 }
+    let(:score) { -3 }
 
     it { is_expected.to have_text "Not scored" }
     it { is_expected.not_to have_selector ".stars" }

@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class ScoreComponent < ViewComponent::Base
-  NOT_SCORED = -2
-
   def initialize(score:, show_decimal_score: false)
-    @score = score
+    @score = score.clamp(-3, 5)
     @show_decimal_score = show_decimal_score
   end
 
@@ -24,7 +22,7 @@ class ScoreComponent < ViewComponent::Base
   end
 
   def scored?
-    @score != NOT_SCORED
+    @score >= 0
   end
 
   def score_text
