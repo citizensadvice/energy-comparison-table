@@ -3,13 +3,12 @@
 class FooterComponent < ViewComponent::Base
   delegate :scotland?, :scotland_public_website_footer_nav_links, :public_website_footer_nav_links, to: :helpers
 
-  def initialize(current_path:, feedback_survey_id:, columns:, feedback_title: nil, legal_summary: nil)
+  def initialize(current_path:, feedback_survey_id:, columns:, feedback_title: nil)
     super
     @current_path = current_path
     @feedback_survey_id = feedback_survey_id
     @feedback_title = feedback_title
     @columns = columns
-    @legal_summary = legal_summary
   end
 
   def call
@@ -19,7 +18,6 @@ class FooterComponent < ViewComponent::Base
                            external: true,
                            new_tab: true)
       c.with_columns(@columns)
-      c.with_legal_summary(@legal_summary)
     end
   end
 
