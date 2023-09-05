@@ -6,6 +6,7 @@ FactoryBot.define do
   factory :supplier_data, class: "Hashie::Mash" do
     name { "An Energy Supplier Inc" }
     slug { "an-energy-supplier-inc" }
+    id { slug }
     data_available { false }
 
     trait :ranked do

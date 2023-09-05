@@ -3,13 +3,17 @@
 require "rails_helper"
 
 RSpec.describe SupplierTableRowComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { page }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  let(:supplier) { build(:supplier, :ranked) }
+
+  before do
+    render_inline described_class.new(supplier)
+  end
+
+  it { is_expected.to have_text "1" }
+  it { is_expected.to have_text "An Energy Supplier Inc" }
+  it { is_expected.to have_selector ".stars", count: 4 }
+  it { is_expected.to have_selector ".stars--highlight", count: 1 }
+  it { is_expected.to have_link "More details", href: "#{CSR_APP_PATH}an-energy-supplier-inc" }
 end

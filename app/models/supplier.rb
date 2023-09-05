@@ -6,7 +6,7 @@ class Supplier
   attr_accessor :data
 
   delegate :name, :slug, :rank, :previous_rank, :complaints_rating, :complaints_number, :contact_email, :contact_rating, :contact_time,
-           :bills_rating, :bills_accuracy, :overall_rating, to: :data
+           :bills_rating, :bills_accuracy, :overall_rating, :data_available, to: :data
 
   def self.fetch_all
     response = Contentful::Graphql::Client.query(Queries::Suppliers)
