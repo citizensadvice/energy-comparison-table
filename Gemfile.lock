@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/citizensadvice/capybara_accessible_selectors.git
+  revision: 55fa9e13f3c030787c0b36e168940dfc0ad74ebf
+  tag: v0.10.0
+  specs:
+    capybara_accessible_selectors (0.10.0)
+      capybara (>= 3.36.0)
+
+GIT
   remote: https://github.com/citizensadvice/citizens-advice-style-ruby.git
   revision: ca09fc508ee68c238428d4558701a766f1e12c79
   specs:
@@ -381,6 +389,7 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
+  capybara_accessible_selectors!
   citizens-advice-style!
   citizens_advice_components!
   climate_control
