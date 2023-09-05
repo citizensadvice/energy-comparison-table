@@ -58,6 +58,6 @@ class SuppliersController < ApplicationController
   end
 
   def current_country
-    permitted_params[:country]&.downcase
+    permitted_params[:country]&.downcase || "england"
   end
 end
