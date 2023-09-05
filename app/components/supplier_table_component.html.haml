@@ -1,1 +1,25 @@
-%div Add SupplierTable template here
+.cads-table-container
+  %table.cads-table.cads-table--captioned
+    %thead
+      %tr
+        %th{ scope: "col" }
+          %span.cads-table__content
+            Rank
+        %th{ scope: "col" }
+          %span.cads-table__content
+            Supplier
+        %th{ scope: "col" }
+          %span.cads-table__content
+            Fewer complaints
+        %th{ scope: "col" }
+          %span.cads-table__content
+            Response times
+        %th{ scope: "col" }
+          %span.cads-table__content
+            Bill accuracy
+        %th{ scope: "col" }
+          %span.cads-table__content
+            Overall rating
+    %tbody
+      - suppliers.each do |supplier|
+        = render SupplierTableRowComponent.new
