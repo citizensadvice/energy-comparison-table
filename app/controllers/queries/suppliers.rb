@@ -16,6 +16,12 @@ module Queries
         rank,
         previousRank,
         complaintsRating,
+        complaintsNumber,
+        contactEmail,
+        contactRating,
+        contactTime,
+        billsRating,
+        billsAccuracy,
         overallRating,
         dataAvailable
       }

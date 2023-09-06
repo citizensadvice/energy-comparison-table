@@ -1,19 +1,19 @@
 %tr.supplier-table__row
   %td.supplier-table__rank
     %span.cads-table__content
-      1
+      = supplier.rank
   %td.supplier-table__name
     %span.cads-table__content
-      An Energy Supplier
+      = supplier.name
   %td.supplier-table__complaints
     %span.cads-table__content
-      = render ScoreComponent.new(score: 2.3)
+      = render ScoreComponent.new(score: supplier.complaints_rating)
   %td.supplier-table__response
     %span.cads-table__content
-      = render ScoreComponent.new(score: 4.5)
+      = render ScoreComponent.new(score: supplier.contact_rating)
   %td.supplier-table__bill
     %span.cads-table__content
-      = render ScoreComponent.new(score: 2.3)
+      = render ScoreComponent.new(score: supplier.bills_rating)
   %td
     %span.cads-table__content
-      = render ScoreComponent.new(score: 4.3, show_decimal_score: true).with_content(tag.a("More details", href: "https:://www.example.com"))
+      = render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true).with_content(link_to("More details", supplier))
