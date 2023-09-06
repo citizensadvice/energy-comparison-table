@@ -11,7 +11,7 @@ concurrency:
 env:
   NAMESPACE: review-${{ github.event.pull_request.number }}-energy-comparison-table
   HOST_NAME: review-${{ github.event.pull_request.number }}-energy-comparison-table.qa.citizensadvice.org.uk
-  IMAGE_TAG: ${{ github.sha }}
+  IMAGE_TAG: dev_${{ github.sha }}
   CLUSTER: dev-eks-platform
 
 jobs:
@@ -34,6 +34,7 @@ jobs:
           multiarch_build: "disabled"
           role_arn: "arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment"
           auth_token: ${{ secrets.GITHUB_TOKEN }}
+          prod_image: false
 
   deploy:
     name: Deploy Review Environment

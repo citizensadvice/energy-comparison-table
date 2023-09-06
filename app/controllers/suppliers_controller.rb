@@ -9,11 +9,11 @@ class SuppliersController < ApplicationController
 
   attr_accessor :supplier
 
-  helper_method :supplier
+  helper_method :supplier, :current_country
 
   def index
-    ranked_suppliers = @suppliers.select(&:data_available)
-    unranked_suppliers = @suppliers.reject(&:data_available)
+    ranked_suppliers = @suppliers.select(&:ranked?)
+    unranked_suppliers = @suppliers.reject(&:ranked?)
 
     render "index", locals: { ranked_suppliers:, unranked_suppliers: }
   end
@@ -23,7 +23,7 @@ class SuppliersController < ApplicationController
   private
 
   def permitted_params
-    params.permit(:id)
+    params.permit(:id, :country)
   end
 
   def set_supplier

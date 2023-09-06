@@ -6,6 +6,6 @@ task update_schema: :environment do
 
   raise "update_schema must be run against the master environment" unless environment_id == "master"
 
-  result = GraphQL::Client.dump_schema(Contentful::Graphql::Client.new.http)
+  result = GraphQL::Client.dump_schema(Contentful::Graphql::HTTP)
   Rails.root.join("db/schema.json").write(result.to_json)
 end
