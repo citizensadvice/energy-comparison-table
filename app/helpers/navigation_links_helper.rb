@@ -2,99 +2,52 @@
 
 module NavigationLinksHelper
   def navigation_links
-    if scotland?
-      scotland_navigation_links
-    else
-      default_navigation_links
-    end
+    return country_navigation_links unless current_country.present?
+
+    country_navigation_links(country: "/#{current_country}")
   end
 
-  def default_navigation_links
+  def country_navigation_links(country: nil)
     [
       {
-        url: "https://www.citizensadvice.org.uk/benefits/",
+        url: "#{country}/benefits/",
         title: "Benefits"
       },
       {
-        url: "https://www.citizensadvice.org.uk/work/",
+        url: "#{country}/work/",
         title: "Work"
       },
       {
-        url: "https://www.citizensadvice.org.uk/debt-and-money/",
+        url: "#{country}/debt-and-money/",
         title: "Debt and money"
       },
       {
-        url: "https://www.citizensadvice.org.uk/consumer/",
+        url: "#{country}/consumer/",
         title: "Consumer"
       },
       {
-        url: "https://www.citizensadvice.org.uk/housing/",
+        url: "#{country}/housing/",
         title: "Housing"
       },
       {
-        url: "https://www.citizensadvice.org.uk/family/",
+        url: "#{country}/family/",
         title: "Family"
       },
       {
-        url: "https://www.citizensadvice.org.uk/law-and-courts/",
+        url: "#{country}/law-and-courts/",
         title: "Law and courts"
       },
       {
-        url: "https://www.citizensadvice.org.uk/immigration/",
+        url: "#{country}/immigration/",
         title: "Immigration"
       },
       {
-        url: "https://www.citizensadvice.org.uk/health/",
+        url: "#{country}/health/",
         title: "Health"
       },
       {
-        url: "https://www.citizensadvice.org.uk/about-us",
+        url: "#{country}/about-us/",
         title: "More from us"
-      }
-    ]
-  end
-
-  def scotland_navigation_links
-    [
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/benefits/",
-        title: "Benefits"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/work/",
-        title: "Work"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/debt-and-money/",
-        title: "Debt and money"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/consumer/",
-        title: "Consumer"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/housing/",
-        title: "Housing"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/family/",
-        title: "Family"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/law-and-courts/",
-        title: "Law and courts"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/immigration/",
-        title: "Immigration"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/health/",
-        title: "Health"
-      },
-      {
-        url: "https://www.citizensadvice.org.uk/scotland/about-us",
-        title: "More help"
       }
     ]
   end
