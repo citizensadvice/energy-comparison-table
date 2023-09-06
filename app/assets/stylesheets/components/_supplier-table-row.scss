@@ -1,0 +1,34 @@
+.supplier-table__row {
+  td {
+    display: table-cell;
+    vertical-align: top;
+    line-height: $cads-spacing-5;
+
+    @include cads-media-breakpoint-up(md) {
+      vertical-align: middle;
+    }
+  }
+
+  .supplier-table__bill,
+  .supplier-table__response,
+  .supplier-table__complaints {
+    display: none;
+
+    @include cads-media-breakpoint-up(md) {
+      display: table-cell;
+    }
+  }
+
+  .supplier-table__name {
+    max-width: 100px;
+
+    @include cads-media-breakpoint-up(md) {
+      max-width: none;
+    }
+  }
+
+  .supplier-table__rank {
+    text-align: center;
+    font-weight: bold;
+  }
+}
