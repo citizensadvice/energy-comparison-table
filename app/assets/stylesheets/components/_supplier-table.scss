@@ -1,0 +1,20 @@
+.supplier-table {
+  .supplier-table__head {
+    display: table-header-group;
+
+    .supplier-table__bill,
+    .supplier-table__response,
+    .supplier-table__complaints {
+      display: none;
+
+      @include cads-media-breakpoint-up(md) {
+        display: table-cell;
+      }
+    }
+  }
+}
+
+.cads-table tr:first-child th,
+.cads-table tr td {
+  padding-left: $cads-spacing-3;
+}

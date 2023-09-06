@@ -37,11 +37,12 @@ gem "bootsnap", require: false
 
 gem "citizens_advice_components",
     github: "citizensadvice/design-system",
-    tag: "v5.5.0-alpha.5",
+    tag: "v5.5.0-alpha.7",
     glob: "engine/*.gemspec"
 
 gem "view_component", "~> 3.5"
 
+gem "factory_bot_rails"
 gem "faraday"
 gem "faraday-net_http_persistent"
 gem "graphql-client"
@@ -52,7 +53,6 @@ group :development, :test do
   gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby"
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails"
-  gem "factory_bot_rails"
   gem "haml-lint", require: false
   gem "hashie"
   gem "rspec-its"

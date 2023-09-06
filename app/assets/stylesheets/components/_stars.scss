@@ -1,5 +1,5 @@
 .stars {
-  display: inline-flex;
+  display: none;
   align-items: center;
   height: 24px;
 
@@ -11,6 +11,10 @@
       fill: $cads-palette__white;
       stroke: $cads-language__brand-primary;
     }
+  }
+
+  @include cads-media-breakpoint-up(md) {
+    display: inline-flex;
   }
 }
 
