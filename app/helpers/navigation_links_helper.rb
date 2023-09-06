@@ -2,7 +2,7 @@
 
 module NavigationLinksHelper
   def navigation_links
-    return country_navigation_links unless current_country.present?
+    return country_navigation_links if current_country.blank?
 
     country_navigation_links(country: "/#{current_country}")
   end
