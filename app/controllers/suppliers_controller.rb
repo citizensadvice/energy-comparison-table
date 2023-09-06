@@ -9,7 +9,7 @@ class SuppliersController < ApplicationController
 
   attr_accessor :supplier
 
-  helper_method :supplier, :current_country
+  helper_method :supplier
 
   def index
     ranked_suppliers = @suppliers.select(&:data_available)
@@ -23,7 +23,7 @@ class SuppliersController < ApplicationController
   private
 
   def permitted_params
-    params.permit(:id, :country)
+    params.permit(:id)
   end
 
   def set_supplier
@@ -40,7 +40,7 @@ class SuppliersController < ApplicationController
     add_swiftype_meta([
       { name: "search_type_filter", content: "everything", type: "string" },
       { name: "search_type_filter", content: "advice", type: "string" },
-      { name: "audience_filter", content: current_country, type: "string" }
+      { name: "audience_filter", content: helpers.current_country, type: "string" }
     ])
   end
 
@@ -55,9 +55,5 @@ class SuppliersController < ApplicationController
     return "Compare energy suppliers' customer service" if supplier.blank?
 
     "#{supplier[:name]} customer service performance"
-  end
-
-  def current_country
-    permitted_params[:country]&.downcase
   end
 end
