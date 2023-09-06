@@ -5,7 +5,6 @@ module UnrankedSuppliers
     def initialize(suppliers, chosen_supplier_slug: nil)
       @suppliers = suppliers
       @chosen_supplier_slug = chosen_supplier_slug
-      Rails.logger.debug @chosen_supplier_slug
     end
 
     def render?
