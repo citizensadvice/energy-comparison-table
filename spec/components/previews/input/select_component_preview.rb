@@ -19,6 +19,12 @@ module Input
       render component
     end
 
+    def with_value
+      component = Input::SelectComponent.new(select_options: options, name: "product", label: "Choose a product", type: :text,
+                                             options: { value: "FYLCA", hint: "Choose a product from the list below" })
+      render component
+    end
+
     private
 
     def options
