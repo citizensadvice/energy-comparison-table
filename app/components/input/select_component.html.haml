@@ -1,0 +1,4 @@
+= render CitizensAdviceComponents::Input.new(**base_input_args) do
+  %select{ class: select_classes, **input_attributes }
+    = options_for_select(select_options)
+  
