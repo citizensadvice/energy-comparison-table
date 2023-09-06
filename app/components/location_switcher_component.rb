@@ -43,9 +43,9 @@ class LocationSwitcherComponent < ViewComponent::Base
 
   def available_country_urls
     {
-      "england" => "/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/",
-      "scotland" => "/scotland/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/",
-      "wales" => "/wales/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/"
+      "england" => "APP_PATH",
+      "scotland" => "/scotland/APP_PATH",
+      "wales" => "/wales/APP_PATH"
     }
   end
 end
