@@ -17,13 +17,8 @@ require "view_component/test_helpers"
 # run twice. It is recommended that you do not name files matching this glob to
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
-#
-# The following line is provided for convenience purposes. It has the downside
-# of increasing the boot-up time by auto-requiring all files in the support
-# directory. Alternatively, in the individual `*_spec.rb` files, manually
-# require only the support files necessary.
-#
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   # Remove this line to enable support for ActiveRecord
@@ -56,4 +51,19 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Add dummy env vars for tests so rspec can run without env vars
+  # If you are re-recording VCR cassettes you will need to have the correct
+  # vars in your .env
+  config.around do |example|
+    ClimateControl.modify({
+      CONTENTFUL_CDA_TOKEN: ENV.fetch("CONTENTFUL_CDA_TOKEN", "contentful-cda-token"),
+      CONTENTFUL_ENVIRONMENT_ID: ENV.fetch("CONTENTFUL_ENVIRONMENT_ID", "contentful-env-id"),
+      CONTENTFUL_SPACE_ID: ENV.fetch("CONTENTFUL_SPACE_ID", "contentful-space-id"),
+      LOAD_SCHEMA_DYNAMICALLY: ENV.fetch("LOAD_SCHEMA_DYNAMICALLY", "false"),
+      USE_TEST_SUPPLIERS: ENV.fetch("USE_TEST_SUPPLIERS", "true")
+    }) do
+      example.run
+    end
+  end
 end

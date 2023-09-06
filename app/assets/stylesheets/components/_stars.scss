@@ -1,0 +1,34 @@
+.stars {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+
+  .star {
+    fill: $cads-language__brand-primary;
+    stroke: $cads-language__brand-primary;
+
+    &--empty {
+      fill: $cads-palette__white;
+      stroke: $cads-language__brand-primary;
+    }
+  }
+}
+
+.stars--highlight {
+  background-color: $cads-language__brand-primary;
+  border-radius: 15px;
+  padding: $cads-spacing-1;
+
+  .star--full {
+    fill: $cads-language__brand-secondary;
+    stroke: none;
+  }
+
+  .star--empty {
+    stroke: none;
+  }
+
+  .star--half {
+    stroke: none;
+  }
+}

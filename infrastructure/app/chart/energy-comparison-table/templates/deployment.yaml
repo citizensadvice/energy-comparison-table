@@ -4,6 +4,10 @@ metadata:
   name: {{ include "energy-comparison-table.fullname" . }}
   labels:
     {{- include "energy-comparison-table.labels" . | nindent 4 }}
+  annotations:
+{{- if .Values.annotations -}}
+{{ toYaml .Values.annotations | nindent 4 }}
+{{- end }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -33,11 +37,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.envVars }}
           env:
           {{- range $name, $val := .Values.envVars }}
             - name: {{ $name }}
               value: {{ $val }}
           {{ end }}
+          {{- end }}
           {{ if .Values.secrets -}}
           envFrom:
             - secretRef:
