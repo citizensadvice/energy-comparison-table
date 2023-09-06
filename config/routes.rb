@@ -23,15 +23,15 @@ end
 # the path below.
 # If the dummy page entry that represents this app is moved in Contentful, this url will need to be updated,
 # a redirect added in Contentful, and the CloudFront config changed to reflect the new url.
-APP_PATH = "/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/"
+CSR_APP_PATH = "/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/"
 
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   constraints CountryConstraint.new do
     scope "(:country)" do
-      get APP_PATH, to: "suppliers#index", as: "suppliers"
-      get "#{APP_PATH}/:id", to: "suppliers#show", as: "supplier"
+      get CSR_APP_PATH, to: "suppliers#index", as: "suppliers"
+      get "#{CSR_APP_PATH}/:id", to: "suppliers#show", as: "supplier"
     end
   end
 
