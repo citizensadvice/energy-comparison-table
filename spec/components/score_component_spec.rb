@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "pry"
 
 RSpec.describe ScoreComponent, type: :component do
   subject(:score_component) { page }
@@ -53,5 +54,11 @@ RSpec.describe ScoreComponent, type: :component do
     end
 
     it { is_expected.to have_text("Hello") }
+  end
+
+  context "when no score is provided" do
+    let(:score) { nil }
+
+    it { is_expected.not_to have_text "out of" }
   end
 end
