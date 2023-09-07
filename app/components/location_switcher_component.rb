@@ -38,7 +38,7 @@ class LocationSwitcherComponent < ViewComponent::Base
       england: "England",
       scotland: "Scotland",
       wales: "Wales"
-    }.fetch(country.to_sym, country.titleize)
+    }.fetch(country.to_sym)
   end
 
   def available_country_urls
