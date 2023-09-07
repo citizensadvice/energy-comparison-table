@@ -22,7 +22,7 @@ module UnrankedSuppliers
       options + @suppliers.map do |supplier|
         [
           supplier.name,
-          supplier_detail_path(supplier.slug)
+          supplier.slug
         ]
       end
     end
@@ -31,19 +31,12 @@ module UnrankedSuppliers
       {
         select_options: supplier_options,
         label: "Find your supplier",
-        name: "unranked-supplier",
+        name: "id",
         type: nil,
         options: {
-          value: supplier_detail_path(@chosen_supplier_slug)
+          value: @chosen_supplier_slug
         }
       }
-    end
-
-    def supplier_detail_path(supplier_slug)
-      supplier_path(supplier_slug)
-    rescue ActionController::UrlGenerationError
-      # if no supplier is chosen we can just handle the specific error and return nil as the path
-      nil
     end
   end
 end

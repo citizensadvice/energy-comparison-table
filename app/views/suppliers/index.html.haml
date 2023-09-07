@@ -34,6 +34,10 @@
   %p
     Select the supplier you want to check using the dropdown to see any customer service data we have.
 
-= render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: @unranked_supplier&.slug)
-
+%form.unranked-suppliers__form
+  = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: @unranked_supplier&.slug)
+  = render CitizensAdviceComponents::Button.new(variant: :primary, type: :submit) do
+    Search
+    
 = render ImpactSurveyComponent.new(impact_survey_id: "J8PLH2H")
+
