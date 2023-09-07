@@ -43,7 +43,7 @@ class LocationSwitcherComponent < ViewComponent::Base
 
   def available_country_urls
     {
-      "england" => CSR_APP_PATH.to_s,
+      "england" => CSR_APP_PATH,
       "scotland" => "/scotland#{CSR_APP_PATH}",
       "wales" => "/wales#{CSR_APP_PATH}"
     }
