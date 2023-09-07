@@ -12,6 +12,9 @@ module Queries
       total,
       items {
         name,
+        whitelabelSupplier {
+          name
+        },
         slug,
         rank,
         previousRank,
@@ -23,7 +26,19 @@ module Queries
         billsRating,
         billsAccuracy,
         overallRating,
-        dataAvailable
+        dataAvailable,
+        contactInfo {
+          json
+        },
+        billingInfo {
+          json
+        },
+        fuelMix {
+          json
+        },
+        openingHours {
+          json
+        }
       }
     }
   }
