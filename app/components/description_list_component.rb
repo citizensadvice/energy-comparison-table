@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "pry"
-
 class DescriptionListComponent < ViewComponent::Base
   renders_one :title
   renders_many :descriptions, "DescriptionComponent"

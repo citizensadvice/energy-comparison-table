@@ -2,7 +2,7 @@
   - if title?
     .descriptions__title
       = title
-  %dl
+  %dl.descriptions__list
     - descriptions.each do |description|
       %dt.descriptions__term
         = description.term

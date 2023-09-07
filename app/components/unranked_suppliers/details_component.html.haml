@@ -1,1 +1,9 @@
-%div Add UnrankedSuppliers::Details template here
+.unranked-supplier__details.cads-prose
+  .unranked-supplier__title
+    = title
+
+  = render DescriptionListComponent.new do |c|
+    - c.with_title do
+      %h3
+        = supplier_name
+    - c.with_descriptions(descriptions)
