@@ -6,16 +6,16 @@ class LocationSwitcherComponent < ViewComponent::Base
   def initialize(current_country:)
     super
 
-    @current_country = current_country
+    @current_country = current_country || "england"
     @available_country_urls = available_country_urls
   end
 
   def localised_current_country
-    localise_country(current_country)
+    localise_country(@current_country)
   end
 
   def country_urls
-    @available_country_urls.reject { |country| country == current_country }
+    @available_country_urls.reject { |country| country == @current_country }
   end
 
   def country_links
@@ -43,9 +43,9 @@ class LocationSwitcherComponent < ViewComponent::Base
 
   def available_country_urls
     {
-      "england" => "CSR_APP_PATH",
-      "scotland" => "/scotland/CSR_APP_PATH",
-      "wales" => "/wales/CSR_APP_PATH"
+      "england" => CSR_APP_PATH.to_s,
+      "scotland" => "/scotland#{CSR_APP_PATH}",
+      "wales" => "/wales#{CSR_APP_PATH}"
     }
   end
 end
