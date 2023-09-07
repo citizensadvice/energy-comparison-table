@@ -1,0 +1,10 @@
+.descriptions
+  - if title?
+    .descriptions__title
+      = title
+  %dl
+    - descriptions.each do |description|
+      %dt.descriptions__term
+        = description.term
+      %dd.descriptions__description
+        = description.description
