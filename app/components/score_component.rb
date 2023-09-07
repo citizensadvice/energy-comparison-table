@@ -2,7 +2,7 @@
 
 class ScoreComponent < ViewComponent::Base
   def initialize(score:, show_decimal_score: false)
-    @score = score.clamp(-3, 5)
+    @score = score
     @show_decimal_score = show_decimal_score
   end
 
@@ -11,6 +11,10 @@ class ScoreComponent < ViewComponent::Base
   end
 
   private
+
+  def score
+    @score.clamp(-3, 5)
+  end
 
   def show_decimal_score?
     @show_decimal_score
@@ -22,7 +26,7 @@ class ScoreComponent < ViewComponent::Base
   end
 
   def scored?
-    @score >= 0
+    score >= 0
   end
 
   def score_text
