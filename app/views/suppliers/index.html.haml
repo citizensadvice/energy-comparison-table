@@ -26,8 +26,7 @@
 
 = render SupplierTableComponent.new(ranked_suppliers)
 
-%form.unranked-suppliers__form
-  .cads-prose
+.cads-prose
   %h2
     If you can't find a supplier's customer service rating.
   %p
@@ -36,8 +35,10 @@
     Select the supplier you want to check using the dropdown to see any customer service data we have.
 
 %form.unranked-suppliers__form
-  = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: @unranked_supplier&.slug)
+  = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: unranked_supplier&.slug)
   = render CitizensAdviceComponents::Button.new(variant: :primary, type: :submit) do
     Search
-    
+
+= render UnrankedSuppliers::DetailsComponent.new(unranked_supplier)
+
 = render ImpactSurveyComponent.new(impact_survey_id: "J8PLH2H")
