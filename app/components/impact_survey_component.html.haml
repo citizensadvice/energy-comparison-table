@@ -1,0 +1,6 @@
+%div{ "data-testid": "impact-survey" }
+  = render CitizensAdviceComponents::Callout.new(type: :standard) do
+    %h2 Help us improve our website
+    %p
+      %a{ href: impact_survey_uri, **new_tab_attributes }Take 3 minutes to tell us if you found what you needed on our website.
+      Your feedback will help us give millions of people the information they need.
