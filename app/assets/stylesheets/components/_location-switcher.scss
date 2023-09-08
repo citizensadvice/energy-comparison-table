@@ -1,0 +1,20 @@
+/** @define location-switcher */
+.location-switcher {
+  margin: 0 0 $cads-spacing-5 0;
+
+  &__text {
+    @extend %cads-paragraph-small;
+
+    color: $cads-language__secondary-text-colour;
+  }
+
+  &__link {
+    display: inline-block;
+  }
+}
+
+@media print {
+  .location-switcher__alternative-locations {
+    display: none;
+  }
+}
