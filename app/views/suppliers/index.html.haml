@@ -1,9 +1,8 @@
-%main.cads-page-content
-  %h1.cads-page-title
-    Energy Supplier Comparison Table
+%h1.cads-page-title
+  Energy Supplier Comparison Table
 
-  = render(LocationSwitcherComponent.new(current_country:))
+= render(LocationSwitcherComponent.new(current_country:))
 
-  .cads-prose
+.cads-prose
 
-  = render SupplierTableComponent.new(ranked_suppliers)
+= render SupplierTableComponent.new(ranked_suppliers)
