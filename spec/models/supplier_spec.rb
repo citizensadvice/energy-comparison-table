@@ -19,7 +19,32 @@ RSpec.describe(Supplier) do
       it { is_expected.to be_present }
 
       it "returns ranked suppliers in ascending rank order" do
-        expect(all_suppliers.first.rank < all_suppliers.second.rank).to be true
+        expect(all_suppliers.map(&:rank).compact).to eql [1, 2, 3]
+      end
+    end
+
+    describe "#fetch_with_top_three" do
+      subject(:supplier_with_top_three) { described_class.fetch_with_top_three(slug) }
+
+      let(:slug) { "smol-energy-inc" }
+
+      around do |example|
+        ClimateControl.modify(USE_TEST_SUPPLIERS: "true") do
+          VCR.use_cassette("supplier/fetch_with_top_three", match_requests_on: [:method]) do
+            example.run
+          end
+        end
+      end
+
+      it { is_expected.to be_present }
+      its(:size) { is_expected.to be 4 }
+
+      it "returns the requested supplier" do
+        expect(supplier_with_top_three.map(&:name)).to include "Smol Energy Inc"
+      end
+
+      it "returns the suppliers in order" do
+        expect(supplier_with_top_three.map(&:rank)).to eql [1, 2, 3, 6]
       end
     end
   end
