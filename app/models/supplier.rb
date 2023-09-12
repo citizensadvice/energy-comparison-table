@@ -16,6 +16,14 @@ class Supplier
     end
   end
 
+  def self.fetch_with_top_three(slug)
+    response = Contentful::Graphql::Client.query(Queries::SupplierDetail, variables: { slug: })
+
+    response.data.energy_supplier_collection.items.map do |item|
+      Supplier.new(data: item)
+    end
+  end
+
   def ranked?
     data.data_available
   end
