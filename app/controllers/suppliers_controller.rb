@@ -23,7 +23,7 @@ class SuppliersController < ApplicationController
 
   # sets the supplier used in the supplier detail page
   def set_supplier
-    @supplier = supplier_with_top_three.select { |s| s.slug == permitted_params[:id] }.first
+    @supplier = supplier_with_top_three.find { |s| s.slug == permitted_params[:id] }
   end
 
   # sets all supplier array used in the main suppliers table page
@@ -40,7 +40,7 @@ class SuppliersController < ApplicationController
   end
 
   def set_unranked_supplier
-    @unranked_supplier = unranked_suppliers.select { |s| s.slug == permitted_params[:id] }.first
+    @unranked_supplier = unranked_suppliers.find { |s| s.slug == permitted_params[:id] }
   end
 
   def supplier_with_top_three
