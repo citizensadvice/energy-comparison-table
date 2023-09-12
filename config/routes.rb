@@ -28,6 +28,8 @@ CSR_APP_PATH = "/consumer/your-energy/get-a-better-energy-deal/compare-domestic-
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  root to: "suppliers#index"
+
   constraints CountryConstraint.new do
     scope "(:country)" do
       # full table page
