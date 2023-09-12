@@ -46,6 +46,7 @@ gem "factory_bot_rails"
 gem "faraday"
 gem "faraday-net_http_persistent"
 gem "graphql-client"
+gem "rich_text_renderer"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

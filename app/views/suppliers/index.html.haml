@@ -8,13 +8,13 @@
     Before you switch, it's a good idea to check how well different energy suppliers deal with customer service.
   %p
     We’ve compared suppliers across 3 different categories and ranked how good their customer service is. We’ve scored each supplier out of 5.
-    %a{href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/how-the-scores-are-worked-out/"}Find out how the scores are worked out.
+    %a{ href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/how-the-scores-are-worked-out/" }Find out how the scores are worked out.
   %p
     There are a few other things you should think about before switching, like exit fees and different types of tariff.
   %p
-    %a{href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/switching-energy-supplier/"}Check what you need to know before you switch energy supplier.
+    %a{ href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/switching-energy-supplier/" }Check what you need to know before you switch energy supplier.
   %p
-    %a{href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/choosing-energy-tariff/"}Find out about the different types of energy tariff.
+    %a{ href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/choosing-energy-tariff/" }Find out about the different types of energy tariff.
 
   %h2
     Scores for April to June 2023
@@ -35,9 +35,10 @@
     Select the supplier you want to check using the dropdown to see any customer service data we have.
 
 %form.unranked-suppliers__form
-  = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: @unranked_supplier&.slug)
+  = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: unranked_supplier&.slug)
   = render CitizensAdviceComponents::Button.new(variant: :primary, type: :submit) do
     Search
-    
-= render ImpactSurveyComponent.new(impact_survey_id: "J8PLH2H")
 
+= render UnrankedSuppliers::DetailsComponent.new(unranked_supplier)
+
+= render ImpactSurveyComponent.new(impact_survey_id: "J8PLH2H")

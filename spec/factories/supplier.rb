@@ -8,6 +8,10 @@ FactoryBot.define do
     slug { "an-energy-supplier-inc" }
     id { slug }
     data_available { false }
+    contact_info { { json: JSON.parse(File.read("spec/fixtures/contact_info.json")) } }
+    billing_info { { json: JSON.parse(File.read("spec/fixtures/billing_info.json")) } }
+    opening_hours { { json: JSON.parse(File.read("spec/fixtures/opening_hours.json")) } }
+    fuel_mix { { json: JSON.parse(File.read("spec/fixtures/fuel_mix.json")) } }
 
     trait :ranked do
       data_available { true }
@@ -22,6 +26,14 @@ FactoryBot.define do
       bills_accuracy { 99 }
       overall_rating { 4.8 }
     end
+
+    trait :missing_fuel_mix do
+      fuel_mix { nil }
+    end
+
+    trait :whitelabelled do
+      whitelabel_supplier { { name: "White Label Energy Inc" } }
+    end
   end
 
   factory :supplier, class: "Supplier" do
@@ -29,6 +41,14 @@ FactoryBot.define do
 
     trait(:ranked) do
       data factory: %i[supplier_data ranked]
+    end
+
+    trait(:whitelabelled) do
+      data factory: %i[supplier_data whitelabelled]
+    end
+
+    trait(:missing_fuel_mix) do
+      data factory: %i[supplier_data missing_fuel_mix]
     end
   end
 end

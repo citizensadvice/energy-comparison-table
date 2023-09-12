@@ -7,9 +7,9 @@ class SuppliersController < ApplicationController
   before_action :set_suppliers, :set_unranked_supplier, only: :index
   before_action :set_page_meta_tags, :set_swiftype_meta_tags
 
-  attr_accessor :supplier
+  attr_accessor :supplier, :unranked_supplier
 
-  helper_method :supplier, :ranked_suppliers, :unranked_suppliers
+  helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier
 
   def index; end
 
