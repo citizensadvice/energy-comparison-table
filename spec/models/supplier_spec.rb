@@ -66,6 +66,7 @@ RSpec.describe(Supplier) do
     its(:overall_rating) { is_expected.to eq 4.8 }
     its(:id) { is_expected.to eq "an-energy-supplier-inc" }
 
+    it { is_expected.to be_top_three }
     it { is_expected.to be_persisted }
     it { is_expected.to be_ranked }
   end
@@ -75,5 +76,6 @@ RSpec.describe(Supplier) do
 
     its(:rank) { is_expected.to be_nil }
     it { is_expected.not_to be_ranked }
+    it { is_expected.not_to be_top_three }
   end
 end
