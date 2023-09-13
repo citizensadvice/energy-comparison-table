@@ -56,7 +56,7 @@
     },
     "prod": {
       "AWS_ACCOUNT": "912473634278",
-      "EKS_CLUSTER": "prod-eks-platform",
+      "EKS_CLUSTER": "prod-eks-controlplane",
       "HOSTED_ZONE": "prod.content.citizensadvice.org.uk"
     }
   }
