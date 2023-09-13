@@ -1,0 +1,22 @@
+.score-summary
+  %h2.score-summary__heading
+    #{supplier.name} Scores
+  %ul.score-summary__list
+    %li.score-summary__item
+      %p.score-summary__text
+        Overall score
+      = render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true)
+    %li.score-summary__item
+      %p.score-summary__text
+        Fewer complaints
+      = render ScoreComponent.new(score: supplier.complaints_rating)
+    %li.score-summary__item
+      %p.score-summary__text
+        Response time
+      = render ScoreComponent.new(score: supplier.contact_rating)
+    %li.score-summary__item
+      %p.score-summary__text
+        Bill accuracy
+      = render ScoreComponent.new(score: supplier.bills_rating)
+  %p.score-summary__text
+    = rank_text
