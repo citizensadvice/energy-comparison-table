@@ -39,6 +39,8 @@ jobs:
   deploy:
     name: Deploy Review Environment
     runs-on: ubuntu-22.04
+    environment:
+      name: dev
     permissions:
       id-token: write
       contents: read
@@ -78,9 +80,15 @@ jobs:
 
       - name: Helm Deploy
         run: |
+          cat > secrets.json << EOF
+          {
+            "secrets":  ${{toJson(secrets)}}
+          }
+          EOF
           helm upgrade --install \
           --namespace=${{ env.NAMESPACE }} \
           --values energy-comparison-table/.github/resources/preview-overrides.yaml \
+          --values secrets.json \
           --set metadata.pullRequestNumber=${{ github.event.pull_request.number }} \
           --set metadata.pullRequestName="${{ steps.escape_chars.outputs.title }}" \
           --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
