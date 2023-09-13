@@ -75,5 +75,6 @@ jobs:
           --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
           --set image.tag=${{ env.IMAGE_TAG }} \
           --set ingress.hostname=energy-comparison-table.${{env.HOSTED_ZONE}} \
+          --atomic \
           ${{matrix.stage}}-energy-comparison-table \
           energy-comparison-table/infrastructure/app/chart/energy-comparison-table
