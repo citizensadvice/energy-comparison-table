@@ -17,8 +17,7 @@
   %p
     = link_to("Check the full table to compare more energy suppliers", suppliers_path(country: current_country))
 
-%div{ id: scores_fragment }
-  %h2 Other scores component goes here
+= render OtherScoresComponent.new(supplier)
 
 .cads-prose
   %p
