@@ -1,13 +1,21 @@
+from typing import Sequence
 from aws_cdk import Duration, RemovalPolicy, Stack
 from aws_cdk.aws_ecr import LifecycleRule, Repository, TagStatus
+from aws_cdk.aws_iam import IPrincipal
 from constructs import Construct
 
 
 class EcrRepository(Stack):
-    def __init__(self, scope: Construct, id: str, **kwargs) -> None:
+    def __init__(
+        self,
+        scope: Construct,
+        id: str,
+        pull_principals: Sequence[IPrincipal] = [],
+        **kwargs
+    ) -> None:
         super().__init__(scope, id, **kwargs)
 
-        Repository(
+        repo = Repository(
             self,
             "Default",
             removal_policy=RemovalPolicy.DESTROY,
@@ -29,3 +37,5 @@ class EcrRepository(Stack):
                 ),
             ],
         )
+        for principal in pull_principals:
+            repo.grant_pull(principal)
