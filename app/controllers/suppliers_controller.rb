@@ -9,7 +9,7 @@ class SuppliersController < ApplicationController
 
   attr_accessor :supplier, :unranked_supplier
 
-  helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier
+  helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier, :supplier_with_top_three
 
   def index; end
 
@@ -21,12 +21,12 @@ class SuppliersController < ApplicationController
     params.permit(:id)
   end
 
+  # sets the supplier used in the supplier detail page
   def set_supplier
-    @supplier = {
-      name: permitted_params[:id]
-    }
+    @supplier = supplier_with_top_three.find { |s| s.slug == permitted_params[:id] }
   end
 
+  # sets all supplier array used in the main suppliers table page
   def set_suppliers
     @suppliers = Supplier.fetch_all
   end
@@ -40,7 +40,11 @@ class SuppliersController < ApplicationController
   end
 
   def set_unranked_supplier
-    @unranked_supplier = unranked_suppliers.select { |s| s.slug == permitted_params[:id] }.first
+    @unranked_supplier = unranked_suppliers.find { |s| s.slug == permitted_params[:id] }
+  end
+
+  def supplier_with_top_three
+    @supplier_with_top_three ||= Supplier.fetch_with_top_three(permitted_params[:id])
   end
 
   def set_swiftype_meta_tags
@@ -61,6 +65,6 @@ class SuppliersController < ApplicationController
   def meta_title
     return "Compare energy suppliers' customer service" if supplier.blank?
 
-    "#{supplier[:name]} customer service performance"
+    "#{supplier.name} customer service performance"
   end
 end

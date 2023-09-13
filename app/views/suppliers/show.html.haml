@@ -1,2 +1,4 @@
 %h1.cads-page-title
-  Supplier page for #{supplier[:name]}
+  Supplier page for #{supplier.name}
+
+= render SupplierTableComponent.new(supplier_with_top_three, highlight_supplier_with_slug: supplier.slug)

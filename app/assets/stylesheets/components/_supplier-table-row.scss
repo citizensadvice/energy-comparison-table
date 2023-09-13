@@ -32,3 +32,13 @@
     font-weight: bold;
   }
 }
+
+.supplier-table__row--highlight {
+  background-color: #e7f3f5;
+}
+
+.supplier-table__row--top-border {
+  td {
+    border-top: $cads-border-width-large solid $cads-palette__heritage-blue;
+  }
+}

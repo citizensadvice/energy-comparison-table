@@ -34,6 +34,10 @@ FactoryBot.define do
     trait :whitelabelled do
       whitelabel_supplier { { name: "White Label Energy Inc" } }
     end
+
+    trait :low_ranking do
+      rank { 999 }
+    end
   end
 
   factory :supplier, class: "Supplier" do
@@ -49,6 +53,10 @@ FactoryBot.define do
 
     trait(:missing_fuel_mix) do
       data factory: %i[supplier_data missing_fuel_mix]
+    end
+
+    trait(:low_ranking) do
+      data factory: %i[supplier_data ranked low_ranking]
     end
   end
 end

@@ -41,4 +41,10 @@ class Supplier
   def persisted?
     slug.present?
   end
+
+  def top_three?
+    return false if rank.blank?
+
+    rank.positive? && rank < 4
+  end
 end
