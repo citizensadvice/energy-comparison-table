@@ -16,4 +16,4 @@
       = render ScoreComponent.new(score: supplier.bills_rating)
   %td
     %span.cads-table__content
-      = render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true).with_content(link_to("More details", supplier))
+      = render_overall_score
