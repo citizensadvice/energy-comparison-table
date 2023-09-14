@@ -76,5 +76,6 @@ jobs:
           --set image.tag=${{ env.IMAGE_TAG }} \
           --set ingress.hostname=energy-comparison-table.${{env.HOSTED_ZONE}} \
           --atomic \
+          --timeout 15m \
           ${{matrix.stage}}-energy-comparison-table \
           energy-comparison-table/infrastructure/app/chart/energy-comparison-table
