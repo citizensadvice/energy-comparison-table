@@ -43,5 +43,27 @@ module EnergyComparisonTable
 
     # Review apps have dynamic subdomains
     Rails.application.config.hosts << /.*\.qa\.citizensadvice\.org\.uk/
+
+    # Set tags for logs, including Datadog trace info
+    # This needs to be set here because the logger is already initialized by the
+    # time we get to the initializers
+    ci_test = ENV.fetch("CI_TEST", false)
+
+    unless $stdout.tty? || ci_test
+      config.log_tags = {
+        request_id: :request_id,
+        dd: lambda { |_|
+          correlation = Datadog::Tracing.correlation
+          {
+            trace_id: correlation.trace_id.to_s,
+            span_id: correlation.span_id.to_s,
+            env: correlation.env.to_s,
+            service: correlation.service.to_s,
+            version: correlation.version.to_s
+          }
+        },
+        ddsource: ["ruby"]
+      }
+    end
   end
 end
