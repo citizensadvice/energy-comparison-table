@@ -22,4 +22,12 @@ class SupplierTableRowComponent < ViewComponent::Base
     classes << "supplier-table__row--top-border" if apply_top_border?
     classes
   end
+
+  def render_overall_score
+    if highlight?
+      render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true)
+    else
+      render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true).with_content(link_to("More details", supplier))
+    end
+  end
 end
