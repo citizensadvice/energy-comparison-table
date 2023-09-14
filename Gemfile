@@ -42,10 +42,12 @@ gem "citizens_advice_components",
 
 gem "view_component", "~> 3.5"
 
+gem "ddtrace"
 gem "factory_bot_rails"
 gem "faraday"
 gem "faraday-net_http_persistent"
 gem "graphql-client"
+gem "rails_semantic_logger"
 gem "rich_text_renderer"
 
 group :development, :test do
