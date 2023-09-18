@@ -39,3 +39,7 @@ We'll use a base path variable in the rails app to configure these paths.
 # Negative
 
 - changing where the app 'sits' in the site hierarchy will also need a code change, which means content designers can't move it around in Contentful
+
+  This is a big problem, but it's hard to avoid. It wouldn't be an issue if we had built the table in public-website, but we think the [benefits of having a separate Rails app](./0003-single-rails-app.md) still outweigh this downside.
+
+  The other solution is to make the routing dynamic (e.g. calling Contentful from the CloudFront Lambda@Edge functions), but we think that would add latency and be complex to build.
