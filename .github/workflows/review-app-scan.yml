@@ -36,7 +36,7 @@ jobs:
         run: |
           NAMESPACES=$(kubectl get subnamespaceanchors.hnc.x-k8s.io -n dev-energy-comparison-table -o json | jq -r '.items[].metadata.name')
           for NS in $NAMESPACES; do
-              helm list --all-namespaces -o json --time-format 2006-01-02T15:04:05Z07:00 | jq  -r '.[]|[.namespace, .updated]|join(" ")' | while read -r NAMESPACE TIMESTAMP; do
+              helm list -o json --time-format 2006-01-02T15:04:05Z07:00 -n $NS | jq  -r '.[]|[.namespace, .updated]|join(" ")' | while read -r NAMESPACE TIMESTAMP; do
                 if [[ $NAMESPACE =~ ${{ env.NAMESPACE_REGEX }} ]]; then
                   echo Checking review app $NAMESPACE...
                   AGE=$(( $(( $(date +%s) - $(date --date=$TIMESTAMP +%s))) / 3600))
