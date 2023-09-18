@@ -44,6 +44,9 @@ module EnergyComparisonTable
     # Review apps have dynamic subdomains
     Rails.application.config.hosts << /.*\.qa\.citizensadvice\.org\.uk/
 
+    # production host
+    config.hosts << "energy-comparison-table.prod.content.citizensadvice.org.uk"
+
     # Set tags for logs, including Datadog trace info
     # This needs to be set here because the logger is already initialized by the
     # time we get to the initializers
