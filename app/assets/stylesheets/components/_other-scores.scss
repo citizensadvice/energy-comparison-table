@@ -4,7 +4,7 @@
   .descriptions__list {
     @include cads-media-breakpoint-up(md) {
       display: inline-grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;
     }
   }

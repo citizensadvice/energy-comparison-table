@@ -16,11 +16,11 @@ RSpec.describe OtherScoresComponent, type: :component do
   # contact ratings
   it { is_expected.to have_text "Emails responded to within 2 days" }
   it { is_expected.to have_text "89%" }
-  it { is_expected.to have_text "Average call centre wait time (hours:minutes)" }
+  it { is_expected.to have_text "Average call centre wait time (minutes:seconds)" }
   it { is_expected.to have_text "03:27" }
 
   # complaints ratings
-  it { is_expected.to have_text "Complaints to third parties" }
+  it { is_expected.to have_text "Complaints to Citizens Advice and the Energy Ombudsman" }
   it { is_expected.to have_text "172 per 10,000 customers" }
 
   # bills ratings
