@@ -75,7 +75,4 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
-
-  # production host
-  config.hosts << "energy-comparison-table.prod.content.citizensadvice.org.uk"
 end
