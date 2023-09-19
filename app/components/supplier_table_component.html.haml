@@ -1,5 +1,5 @@
-.cads-table-container
-  %table.cads-table.cads-table--captioned.supplier-table
+.cads-table-container.supplier-table--show-more
+  %table.cads-table.cads-table--captioned.supplier-table.js-supplier-table
     %thead.supplier-table__head
       %tr
         %th{ scope: "col" }
@@ -26,3 +26,14 @@
     %tbody.supplier-table__body
       - suppliers.each do |supplier|
         = render SupplierTableRowComponent.new(supplier, highlight: supplier.slug == highlight_supplier_with_slug)
+
+  %p.supplier-table__count-text.js-supplier-table-count-text
+    = count_text
+
+  = render CitizensAdviceComponents::Button.new(variant: :secondary, attributes: { class: show_more_button_classes }) do |c|
+    Show more suppliers
+    - c.with_icon_right { render CitizensAdviceComponents::Icons::ArrowDown.new }
+
+  = render CitizensAdviceComponents::Button.new(variant: :secondary, attributes: { class: show_fewer_button_classes }) do |c|
+    Show fewer suppliers
+    - c.with_icon_right { render CitizensAdviceComponents::Icons::ArrowUp.new }
