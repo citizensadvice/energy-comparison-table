@@ -1,0 +1,37 @@
+// We need to re-declare the @font-face redirectives so that
+// the front end asset pipeline can pick them up and add the digests
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url("open-sans-v26-latin-regular.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("open-sans-v26-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+
+  font-display: swap;
+}
+
+/* open-sans-700 - latin */
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans Bold"), local("OpenSans-Bold"),
+    url("open-sans-v26-latin-700.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url("open-sans-v26-latin-700.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: cads;
+  src: url("cads.eot") format("embedded-opentype"),
+    url("cads.woff") format("woff"), url("cads.ttf") format("truetype"),
+    url("cads.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}

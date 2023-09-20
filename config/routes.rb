@@ -45,5 +45,7 @@ Rails.application.routes.draw do
 
   get "/status", to: "status#index"
 
-  match "*path", to: "application#not_found", via: :all
+  constraints ->(req) { req.format == :html } do
+    match "*path", to: "application#not_found", via: :all
+  end
 end
