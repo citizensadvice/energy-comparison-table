@@ -16,5 +16,3 @@ annotations:
       {"schedule": "30 18 * * Mon-Fri", "replicas": "0", "tz": "Europe/London"},
       {"schedule": "40 7 * * Mon-Fri", "replicas": "1", "tz": "Europe/London"}
     ]
-envVars:
-  RAILS_ENV: production
