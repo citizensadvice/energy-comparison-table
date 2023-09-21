@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
-    render "errors/404", status: :not_found, format: :html
+    render template: "errors/404", status: :not_found
   end
 end
