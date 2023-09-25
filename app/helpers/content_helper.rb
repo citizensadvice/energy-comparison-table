@@ -21,4 +21,10 @@ module ContentHelper
   def contact_details_fragment
     "contactDetails"
   end
+
+  def country_url(path)
+    return path if current_country.blank?
+
+    "/#{current_country}#{path}"
+  end
 end
