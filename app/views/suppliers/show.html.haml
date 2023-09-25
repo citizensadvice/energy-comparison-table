@@ -1,5 +1,5 @@
 %h1.cads-page-title
-  = "#{supplier.name} customer service"
+  #{supplier.name} customer service
 
 = render LocationSwitcherComponent.new(current_country:)
 = render CitizensAdviceComponents::OnThisPage.new do |c|
@@ -17,7 +17,7 @@
 
 .cads-prose
   %p
-    = "#{supplier.name} ranked #{supplier.rank.ordinalize} in the supplier comparison table."
+    #{supplier.name} ranked #{supplier.rank.ordinalize} in the supplier comparison table.
 
 .cads-prose
   %p
