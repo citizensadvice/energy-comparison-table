@@ -8,7 +8,6 @@ updates:
       # Design system upgrade should be performed for npm and bundler at the same time, this should happen manually
       - dependency-name: 'citizens_advice_components'
     target-branch: 'main'
-    rebase-strategy: "disabled"
 
   - package-ecosystem: npm
     directory: '/'
@@ -17,4 +16,3 @@ updates:
     target-branch: 'main'
     ignore:
       - dependency-name: '@citizensadvice/design-system'
-    rebase-strategy: "disabled"
