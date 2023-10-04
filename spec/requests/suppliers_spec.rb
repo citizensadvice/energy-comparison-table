@@ -86,4 +86,13 @@ RSpec.describe "Suppliers" do
       expect(response).to have_http_status :not_found
     end
   end
+
+  context "handling 500s" do
+    it "renders the 500 error page" do
+      allow_any_instance_of(SuppliersController).to receive(:index).and_raise(StandardError)
+      get "/"
+      expect(response).to render_template("errors/500")
+      expect(response).to have_http_status(:server_error)
+    end
+  end
 end

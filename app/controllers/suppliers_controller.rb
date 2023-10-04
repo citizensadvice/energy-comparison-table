@@ -2,6 +2,8 @@
 
 class SuppliersController < ApplicationController
   include SwiftypeMeta
+  # this is possibly a bit of a wide response - what should we rescue from to render a 500 page
+  rescue_from StandardError, with: :internal_server_error
 
   before_action :set_supplier, only: :show
   before_action :set_suppliers, :set_unranked_supplier, only: :index
