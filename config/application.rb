@@ -42,10 +42,13 @@ module EnergyComparisonTable
     config.generators.test_framework = :rspec
 
     # Review apps have dynamic subdomains
-    Rails.application.config.hosts << /.*\.qa\.citizensadvice\.org\.uk/
+    config.hosts << /.*\.qa\.citizensadvice\.org\.uk/
 
     # production host
     config.hosts << "energy-comparison-table.prod.content.citizensadvice.org.uk"
+
+    # allow health check from private IP addresses
+    config.hosts << /10\.\d+\.\d+\.\d+/
 
     # Set tags for logs, including Datadog trace info
     # This needs to be set here because the logger is already initialized by the
