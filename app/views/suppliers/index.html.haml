@@ -10,10 +10,9 @@
     We’ve compared the largest suppliers across 3 different categories and ranked their customer services . We’ve scored each supplier out of 5.
     = link_to("Find out how the scores are worked out.", country_url("/consumer/energy/energy-supply/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service1/how-the-scores-are-worked-out/"))
   %h2
-    Scores for October to December 2023
+    Scores for July to September 2023
   %p
-    We will publish updated scores for the following 3 months in October 2023.
-
+    We will publish updated scores for the following 3 months in March 2024.
 
 = render SupplierTableComponent.new(ranked_suppliers)
 
@@ -23,7 +22,7 @@
   %p
     We only give an overall customer service rating to larger suppliers. We include suppliers with over 25,000 customer accounts.
   %p
-    Select the supplier you want to check using the dropdown to see any customer service informationwe have.
+    Select the supplier you want to check using the dropdown to see any customer service information we have.
 
 %form.unranked-suppliers__form
   = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: unranked_supplier&.slug)
@@ -36,7 +35,7 @@
   %h2
     Find out about switching and tariffs
   %p
-    There are a few other things you should think about before switching, like exit fees and whether your meter will work on a new tariff.
+    There are a few other things you should think about before switching, like exit fees and whether you have the right kind of meter.
     = link_to("Check what you need to know before you switch energy supplier.", country_url("/consumer/energy/energy-supply/get-a-better-energy-deal/switching-energy-supplier/"))
   %p
     It’s also important to understand the different tariffs on offer.
