@@ -1,5 +1,9 @@
 .supplier-table {
-  margin: $cads-spacing-6 0;
+  margin: $cads-spacing-6 0 $cads-spacing-3 0;
+
+  @include cads-media-breakpoint-up(md) {
+    margin: $cads-spacing-6 0;
+  }
 
   .supplier-table__head {
     display: table-header-group;
@@ -19,4 +23,58 @@
 .cads-table tr:first-child th,
 .cads-table tr td {
   padding-left: $cads-spacing-3;
+}
+
+.supplier-table--show-more {
+  .js-show-more-suppliers {
+    display: block;
+
+    @include cads-media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+
+  .js-show-fewer-suppliers {
+    display: none;
+
+    @include cads-media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+}
+
+.supplier-table--show-fewer {
+  .js-show-more-suppliers {
+    display: none;
+
+    @include cads-media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+
+  .js-show-fewer-suppliers {
+    @include cads-media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+}
+
+.supplier-table__count-text {
+  margin: $cads-spacing-3 0;
+
+  @include cads-media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.no-js {
+  .supplier-table__count-text,
+  .js-show-more-suppliers,
+  .js-show-fewer-suppliers {
+    display: none;
+  }
+
+  .supplier-table {
+    margin: $cads-spacing-6 0;
+  }
 }

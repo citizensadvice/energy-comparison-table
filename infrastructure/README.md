@@ -10,7 +10,7 @@
 
 - [cdk](./cdk) - AWS CDK IaC
 - [app/chart](./app/chart) - Helm chart
-- [app/chart](./app/stages) - Helm stage ( environment ) value overrides
+- [app/stages](./app/stages) - Helm stage ( environment ) value overrides
 
 ## Configuration
 

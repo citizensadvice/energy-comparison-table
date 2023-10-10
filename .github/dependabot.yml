@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: weekly
+    ignore:
+      # Design system upgrade should be performed for npm and bundler at the same time, this should happen manually
+      - dependency-name: 'citizens_advice_components'
+
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: '@citizensadvice/design-system'

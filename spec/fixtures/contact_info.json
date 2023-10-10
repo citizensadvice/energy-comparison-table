@@ -7,8 +7,20 @@
         {
           "data": {},
           "marks": [],
-          "value": "some contact details\nsome more",
+          "value": "some contact details\nsome more\n",
           "nodeType": "text"
+        },
+        {
+          "nodeType": "hyperlink",
+          "data": { "uri": "mailto:hello@example.com" },
+          "content": [
+            {
+              "nodeType": "text",
+              "value": "hello@example.com",
+              "marks": [],
+              "data": {}
+            }
+          ]
         }
       ],
       "nodeType": "paragraph"
