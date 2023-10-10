@@ -16,3 +16,6 @@ Lint/MissingSuper:
     # See https://github.com/ViewComponent/view_component/discussions/1545
     # See https://github.com/citizensadvice/design-system/pull/2416
     - "app/components/**/*.rb"
+
+RSpec/MultipleExpectations:
+  Max: 2
