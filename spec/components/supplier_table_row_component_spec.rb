@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "pry"
 
 RSpec.describe SupplierTableRowComponent, type: :component do
   subject { page }
@@ -30,5 +31,13 @@ RSpec.describe SupplierTableRowComponent, type: :component do
 
       it { is_expected.to have_selector ".supplier-table__row--top-border" }
     end
+  end
+
+  context "when a current country is provided" do
+    before do
+      render_inline described_class.new(supplier, current_country: "scotland")
+    end
+
+    it { is_expected.to have_link "More details", href: "/scotland#{CSR_APP_PATH}an-energy-supplier-inc/details" }
   end
 end
