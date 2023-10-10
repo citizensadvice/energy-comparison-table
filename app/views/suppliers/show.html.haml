@@ -1,5 +1,5 @@
 %h1.cads-page-title
-  = supplier.name
+  #{supplier.name} customer service
 
 = render LocationSwitcherComponent.new(current_country:)
 = render CitizensAdviceComponents::OnThisPage.new do |c|
@@ -7,11 +7,17 @@
 
 .cads-prose
   %p
-    Use our customer service ratings to help you decide which supplier to use. The ratings are calculated using information from different sources, including Citizens Advice, Energy Ombudsman and the suppliers.
+    You can use our customer service ratings to help you decide which supplier to use.
+  %p
+    The ratings are calculated using information from different sources, including Citizens Advice, Energy Ombudsman and the suppliers.
 
 = render ScoreSummaryComponent.new(supplier)
 
 = render SupplierTableComponent.new(supplier_with_top_three, highlight_supplier_with_slug: supplier.slug)
+
+.cads-prose
+  %p
+    #{supplier.name} ranked #{supplier.rank.ordinalize} in the supplier comparison table.
 
 .cads-prose
   %p

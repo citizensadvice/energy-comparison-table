@@ -5,34 +5,24 @@
 
 .cads-prose
   %p
-    Before you switch, it's a good idea to check how well different energy suppliers deal with customer service.
+    If you’re thinking of switching, you should check how well different energy suppliers deal with customer service.
   %p
-    We’ve compared suppliers across 3 different categories and ranked how good their customer service is. We’ve scored each supplier out of 5.
-    %a{ href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/how-the-scores-are-worked-out/" }Find out how the scores are worked out.
-  %p
-    There are a few other things you should think about before switching, like exit fees and different types of tariff.
-  %p
-    %a{ href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/switching-energy-supplier/" }Check what you need to know before you switch energy supplier.
-  %p
-    %a{ href: "https://www.citizensadvice.org.uk/consumer/energy/energy-supply/get-a-better-energy-deal/choosing-energy-tariff/" }Find out about the different types of energy tariff.
-
+    We’ve compared the largest suppliers across 3 different categories and ranked their customer services . We’ve scored each supplier out of 5.
+    = link_to("Find out how the scores are worked out.", country_url("/consumer/energy/energy-supply/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service1/how-the-scores-are-worked-out/"))
   %h2
-    Scores for April to June 2023
+    Scores for July to September 2023
   %p
-    The ratings are updated every 3 months. These scores are based on data we got from suppliers in September 2023.
-  %p
-    If you can't find your supplier in the table, we might not have enough data to give them an overall score. You can find these suppliers at the bottom of the page.
-
+    We will publish updated scores for the following 3 months in March 2024.
 
 = render SupplierTableComponent.new(ranked_suppliers)
 
 .cads-prose
   %h2
-    If you can't find a supplier's customer service rating.
+    Suppliers that aren’t included in the table
   %p
-    We only give an overall customer service rating to suppliers with over 25,000 customer accounts.
+    We only give an overall customer service rating to larger suppliers. We include suppliers with over 25,000 customer accounts.
   %p
-    Select the supplier you want to check using the dropdown to see any customer service data we have.
+    Select the supplier you want to check using the dropdown to see any customer service information we have.
 
 %form.unranked-suppliers__form
   = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: unranked_supplier&.slug)
@@ -40,3 +30,13 @@
     Search
 
 = render UnrankedSuppliers::DetailsComponent.new(unranked_supplier)
+
+.cads-prose
+  %h2
+    Find out about switching and tariffs
+  %p
+    There are a few other things you should think about before switching, like exit fees and whether you have the right kind of meter.
+    = link_to("Check what you need to know before you switch energy supplier.", country_url("/consumer/energy/energy-supply/get-a-better-energy-deal/switching-energy-supplier/"))
+  %p
+    It’s also important to understand the different tariffs on offer.
+    = link_to("Find out about the different types of energy tariff.", country_url("/consumer/energy/energy-supply/get-a-better-energy-deal/choosing-energy-tariff/"))

@@ -1,6 +1,10 @@
 .score-summary
-  %h2.score-summary__heading
-    #{supplier.name} Scores
+  .cads-prose
+    %h2.score-summary__heading
+      #{supplier.name} ratings for July to September 2023
+    %p
+      Updated scores for the following 3 months will be published in March 2024.
+
   %ul.score-summary__list
     %li.score-summary__item
       %p.score-summary__text
@@ -8,15 +12,13 @@
       = render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true)
     %li.score-summary__item
       %p.score-summary__text
-        Fewer complaints
+        Fewer complaints received
       = render ScoreComponent.new(score: supplier.complaints_rating)
     %li.score-summary__item
       %p.score-summary__text
-        Response time
+        Response wait time
       = render ScoreComponent.new(score: supplier.contact_rating)
     %li.score-summary__item
       %p.score-summary__text
         Bill accuracy
       = render ScoreComponent.new(score: supplier.bills_rating)
-  %p.score-summary__text
-    = rank_text

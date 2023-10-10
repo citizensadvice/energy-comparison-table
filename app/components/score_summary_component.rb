@@ -10,8 +10,4 @@ class ScoreSummaryComponent < ViewComponent::Base
   def render?
     supplier.present?
   end
-
-  def rank_text
-    "#{supplier.name} ranked #{supplier.rank.ordinalize} in the supplier comparison table"
-  end
 end
