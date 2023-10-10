@@ -3,6 +3,8 @@
 class SupplierTableComponent < ViewComponent::Base
   attr_reader :suppliers, :highlight_supplier_with_slug
 
+  delegate :current_country, to: :helpers
+
   def initialize(suppliers, highlight_supplier_with_slug: nil)
     @suppliers = suppliers
     @highlight_supplier_with_slug = highlight_supplier_with_slug
