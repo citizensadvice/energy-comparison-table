@@ -46,6 +46,15 @@ Rails.application.routes.draw do
   get "/status", to: "status#index"
 
   constraints ->(req) { req.format == :html } do
+    # Custom error handler pages, these work because
+    # config.exceptions_app = routes is set in application.rb
+    # which lets us define custom error handlers by defining path
+    # names which match the status code
+    # https://api.rubyonrails.org/classes/ActionDispatch/ShowExceptions.html
+    match "/404", to: "application#not_found", via: :all
+    match "/500", to: "application#internal_server_error", via: :all
+
+    # This needs to be the final entry in the routes as a catch-all for routing errors so they're not treated as fatal errors
     match "*path", to: "application#not_found", via: :all
   end
 end

@@ -58,6 +58,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "haml-lint", require: false
   gem "hashie"
+  gem "rails-controller-testing"
   gem "rspec-its"
   gem "rspec-rails"
   gem "rubocop-rails"
