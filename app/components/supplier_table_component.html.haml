@@ -25,7 +25,7 @@
               Overall rating
     %tbody.supplier-table__body
       - suppliers.each do |supplier|
-        = render SupplierTableRowComponent.new(supplier, highlight: supplier.slug == highlight_supplier_with_slug)
+        = render SupplierTableRowComponent.new(supplier, highlight: supplier.slug == highlight_supplier_with_slug, current_country:)
 
     %p.supplier-table__count-text.js-supplier-table-count-text
       = count_text

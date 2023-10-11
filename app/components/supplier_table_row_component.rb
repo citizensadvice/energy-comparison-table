@@ -3,9 +3,10 @@
 class SupplierTableRowComponent < ViewComponent::Base
   attr_reader :supplier
 
-  def initialize(supplier, highlight: false)
+  def initialize(supplier, highlight: false, current_country: nil)
     @supplier = supplier
     @highlight = highlight
+    @current_country = current_country
   end
 
   def highlight?
@@ -27,7 +28,9 @@ class SupplierTableRowComponent < ViewComponent::Base
     if highlight?
       render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true)
     else
-      render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true).with_content(link_to("More details", supplier))
+      render ScoreComponent.new(score: supplier.overall_rating,
+                                show_decimal_score: true).with_content(link_to("More details",
+                                                                               supplier_path(supplier, { country: @current_country })))
     end
   end
 end
