@@ -40,6 +40,6 @@ class OtherInfoComponent < ViewComponent::Base
   end
 
   def fuel_mix
-    renderer.render_with_breaks(supplier.fuel_mix)
+    renderer.render_without_breaks(supplier.fuel_mix)
   end
 end
