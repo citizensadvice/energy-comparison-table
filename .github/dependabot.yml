@@ -12,5 +12,25 @@ updates:
     directory: '/'
     schedule:
       interval: weekly
+    groups:
+      js-dependencies:
+        patterns:
+          - '@babel/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      testing-dependencies:
+        patterns:
+          - '@typescript-eslint/*'
+          - 'eslint*'
+          - 'stylelint*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      patch-dependencies:
+        patterns:
+          - '*'
+        update-types:
+          - 'patch'
     ignore:
       - dependency-name: '@citizensadvice/design-system'
