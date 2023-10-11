@@ -4,13 +4,13 @@ require "rails_helper"
 require "pry"
 
 RSpec.describe(Supplier) do
-  describe "class methods" do
-    describe "#fetch_all" do
-      subject(:all_suppliers) { described_class.fetch_all }
+  describe "#fetch_all" do
+    subject(:all_suppliers) { described_class.fetch_all }
 
+    context "when test suppliers are fetched" do
       around do |example|
         ClimateControl.modify(USE_TEST_SUPPLIERS: "true") do
-          VCR.use_cassette("supplier/fetch_all", match_requests_on: [:method]) do
+          VCR.use_cassette("supplier/fetch_all_test", match_requests_on: [:body]) do
             example.run
           end
         end
@@ -19,33 +19,57 @@ RSpec.describe(Supplier) do
       it { is_expected.to be_present }
 
       it "returns ranked suppliers in ascending rank order" do
-        expect(all_suppliers.map(&:rank).compact).to eql [1, 2, 3]
+        expect(all_suppliers.map(&:rank).compact).to eql [1, 2, 3, 4, 5, 6, 7]
+      end
+
+      it "only return suppliers that have been tagged with 'test'" do
+        all_suppliers.each do |supplier|
+          tags = supplier.data.contentful_metadata.tags.map(&:id)
+          expect(tags).to include "test"
+        end
       end
     end
 
-    describe "#fetch_with_top_three" do
-      subject(:supplier_with_top_three) { described_class.fetch_with_top_three(slug) }
-
-      let(:slug) { "smol-energy-inc" }
-
+    context "when production suppliers are fetched" do
       around do |example|
-        ClimateControl.modify(USE_TEST_SUPPLIERS: "true") do
-          VCR.use_cassette("supplier/fetch_with_top_three", match_requests_on: [:method]) do
+        ClimateControl.modify(USE_TEST_SUPPLIERS: "false") do
+          VCR.use_cassette("supplier/fetch_all_production", match_requests_on: [:body]) do
             example.run
           end
         end
       end
 
-      it { is_expected.to be_present }
-      its(:size) { is_expected.to be 4 }
-
-      it "returns the requested supplier" do
-        expect(supplier_with_top_three.map(&:name)).to include "Smol Energy Inc"
+      it "only does not return any suppliers that have been tagged with 'test'" do
+        all_suppliers.each do |supplier|
+          tags = supplier.data.contentful_metadata.tags.map(&:id)
+          expect(tags).not_to include "test"
+        end
       end
+    end
+  end
 
-      it "returns the suppliers in order" do
-        expect(supplier_with_top_three.map(&:rank)).to eql [1, 2, 3, 6]
+  describe "#fetch_with_top_three" do
+    subject(:supplier_with_top_three) { described_class.fetch_with_top_three(slug) }
+
+    let(:slug) { "smol-energy-inc" }
+
+    around do |example|
+      ClimateControl.modify(USE_TEST_SUPPLIERS: "true") do
+        VCR.use_cassette("supplier/fetch_with_top_three", match_requests_on: [:method]) do
+          example.run
+        end
       end
+    end
+
+    it { is_expected.to be_present }
+    its(:size) { is_expected.to be 4 }
+
+    it "returns the requested supplier" do
+      expect(supplier_with_top_three.map(&:name)).to include "Smol Energy Inc"
+    end
+
+    it "returns the suppliers in order" do
+      expect(supplier_with_top_three.map(&:rank)).to eql [1, 2, 3, 6]
     end
   end
 
