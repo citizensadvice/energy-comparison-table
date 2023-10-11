@@ -88,13 +88,19 @@ RSpec.describe "Suppliers" do
   end
 
   context "when handling 500s" do
-    it "renders the 500 error page" do
+    before do
       # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(SuppliersController).to receive(:index).and_raise(StandardError)
       get "/"
-      expect(response).to render_template("errors/500")
-      expect(response).to have_http_status(:server_error)
       # rubocop:enable RSpec/AnyInstance
+    end
+
+    it "renders the 500 error page" do
+      expect(response).to render_template("errors/500")
+    end
+
+    it "returns status 'server error'" do
+      expect(response).to have_http_status(:server_error)
     end
   end
 end

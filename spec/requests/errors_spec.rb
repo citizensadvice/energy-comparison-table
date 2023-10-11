@@ -7,6 +7,10 @@ RSpec.describe "Errors" do
     it "renders the 404 error page" do
       get "/nonsense-url"
       expect(response).to render_template("errors/404")
+    end
+
+    it "returns status 'not found'" do
+      get "/nonsense-url"
       expect(response).to have_http_status(:not_found)
     end
   end
