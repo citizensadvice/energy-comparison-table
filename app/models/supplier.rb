@@ -6,10 +6,9 @@ class Supplier
   attr_accessor :data
 
   delegate :name, :whitelabel_supplier, :slug,
-           :rank, :previous_rank,
-           :complaints_rating, :complaints_number,
+           :rank, :complaints_rating, :complaints_number,
            :contact_email, :contact_rating, :contact_time, :contact_info,
-           :bills_rating, :billing_info, :bills_accuracy,
+           :contact_social_media, :billing_info, :guarantee_list, :guarantee_rating,
            :overall_rating, :data_available,
            :fuel_mix, :opening_hours, to: :data
 
