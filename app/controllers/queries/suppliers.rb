@@ -17,16 +17,18 @@ module Queries
         },
         slug,
         rank,
-        previousRank,
         complaintsRating,
         complaintsNumber,
         contactEmail,
         contactRating,
+        contactSocialMedia,
         contactTime,
-        billsRating,
-        billsAccuracy,
+        guaranteeRating,
         overallRating,
         dataAvailable,
+        guaranteeList {
+          json
+        },
         contactInfo {
           json
         },
