@@ -23,9 +23,9 @@ RSpec.describe OtherScoresComponent, type: :component do
   it { is_expected.to have_text "Complaints to Citizens Advice and the Energy Ombudsman" }
   it { is_expected.to have_text "172 per 10,000 customers" }
 
-  # bills ratings
-  it { is_expected.to have_text "Customers who had an accurate bill at least once a year" }
-  it { is_expected.to have_text "99%" }
+  # guarantee list
+  it { is_expected.to have_text "Customer guarantees" }
+  it { is_expected.to have_text "Vulnerability Commitment" }
 
   context "when there is no supplier" do
     let(:supplier) { nil }
