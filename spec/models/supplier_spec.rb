@@ -55,14 +55,13 @@ RSpec.describe(Supplier) do
     its(:name) { is_expected.to eq "An Energy Supplier Inc" }
     its(:slug) { is_expected.to eq "an-energy-supplier-inc" }
     its(:rank) { is_expected.to eq 1 }
-    its(:previous_rank) { is_expected.to eq 2 }
     its(:complaints_rating) { is_expected.to eq 4.3 }
     its(:complaints_number) { is_expected.to eq 172 }
     its(:contact_email) { is_expected.to eq 89 }
     its(:contact_rating) { is_expected.to eq 2.3 }
+    its(:contact_social_media) { is_expected.to eq "01:15:00" }
     its(:contact_time) { is_expected.to eq "03:27" }
-    its(:bills_rating) { is_expected.to eq 3.4 }
-    its(:bills_accuracy) { is_expected.to eq 99 }
+    its(:guarantee_rating) { is_expected.to eq 3 }
     its(:overall_rating) { is_expected.to eq 4.8 }
     its(:id) { is_expected.to eq "an-energy-supplier-inc" }
 
