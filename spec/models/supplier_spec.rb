@@ -19,7 +19,7 @@ RSpec.describe(Supplier) do
       it { is_expected.to be_present }
 
       it "returns ranked suppliers in ascending rank order" do
-        expect(all_suppliers.map(&:rank).compact).to eql [1, 2, 3]
+        expect(all_suppliers.map(&:rank).compact).to eql [1, 2, 3, 4, 5, 6, 7]
       end
     end
 
