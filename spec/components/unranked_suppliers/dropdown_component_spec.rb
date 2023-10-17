@@ -12,7 +12,7 @@ RSpec.describe UnrankedSuppliers::DropdownComponent, type: :component do
     render_inline described_class.new(suppliers.presence, chosen_supplier_slug:)
   end
 
-  it { is_expected.to have_text "Find your supplier" }
+  it { is_expected.to have_text "Select your supplier" }
   it { is_expected.to have_selector "option", count: 11 }
   it { is_expected.to have_text "Please select" }
   it { is_expected.not_to have_selector "option[selected]" }

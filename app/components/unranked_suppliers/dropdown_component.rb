@@ -30,7 +30,7 @@ module UnrankedSuppliers
     def select_params
       {
         select_options: supplier_options,
-        label: "Find your supplier",
+        label: "Select your supplier",
         name: "id",
         type: nil,
         options: {
