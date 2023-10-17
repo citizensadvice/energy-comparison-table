@@ -32,6 +32,9 @@ module Queries
         contactInfo {
           json
         },
+        otherContactInfo {
+          json
+        },
         billingInfo {
           json
         },
