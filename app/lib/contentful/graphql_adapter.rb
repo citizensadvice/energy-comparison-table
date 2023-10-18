@@ -5,14 +5,20 @@ module Contentful
   class GraphqlAdapter
     def execute(document:, operation_name:, variables: {}, context: {})
       @connection ||= connection
+
+      tagged_variables = add_tags_to_variables(variables)
+
       response = @connection.post(api_url, {
         query: document.to_query_string,
         operationName: operation_name,
-        variables:,
+        variables: tagged_variables,
         context:
       }) do |req|
         req.headers["Authorization"] = "Bearer #{access_token}"
       end
+
+      raise QueryError, response.errors[:data].join(", ") if errors_present?(response)
+
       response.body
     end
 
@@ -43,6 +49,18 @@ module Contentful
 
     def access_token
       ENV.fetch("CONTENTFUL_CDA_TOKEN")
+    end
+
+    def add_tags_to_variables(variables)
+      if Feature.enabled? "USE_TEST_SUPPLIERS"
+        variables.merge({ tag_filter: { id_contains_some: "test" } })
+      else
+        variables.merge({ tag_filter: { id_contains_none: "test" } })
+      end
+    end
+
+    def errors_present?(response)
+      response.respond_to?(:errors) && response.errors[:data].present?
     end
   end
 end

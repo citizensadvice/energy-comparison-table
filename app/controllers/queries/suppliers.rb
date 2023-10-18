@@ -38,6 +38,11 @@ module Queries
         },
         openingHours {
           json
+        },
+        contentfulMetadata {
+          tags {
+            id
+          }
         }
       }
     }
