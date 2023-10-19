@@ -2,14 +2,14 @@
 
 module Queries
   SupplierDetail = Contentful::Graphql::Client.parse <<-GRAPHQL
-  query($tag_filter: ContentfulMetadataTagsFilter, $slug: String) {
+  query($top_three_ranks: [Int], $tag_filter: ContentfulMetadataTagsFilter, $slug: String) {
     energySupplierCollection (
       order:rank_ASC,
       where: {
         contentfulMetadata:{ tags: $tag_filter },
         OR: [
         	{slug: $slug},
-          {rank_in: [1, 2, 3]}
+          {rank_in: $top_three_ranks}
         ]
       }
     ) {
