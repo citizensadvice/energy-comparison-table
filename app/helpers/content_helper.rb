@@ -5,7 +5,7 @@ module ContentHelper
     [
       {
         id: scores_fragment,
-        label: "#{supplier_name} score for April to June 2023"
+        label: "#{supplier_name} score for July to September 2023"
       },
       {
         id: contact_details_fragment,
