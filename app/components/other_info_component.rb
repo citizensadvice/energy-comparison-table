@@ -17,11 +17,7 @@ class OtherInfoComponent < ViewComponent::Base
   def descriptions
     [
       {
-        term: content_tag(:h3, "Fuel Mix"),
-        description: fuel_mix
-      },
-      {
-        term: content_tag(:h3, "Contact Information", { id: contact_details_fragment }),
+        term: content_tag(:h3, "", { id: contact_details_fragment }),
         description: contact_info
       },
       {
@@ -51,11 +47,7 @@ class OtherInfoComponent < ViewComponent::Base
     renderer.render_with_breaks(supplier.opening_hours)
   end
 
-  def fuel_mix
-    renderer.render_without_breaks(supplier.fuel_mix)
-  end
-
   def billing_info
-    renderer.render_without_breaks(supplier.billing_info)
+    renderer.render_with_breaks(supplier.billing_info)
   end
 end
