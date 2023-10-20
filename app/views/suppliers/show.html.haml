@@ -14,15 +14,15 @@
 
   = render ScoreSummaryComponent.new(supplier)
 
-  = render SupplierTableComponent.new(supplier_with_top_three, highlight_supplier_with_slug: supplier.slug)
-
   .cads-prose
     %p
       #{supplier.name} ranked #{supplier.rank.ordinalize} in the supplier comparison table.
 
+  = render SupplierTableComponent.new(supplier_with_top_three, highlight_supplier_with_slug: supplier.slug)
+
   .cads-prose
     %p
-      = link_to("Check the full table to compare more energy suppliers", suppliers_path(country: current_country))
+      = link_to("Check the full table to compare more energy suppliers' customer service", suppliers_path(country: current_country))
 
   = render OtherScoresComponent.new(supplier)
 
