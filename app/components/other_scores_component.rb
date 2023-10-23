@@ -16,6 +16,10 @@ class OtherScoresComponent < ViewComponent::Base
   def descriptions
     [
       {
+        term: content_tag(:h3, "Customer guarantees"),
+        description: content_tag(:p, "#{supplier.guarantee_list}%")
+      },
+      {
         term: content_tag(:h3, "Emails responded to within 2 days"),
         description: content_tag(:p, "#{supplier.contact_email}%")
       },
@@ -26,10 +30,6 @@ class OtherScoresComponent < ViewComponent::Base
       {
         term: content_tag(:h3, "Average call centre wait time (minutes:seconds)"),
         description: content_tag(:p, supplier.contact_time)
-      },
-      {
-        term: content_tag(:h3, "Customers who had an accurate bill at least once a year"),
-        description: content_tag(:p, "#{supplier.bills_accuracy}%")
       }
     ]
   end

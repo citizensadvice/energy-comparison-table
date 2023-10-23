@@ -7,11 +7,12 @@ module Contentful
       @connection ||= connection
 
       tagged_variables = add_tags_to_variables(variables)
+      ranked_variables = add_top_three_ranks_to_variables(tagged_variables)
 
       response = @connection.post(api_url, {
         query: document.to_query_string,
         operationName: operation_name,
-        variables: tagged_variables,
+        variables: ranked_variables,
         context:
       }) do |req|
         req.headers["Authorization"] = "Bearer #{access_token}"
@@ -56,6 +57,14 @@ module Contentful
         variables.merge({ tag_filter: { id_contains_some: "test" } })
       else
         variables.merge({ tag_filter: { id_contains_none: "test" } })
+      end
+    end
+
+    def add_top_three_ranks_to_variables(variables)
+      if Feature.enabled? "USE_TEST_SUPPLIERS"
+        variables.merge({ top_three_ranks: [901, 902, 903] })
+      else
+        variables.merge({ top_three_ranks: [1, 2, 3] })
       end
     end
 

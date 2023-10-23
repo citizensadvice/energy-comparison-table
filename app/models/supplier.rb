@@ -6,11 +6,10 @@ class Supplier
   attr_accessor :data
 
   delegate :name, :whitelabel_supplier, :slug,
-           :rank, :previous_rank,
-           :complaints_rating, :complaints_number,
-           :contact_email, :contact_rating, :contact_time, :contact_info,
-           :bills_rating, :billing_info, :bills_accuracy,
-           :overall_rating, :data_available,
+           :rank, :complaints_rating, :complaints_number,
+           :contact_email, :contact_rating, :contact_social_media,
+           :contact_time, :contact_info, :other_contact_info, :billing_info,
+           :guarantee_rating, :guarantee_list, :overall_rating, :data_available,
            :fuel_mix, :opening_hours, to: :data
 
   def self.fetch_all

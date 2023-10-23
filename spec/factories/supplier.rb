@@ -12,18 +12,18 @@ FactoryBot.define do
     billing_info { { json: JSON.parse(File.read("spec/fixtures/billing_info.json")) } }
     opening_hours { { json: JSON.parse(File.read("spec/fixtures/opening_hours.json")) } }
     fuel_mix { { json: JSON.parse(File.read("spec/fixtures/fuel_mix.json")) } }
+    guarantee_list { { json: JSON.parse(File.read("spec/fixtures/guarantee_list.json")) } }
 
     trait :ranked do
       data_available { true }
       rank { 1 }
-      previous_rank { 2 }
       complaints_rating { 4.3 }
       complaints_number { 172 }
       contact_rating { 2.3 }
       contact_time { "03:27" }
       contact_email { 89 }
-      bills_rating { 3.4 }
-      bills_accuracy { 99 }
+      contact_social_media { "01:15:00" }
+      guarantee_rating { 3 }
       overall_rating { 4.8 }
     end
 

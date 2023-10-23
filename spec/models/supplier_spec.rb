@@ -19,7 +19,7 @@ RSpec.describe(Supplier) do
       it { is_expected.to be_present }
 
       it "returns ranked suppliers in ascending rank order" do
-        expect(all_suppliers.map(&:rank).compact).to eql [1, 2, 3, 4, 5, 6, 7]
+        expect(all_suppliers.map(&:rank).compact).to eql [901, 902, 903, 904, 905, 906, 907]
       end
 
       it "only return suppliers that have been tagged with 'test'" do
@@ -69,7 +69,7 @@ RSpec.describe(Supplier) do
     end
 
     it "returns the suppliers in order" do
-      expect(supplier_with_top_three.map(&:rank)).to eql [1, 2, 3, 6]
+      expect(supplier_with_top_three.map(&:rank)).to eql [901, 902, 903, 906]
     end
   end
 
@@ -79,14 +79,13 @@ RSpec.describe(Supplier) do
     its(:name) { is_expected.to eq "An Energy Supplier Inc" }
     its(:slug) { is_expected.to eq "an-energy-supplier-inc" }
     its(:rank) { is_expected.to eq 1 }
-    its(:previous_rank) { is_expected.to eq 2 }
     its(:complaints_rating) { is_expected.to eq 4.3 }
     its(:complaints_number) { is_expected.to eq 172 }
     its(:contact_email) { is_expected.to eq 89 }
     its(:contact_rating) { is_expected.to eq 2.3 }
+    its(:contact_social_media) { is_expected.to eq "01:15:00" }
     its(:contact_time) { is_expected.to eq "03:27" }
-    its(:bills_rating) { is_expected.to eq 3.4 }
-    its(:bills_accuracy) { is_expected.to eq 99 }
+    its(:guarantee_rating) { is_expected.to eq 3 }
     its(:overall_rating) { is_expected.to eq 4.8 }
     its(:id) { is_expected.to eq "an-energy-supplier-inc" }
 
