@@ -16,7 +16,7 @@ RSpec.describe SupplierTableComponent, type: :component do
   it { is_expected.to have_selector :columnheader, "Rank" }
   it { is_expected.to have_selector :columnheader, "Supplier" }
   it { is_expected.to have_selector :columnheader, "Fewer complaints received" }
-  it { is_expected.to have_selector :columnheader, "Response wait time" }
+  it { is_expected.to have_selector :columnheader, "Contact waiting time" }
   it { is_expected.to have_selector :columnheader, "Customer commitments" }
   it { is_expected.to have_selector :columnheader, "Overall rating" }
 end

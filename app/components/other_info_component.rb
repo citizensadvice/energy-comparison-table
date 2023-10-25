@@ -17,16 +17,20 @@ class OtherInfoComponent < ViewComponent::Base
   def descriptions
     [
       {
-        term: content_tag(:h3, "Fuel Mix"),
-        description: fuel_mix
-      },
-      {
-        term: content_tag(:h3, "Contact Information", { id: contact_details_fragment }),
+        term: content_tag(:h2, "Customer service contact details for #{supplier.name}", { id: contact_details_fragment }),
         description: contact_info
       },
       {
         term: content_tag(:h3, "Opening Hours"),
         description: opening_hours
+      },
+      {
+        term: content_tag(:h3, "Ways to contact"),
+        description: other_contact_info
+      },
+      {
+        term: content_tag(:h3, "Payment Information"),
+        description: billing_info
       }
     ].reject { |desc| desc[:description].blank? }
   end
@@ -35,11 +39,15 @@ class OtherInfoComponent < ViewComponent::Base
     renderer.render_with_breaks(supplier.contact_info)
   end
 
+  def other_contact_info
+    renderer.render_with_breaks(supplier.other_contact_info)
+  end
+
   def opening_hours
     renderer.render_with_breaks(supplier.opening_hours)
   end
 
-  def fuel_mix
-    renderer.render_without_breaks(supplier.fuel_mix)
+  def billing_info
+    renderer.render_with_breaks(supplier.billing_info)
   end
 end

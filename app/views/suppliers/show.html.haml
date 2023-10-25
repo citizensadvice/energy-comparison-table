@@ -1,6 +1,6 @@
 .supplier-detail-page
   %h1.cads-page-title
-    #{supplier.name} customer service
+    #{supplier.name}
 
   = render LocationSwitcherComponent.new(current_country:)
   = render CitizensAdviceComponents::OnThisPage.new do |c|
@@ -14,20 +14,22 @@
 
   = render ScoreSummaryComponent.new(supplier)
 
-  = render SupplierTableComponent.new(supplier_with_top_three, highlight_supplier_with_slug: supplier.slug)
-
   .cads-prose
     %p
       #{supplier.name} ranked #{supplier.rank.ordinalize} in the supplier comparison table.
 
+  = render SupplierTableComponent.new(supplier_with_top_three, highlight_supplier_with_slug: supplier.slug)
+
   .cads-prose
     %p
-      = link_to("Check the full table to compare more energy suppliers", suppliers_path(country: current_country))
+      = link_to("Check the full table to compare more energy suppliers' customer service", suppliers_path(country: current_country))
 
   = render OtherScoresComponent.new(supplier)
 
   .cads-prose
     %p
       = link_to("Find out how the scores are worked out", country_url: "/consumer/energy/energy-supply/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service1/how-the-scores-are-worked-out/")
+
+  = render FuelMixComponent.new(supplier)
 
   = render OtherInfoComponent.new(supplier)

@@ -1,6 +1,13 @@
 .other-scores {
   margin-bottom: $cads-spacing-7;
 
+  h2 {
+    @extend %cads-h2;
+
+    padding: $cads-spacing-2 0;
+    margin: 0;
+  }
+
   .descriptions__list {
     @include cads-media-breakpoint-up(md) {
       display: inline-grid;

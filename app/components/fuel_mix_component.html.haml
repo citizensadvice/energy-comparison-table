@@ -1,0 +1,9 @@
+.fuel-mix
+  .cads-prose
+    %h3
+      Fuel Mix
+    %p
+      The fuel mix is the percentage of energy sources used by this supplier. #{supplier.name} uses:
+
+    = render DescriptionListComponent.new do |c|
+      - c.with_descriptions(descriptions)
