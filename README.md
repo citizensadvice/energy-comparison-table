@@ -1,4 +1,4 @@
-# Energy Supplier Comparison Table
+# ✨ Energy Supplier Comparison Table ✨
 
 A small rails app that generates the energy supplier comparison table found in the Consumer section of Citizens Advice public site.
 
