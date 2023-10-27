@@ -4,6 +4,9 @@ metadata:
   name: {{ include "energy-comparison-table.fullname" . }}
   labels:
     {{- include "energy-comparison-table.labels" . | nindent 4 }}
+    tags.datadoghq.com/env: "test"
+    tags.datadoghq.com/service: "energy-csr-table"
+    tags.datadoghq.com/version: {{ .Values.image.tag }}
   annotations:
 {{- if .Values.annotations -}}
 {{ toYaml .Values.annotations | nindent 4 }}
@@ -17,12 +20,22 @@ spec:
       {{- include "energy-comparison-table.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{- with .Values.podAnnotations }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+        ad.datadoghq.com/energy-csr-table.logs: >-
+          [{
+              "source":"ruby",
+              "sourcecategory":"sourcecode",
+              "service":"energy-csr-table",
+              "log_processing_rules": []
+          }]
       labels:
         {{- include "energy-comparison-table.selectorLabels" . | nindent 8 }}
+        tags.datadoghq.com/env: "test"
+        tags.datadoghq.com/service: "energy-csr-table"
+        tags.datadoghq.com/version: {{ .Values.image.tag }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -37,13 +50,29 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.envVars }}
           env:
+          {{- if .Values.envVars }}
           {{- range $name, $val := .Values.envVars }}
             - name: {{ $name }}
               value: {{ $val }}
           {{ end }}
           {{- end }}
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
           {{ if .Values.secrets -}}
           envFrom:
             - secretRef:
