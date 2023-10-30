@@ -58,6 +58,9 @@ jobs:
       - name: "Rspec"
         run: bundle exec rspec
 
+      - name: "Cucumber"
+        run: bundle exec cucumber
+
   audit:
     runs-on: ubuntu-22.04
     needs: lint
