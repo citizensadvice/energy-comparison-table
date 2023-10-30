@@ -8,15 +8,17 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 This project is set up like a standard Python project.  The initialization
 process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+directory. 
 
-To manually create a virtualenv on MacOS and Linux:
+```sh
+# install python
+brew install python@3.11
 
-```
-$ python3 -m venv .venv
+# install Poetry
+curl -sSL https://install.python-poetry.org | python3 -
+
+# create venv and install the project dependencies
+$ poetry install
 ```
 
 After the init process completes and the virtualenv is created, you can use the following
@@ -32,16 +34,10 @@ If you are a Windows platform, you would activate the virtualenv like this:
 % .venv\Scripts\activate.bat
 ```
 
-Once the virtualenv is activated, you can install the required dependencies.
+At this point you can now synthesize the CloudFormation template(s) for this code.
 
 ```
-$ pip install -r requirements.txt
-```
-
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
+$ poetry run cdk synth
 ```
 
 To add additional dependencies, for example other CDK libraries, just add
