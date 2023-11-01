@@ -415,7 +415,7 @@ GEM
       tzinfo (>= 1.0.0)
     unicode-display_width (2.5.0)
     vcr (6.2.0)
-    view_component (3.6.0)
+    view_component (3.7.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -491,7 +491,7 @@ DEPENDENCIES
   sprockets-rails
   tzinfo-data
   vcr
-  view_component (~> 3.6)
+  view_component (~> 3.7)
   web-console
   webdrivers
   webmock
