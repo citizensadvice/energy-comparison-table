@@ -97,6 +97,7 @@ jobs:
           --set env.IMAGE_TAG=${{ env.IMAGE_TAG }} \
           --set ingress.hostname=${{ env.HOST_NAME }} \
           --set minio.ingress.hostname=minio-${{ env.HOST_NAME }} \
+          --set datadog.labels.env="pr-${{ github.event.pull_request.number }}" \
           ${{ env.NAMESPACE }} \
           energy-comparison-table/infrastructure/app/chart/energy-comparison-table
 

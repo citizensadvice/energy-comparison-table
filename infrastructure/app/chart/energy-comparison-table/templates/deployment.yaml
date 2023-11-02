@@ -4,7 +4,7 @@ metadata:
   name: {{ include "energy-comparison-table.fullname" . }}
   labels:
     {{- include "energy-comparison-table.labels" . | nindent 4 }}
-    tags.datadoghq.com/env: "test"
+    tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
     tags.datadoghq.com/service: "energy-csr-table"
     tags.datadoghq.com/version: {{ .Values.image.tag }}
   annotations:
@@ -33,7 +33,7 @@ spec:
           }]
       labels:
         {{- include "energy-comparison-table.selectorLabels" . | nindent 8 }}
-        tags.datadoghq.com/env: "test"
+        tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
         tags.datadoghq.com/service: "energy-csr-table"
         tags.datadoghq.com/version: {{ .Values.image.tag }}
     spec:
