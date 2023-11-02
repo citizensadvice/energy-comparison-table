@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Share a service name in order to group all integrations
-service_name = "energy-csr-table"
+service_name = ENV.fetch("DD_SERVICE", "energy-csr-table")
 ci_test = ENV.fetch("CI_TEST", false)
 SemanticLogger.application = service_name
 
