@@ -83,3 +83,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+datadog:
+  labels:
+    env: ""

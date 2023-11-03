@@ -8,6 +8,8 @@ Implemented as part of epic [OPS-4891](https://citizensadvice.atlassian.net/brow
 
 For a diagrammatic representation of the review app workflows, please see [this Confluence document](https://citizensadvice.atlassian.net/wiki/spaces/OPS/pages/3479699470/Review+Apps#Workflow-Diagrams).
 
+Once a review app has been deployed, you can view logs and traces in Datadog by adding a filter like `env:pr-1234`, using the pull request number. Example: https://app.datadoghq.eu/apm/traces?query=service%3Aenergy-csr-table%20env%3Apr-157
+
 ### review-app-create
 
 Used to create or a update a review app environment. It is triggered if a pull request that is labeled with `Review app`, is pushed to, marked as ready for review.
