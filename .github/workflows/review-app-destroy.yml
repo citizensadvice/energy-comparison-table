@@ -24,7 +24,7 @@ jobs:
       contents: read
       issues: write
       pull-requests: write
-    if: github.event.label.name == 'Review app' || env.PR_NUMBER
+    if: github.event.label.name == 'Review app' || inputs.pr_number
     steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
