@@ -16,3 +16,10 @@ Lint/MissingSuper:
     # See https://github.com/ViewComponent/view_component/discussions/1545
     # See https://github.com/citizensadvice/design-system/pull/2416
     - "app/components/**/*.rb"
+
+Lint/UnusedBlockArgument:
+  Exclude:
+    # Cucumber's 'Around' hook needs arguments of 'scenario' & 'block' to work
+    # It reads 'scenario' from the .feature files, but rubocop interprets
+    # 'scenario' as an unused block argument
+    - "features/support/hooks.rb"
