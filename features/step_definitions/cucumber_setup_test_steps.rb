@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Given("I am on the Energy Supplier Table page") do
+Given("I am on the Energy Comparison Table page") do
   visit "/"
 end
 
