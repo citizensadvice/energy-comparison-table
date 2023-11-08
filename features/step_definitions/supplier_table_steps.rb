@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Given("I am on the Energy Supplier Table page") do
-  visit "/"
+  visit CSR_APP_PATH
 end
 
 Then("I should see a table of ranked energy suppliers") do
