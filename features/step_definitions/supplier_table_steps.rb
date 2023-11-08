@@ -9,14 +9,11 @@ Then("the current path should be {string}") do |path|
 end
 
 And("I should see a table of ranked energy suppliers") do
-  Capybara.using_wait_time(5) do
-    puts "***********************"
-    puts page.body
-    expect(page).to have_css "[data-testid='supplier-table']"
-  end
+  puts page.body
+  expect(page).to have_css "[data-testid='supplier-table']"
 end
 
-And("I select a supplier from the table") do
+When("I select a supplier from the table") do
   big_energy_inc = find("[data-testid='supplier-big-energy-inc']")
   within(big_energy_inc) do
     click_on "More details"
