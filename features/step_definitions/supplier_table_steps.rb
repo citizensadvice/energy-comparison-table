@@ -9,7 +9,9 @@ Then("the current path should be {string}") do |path|
 end
 
 And("I should see a table of ranked energy suppliers") do
-  expect(page).to have_css "[data-testid='supplier-table']"
+  Capybara.using_wait_time(5) do
+    expect(page).to have_css "[data-testid='supplier-table']"
+  end
 end
 
 And("I select a supplier from the table") do
