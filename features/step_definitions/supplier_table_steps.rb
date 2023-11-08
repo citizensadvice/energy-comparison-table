@@ -10,6 +10,8 @@ end
 
 And("I should see a table of ranked energy suppliers") do
   Capybara.using_wait_time(5) do
+    puts "***********************"
+    puts page.body
     expect(page).to have_css "[data-testid='supplier-table']"
   end
 end
