@@ -4,7 +4,11 @@ Given("I am on the Energy Supplier Table page") do
   visit CSR_APP_PATH
 end
 
-Then("I should see a table of ranked energy suppliers") do
+Then("the current path should be {string}") do |path|
+  expect(page).to have_current_path(path)
+end
+
+And("I should see a table of ranked energy suppliers") do
   expect(page).to have_css "[data-testid='supplier-table']"
 end
 

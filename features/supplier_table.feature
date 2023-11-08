@@ -2,7 +2,10 @@ Feature: Energy Comparison Table
 
   Scenario: User can view detailed information for a ranked supplier
     Given I am on the Energy Supplier Table page
-    Then I should see a table of ranked energy suppliers
+    Then the current path should be "/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/"
+    And I should see "We will publish updated scores for the following 3 months in March 2024"
+    And I should see "Customer commitments"
+    And I should see a table of ranked energy suppliers
     And I select a supplier from the table
     Then I am taken to the supplier detail page
 
