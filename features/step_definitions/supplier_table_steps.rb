@@ -5,6 +5,7 @@ Given("I am on the Energy Supplier Table page") do
 end
 
 Then("the current path should be {string}") do |path|
+  puts page.current_url
   expect(page).to have_current_path(path)
 end
 
