@@ -10,7 +10,6 @@ Then("the current path should be {string}") do |path|
 end
 
 And("I should see a table of ranked energy suppliers") do
-  puts page.body
   expect(page).to have_css "[data-testid='supplier-table']"
 end
 
