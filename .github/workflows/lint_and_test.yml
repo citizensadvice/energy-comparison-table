@@ -81,6 +81,8 @@ jobs:
 
   feature-test:
     runs-on: ubuntu-22.04
+    env:
+      RAILS_ENV: test
     needs: lint
     steps:
       - name: "Checkout"
@@ -103,4 +105,11 @@ jobs:
         run: bundle exec rails assets:precompile
 
       - name: "Cucumber"
-        run: bundle exec cucumber
+        run: bundle exec cucumber --backtrace
+
+      # Archive test logs
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: test-logs
+          path: ./log/test.log
