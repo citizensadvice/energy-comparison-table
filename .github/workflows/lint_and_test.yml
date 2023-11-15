@@ -83,6 +83,9 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       RAILS_ENV: test
+      CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
+      CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+      CONTENTFUL_ENVIRONMENT_ID: ${{ secrets.CONTENTFUL_ENVIRONMENT_ID }}
     needs: lint
     steps:
       - name: "Checkout"
