@@ -112,4 +112,5 @@ jobs:
         if: failure()
         with:
           name: test-logs
-          path: /log/test.log
+          path: ./log/test.log
+          retention-days: 7
