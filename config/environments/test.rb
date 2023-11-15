@@ -54,5 +54,8 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
+  # Explicitly set logging level to :debug
+  config.log_level = :debug
+
   Rails.application.config.hosts << "www.example.com"
 end
