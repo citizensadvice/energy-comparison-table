@@ -24,5 +24,21 @@ And("I click to check the full table to compare more energy suppliers") do
 end
 
 Then("I am returned to the Energy Supplier Table page") do
-  expect(page).to have_css '.cads-page-title', text: "Compare energy suppliers' customer service"
+  expect(page).to have_css ".cads-page-title", text: "Compare energy suppliers' customer service"
+end
+
+When("I select an unranked supplier from the dropdown") do
+  within(".unranked-suppliers__form") do
+    select("Beach Kenergy", from: "id-input")
+  end
+end
+
+And("I click the {string} button") do |text|
+  within(".unranked-suppliers__form") do
+    click_button text
+  end
+end
+
+Then("I am shown more information about that supplier on the current page") do
+  expect(page).to have_css("[data-testid='unranked-supplier-details-beach-kenergy']")
 end

@@ -10,11 +10,10 @@ Feature: Energy Comparison Table
     And I click to check the full table to compare more energy suppliers
     Then I am returned to the Energy Supplier Table page
 
-  @wip
   Scenario: User can view more information about an unranked supplier
     Given I am on the Energy Supplier Table page
-    And I select an unranked supplier from the dropdown
-    And I click ‘Select’
+    When I select an unranked supplier from the dropdown
+    And I click the "Search" button
     Then I am shown more information about that supplier on the current page
 
   @wip
