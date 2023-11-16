@@ -81,6 +81,7 @@ jobs:
 
   feature-test:
     runs-on: ubuntu-22.04
+    environment: dev
     env:
       RAILS_ENV: test
       CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
