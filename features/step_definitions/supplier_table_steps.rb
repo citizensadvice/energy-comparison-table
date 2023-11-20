@@ -65,7 +65,7 @@ Then("I am shown a condensed navigation bar") do
   expect(page).to have_css ".cads-greedy-nav-has-dropdown"
 end
 
-When("I click on {string}")do |text|
+When("I click on {string}") do |text|
   within(".cads-navigation") do
     click_button text
   end

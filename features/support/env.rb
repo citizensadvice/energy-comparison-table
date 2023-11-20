@@ -15,7 +15,6 @@ require_relative "hooks"
 require_relative "helpers/env_variables"
 require_relative "driver"
 
-
 World(
   Helpers::EnvVariables,
   Capybara::RSpecMatcherProxies
