@@ -60,3 +60,21 @@ end
 Then("I am shown the full supplier table") do
   expect(page).to have_css ".supplier-table__row--hidden", count: 0
 end
+
+Then("I am shown a condensed navigation bar") do
+  expect(page).to have_css ".cads-greedy-nav-has-dropdown"
+end
+
+When("I click on {string}")do |text|
+  within(".cads-navigation") do
+    click_button text
+  end
+end
+
+Then("the missing navigation titles are shown in a dropdown") do
+  expect(page).to have_css("[class='cads-greedy-nav__dropdown show']")
+end
+
+Then("the navigation dropdown is closed") do
+  expect(page).not_to have_css("[class='cads-greedy-nav__dropdown show']")
+end

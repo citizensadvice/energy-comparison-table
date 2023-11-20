@@ -25,12 +25,11 @@ Feature: Energy Comparison Table
     When I click on Show "fewer" suppliers
     Then I am shown a shortened supplier table
 
-  @wip
   Scenario: Mobile user has condensed navigation bar
     Given I am on the Energy Supplier Table page
     And I am using a mobile device
     Then I am shown a condensed navigation bar
-    When I click on ‘More’
+    When I click on "More"
     Then the missing navigation titles are shown in a dropdown
-    When I click on ‘Close’
-    Then the navigation dropdown closes
+    When I click on "Close"
+    Then the navigation dropdown is closed
