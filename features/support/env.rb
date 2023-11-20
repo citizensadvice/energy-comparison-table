@@ -5,10 +5,23 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
+require "dotenv"
+Dotenv.load(".env")
 
 require "cucumber/rails"
+require "selenium-webdriver"
 
-# frozen_string_literal: true
+require_relative "hooks"
+require_relative "helpers/env_variables"
+require_relative "driver"
+
+
+World(
+  Helpers::EnvVariables,
+  Capybara::RSpecMatcherProxies
+)
+
+Driver.new.register
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
