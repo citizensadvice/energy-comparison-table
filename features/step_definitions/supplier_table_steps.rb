@@ -42,3 +42,21 @@ end
 Then("I am shown more information about that supplier on the current page") do
   expect(page).to have_css("[data-testid='unranked-supplier-details-beach-kenergy']")
 end
+
+And("I am using a mobile device") do
+  Capybara.current_window.resize_to(360, 640)
+end
+
+Then("I am shown a shortened supplier table") do
+  expect(page).to have_css ".supplier-table__row", count: 5
+end
+
+When("I click on Show {string} suppliers") do |text|
+  within(".supplier-table--show-#{text}") do
+    click_button "Show #{text} suppliers"
+  end
+end
+
+Then("I am shown the full supplier table") do
+  expect(page).to have_css ".supplier-table__row--hidden", count: 0
+end

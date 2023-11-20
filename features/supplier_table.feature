@@ -16,14 +16,13 @@ Feature: Energy Comparison Table
     And I click the "Search" button
     Then I am shown more information about that supplier on the current page
 
-  @wip
   Scenario: Mobile user has a shortened supplier table
     Given I am on the Energy Supplier Table page
     And I am using a mobile device
     Then I am shown a shortened supplier table
-    When I click on ‘Show more suppliers’
+    When I click on Show "more" suppliers
     Then I am shown the full supplier table
-    When I click on ‘Show fewer suppliers’
+    When I click on Show "fewer" suppliers
     Then I am shown a shortened supplier table
 
   @wip
@@ -31,7 +30,7 @@ Feature: Energy Comparison Table
     Given I am on the Energy Supplier Table page
     And I am using a mobile device
     Then I am shown a condensed navigation bar
-    When I click on on ‘More’
+    When I click on ‘More’
     Then the missing navigation titles are shown in a dropdown
     When I click on ‘Close’
     Then the navigation dropdown closes
