@@ -27,10 +27,11 @@ class Driver
 
   def chrome_options
     opts = Selenium::WebDriver::Chrome::Options.new
-    opts.add_argument("--headless") unless ci?
     opts.add_argument("--no-sandbox")
+    opts.add_argument("--headless") unless ci?
     opts.add_argument("--disable-gpu")
     opts.add_argument("--disable-dev-shm-usage")
+    opts.add_argument("--remote-debugging-port=9222")
     opts.binary("/usr/bin/google-chrome")
     opts
   end

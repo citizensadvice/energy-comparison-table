@@ -11,7 +11,7 @@ module Helpers
     end
 
     def ci?
-      ENV.fetch("CI", "false").to_sym
+      ENV.fetch("CI")
     end
   end
 end
