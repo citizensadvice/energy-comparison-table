@@ -88,6 +88,7 @@ jobs:
       CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
       CONTENTFUL_ENVIRONMENT_ID: ${{ secrets.CONTENTFUL_ENVIRONMENT_ID }}
       TESTING_BASE_URL: ${{ secrets.TESTING_BASE_URL }}
+      CI: true
     needs: lint
     steps:
       - name: "Checkout"

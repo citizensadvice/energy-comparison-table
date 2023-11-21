@@ -9,5 +9,9 @@ module Helpers
     def base_url
       ENV.fetch("TESTING_BASE_URL")
     end
+
+    def ci?
+      ENV.fetch("CI", "false").to_sym
+    end
   end
 end
