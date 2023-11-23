@@ -5,13 +5,11 @@ Feature: Energy Comparison Table
     When I select a supplier from the table
     Then I am taken to the supplier detail page
 
-  @wip
   Scenario: User can return to the Energy Supplier Table page
     Given I am on a supplier detail page
     And I click to check the full table to compare more energy suppliers
     Then I am returned to the Energy Supplier Table page
 
-  @wip
   Scenario: User can view more information about an unranked supplier
     Given I am on the Energy Supplier Table page
     When I select an unranked supplier from the dropdown
