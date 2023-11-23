@@ -110,6 +110,9 @@ jobs:
       - name: "Precompile assets"
         run: bundle exec rails assets:precompile
 
+      - name: "Start rails server"
+        run: bundle exec rails s
+
       - name: "Cucumber"
         run: bundle exec cucumber
 
