@@ -5,5 +5,5 @@ Given("I am on the Energy Supplier Table page") do
 end
 
 Then("I should see {string}") do |text|
-  page.has_text?(text)
+  expect(page).to have_text(text)
 end
