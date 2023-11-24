@@ -12,7 +12,7 @@ module DataLayer
         pageType: "Customer Service Ratings Page",
         # language confusingly represents the current country: England, Wales etc.
         # but needs to have this name to match up with Episerver page data.
-        language: @page.try(:current_country).to_s.capitalize
+        language: helpers.current_country.to_s.capitalize
       }
     end
     helper_method :data_layer_properties
