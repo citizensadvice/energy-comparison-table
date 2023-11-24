@@ -18,7 +18,7 @@ class SupplierTableRowComponent < ViewComponent::Base
   end
 
   def row_classes
-    classes = %w[supplier-table__row]
+    classes = %w[supplier-table__row gtm-supplier-table-row]
     classes << "supplier-table__row--highlight" if highlight?
     classes << "supplier-table__row--top-border" if apply_top_border?
     classes
