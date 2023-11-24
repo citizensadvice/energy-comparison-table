@@ -81,6 +81,12 @@ jobs:
 
   feature-test:
     runs-on: ubuntu-22.04
+    environment: dev
+    env:
+      RAILS_ENV: test
+      CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
+      CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+      CONTENTFUL_ENVIRONMENT_ID: ${{ secrets.CONTENTFUL_ENVIRONMENT_ID }}
     needs: lint
     steps:
       - name: "Checkout"
@@ -104,3 +110,11 @@ jobs:
 
       - name: "Cucumber"
         run: bundle exec cucumber
+
+      # Archive test logs
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: test-logs
+          path: ./log/test.log
+          retention-days: 7

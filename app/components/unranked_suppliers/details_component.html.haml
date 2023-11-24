@@ -1,5 +1,5 @@
 .unranked-supplier__details.cads-prose
-  .unranked-supplier__title
+  .unranked-supplier__title{ "data-testid": "unranked-supplier-details-#{supplier.name.parameterize}" }
     = title
 
   = render DescriptionListComponent.new do |c|

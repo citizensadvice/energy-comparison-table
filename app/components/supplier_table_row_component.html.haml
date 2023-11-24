@@ -1,4 +1,4 @@
-%tr{ class: row_classes }
+%tr{ class: row_classes, "data-testid": "supplier-#{supplier.name.parameterize}" }
   %td.supplier-table__rank
     %span.cads-table__content
       = supplier.rank
