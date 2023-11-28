@@ -33,7 +33,7 @@ class OtherScoresComponent < ViewComponent::Base
 
   def complaints_number
     {
-      term: content_tag(:h3, "Complaints to Citizens Advice and the Energy Ombudsman"),
+      term: content_tag(:h3, "Complaints to Citizens Advice, Advice Direct Scotland and the Energy Ombudsman"),
       description: content_tag(:p, "#{supplier.complaints_number} per 10,000 customers")
     }
   end

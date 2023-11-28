@@ -22,7 +22,7 @@ RSpec.describe OtherScoresComponent, type: :component do
   it { is_expected.to have_text "01:15:00" }
 
   # complaints ratings
-  it { is_expected.to have_text "Complaints to Citizens Advice and the Energy Ombudsman" }
+  it { is_expected.to have_text "Complaints to Citizens Advice, Advice Direct Scotland and the Energy Ombudsman" }
   it { is_expected.to have_text "172 per 10,000 customers" }
 
   # guarantee list
