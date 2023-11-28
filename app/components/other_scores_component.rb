@@ -26,7 +26,7 @@ class OtherScoresComponent < ViewComponent::Base
 
   def guarantee_list
     {
-      term: content_tag(:h3, "Customer guarantees"),
+      term: content_tag(:h3, "Customer commitments"),
       description: content_tag(:p, guarantee_list_render)
     }
   end

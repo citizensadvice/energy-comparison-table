@@ -26,7 +26,7 @@ RSpec.describe OtherScoresComponent, type: :component do
   it { is_expected.to have_text "172 per 10,000 customers" }
 
   # guarantee list
-  it { is_expected.to have_text "Customer guarantees" }
+  it { is_expected.to have_text "Customer commitments" }
   it { is_expected.to have_text "Vulnerability Commitment" }
 
   context "when there is no supplier" do
