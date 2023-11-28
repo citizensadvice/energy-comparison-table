@@ -81,45 +81,4 @@ module FooterHelper
 
     country_advice_links(country: "/#{current_country}")
   end
-
-  # def country_advice_links(country: nil)
-  #   [
-  #     {
-  #       url: "#{country}/benefits/",
-  #       title: "Benefits"
-  #     },
-  #     {
-  #       url: "#{country}/work/",
-  #       title: "Work"
-  #     },
-  #     {
-  #       url: "#{country}/debt-and-money/",
-  #       title: "Debt and money"
-  #     },
-  #     {
-  #       url: "#{country}/consumer/",
-  #       title: "Consumer"
-  #     },
-  #     {
-  #       url: "#{country}/housing/",
-  #       title: "Housing"
-  #     },
-  #     {
-  #       url: "#{country}/family/",
-  #       title: "Family"
-  #     },
-  #     {
-  #       url: "#{country}/law-and-courts/",
-  #       title: "Law and courts"
-  #     },
-  #     {
-  #       url: "#{country}/immigration/",
-  #       title: "Immigration"
-  #     },
-  #     {
-  #       url: "#{country}/health/",
-  #       title: "Health"
-  #     }
-  #   ]
-  # end
 end
