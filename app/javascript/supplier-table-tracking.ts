@@ -1,20 +1,26 @@
+declare global {
+    interface Window {
+        // eslint-disable-next-line
+        dataLayer: Record<string, any>;
+    }
+}
+
 const initSupplierTableTracking = (): void => {
-    const supplierRow = document.querySelector<HTMLElement>(
-        '.gtm-supplier-table-row'
+    const supplierRows = document.querySelectorAll<HTMLElement>(
+        '.gtm-supplier-table-row',
     );
-    const supplierLink = supplierRow?.querySelector<HTMLElement>('link');
 
-    if (supplierLink && supplierRow) {
-        supplierLink.addEventListener('click', () => {
-            const supplier = supplierRow.querySelector<HTMLElement>('.supplier-table__name');
-            const supplierText = supplier?.innerText;
-
+    supplierRows?.forEach((row) => {
+        const supplierLink = row.querySelector('a');
+        const supplier = row.querySelector<HTMLElement>('.supplier-table__name');
+        const supplierText = supplier?.innerText;
+        supplierLink?.addEventListener('click', () => {
             window.dataLayer.push({
-                event: 'supplierMoreDetailsSelection',
+                event: 'supplierDetailsSelection',
                 supplier_name: supplierText
             });
         });
-    }
+    });
 };
 
 export default initSupplierTableTracking;
