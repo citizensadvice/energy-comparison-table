@@ -40,14 +40,14 @@ class OtherScoresComponent < ViewComponent::Base
 
   def contact_time
     {
-      term: content_tag(:h3, "Average call centre wait time (minutes and seconds)"),
+      term: content_tag(:h3, "Average call centre wait time (hours, minutes and seconds)"),
       description: content_tag(:p, supplier.contact_time)
     }
   end
 
   def contact_social_media
     {
-      term: content_tag(:h3, "Average response time to social media messages (hours and minutes)"),
+      term: content_tag(:h3, "Average response time to social media messages (hours, minutes and seconds)"),
       description: content_tag(:p, supplier.contact_social_media)
     }
   end
