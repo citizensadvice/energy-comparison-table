@@ -20,7 +20,7 @@ FactoryBot.define do
       complaints_rating { 4.3 }
       complaints_number { 172 }
       contact_rating { 2.3 }
-      contact_time { "03:27" }
+      contact_time { "00:03:27" }
       contact_email { 89 }
       contact_social_media { "01:15:00" }
       guarantee_rating { 3 }
