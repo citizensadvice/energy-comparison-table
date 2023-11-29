@@ -5,7 +5,7 @@ module FooterHelper
     [
       {
         title: "Advice",
-        links: navigation_links
+        links: advice_links
       },
       {
         title: "Resources and tools",
@@ -46,7 +46,7 @@ module FooterHelper
     [
       {
         title: "Advice",
-        links: navigation_links
+        links: advice_links
       },
       {
         title: "Resources and tools",
@@ -74,5 +74,11 @@ module FooterHelper
         ]
       }
     ]
+  end
+
+  def advice_links
+    return country_advice_links if current_country.blank?
+
+    country_advice_links(country: "/#{current_country}")
   end
 end

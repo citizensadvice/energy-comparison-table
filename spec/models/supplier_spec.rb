@@ -84,7 +84,7 @@ RSpec.describe(Supplier) do
     its(:contact_email) { is_expected.to eq 89 }
     its(:contact_rating) { is_expected.to eq 2.3 }
     its(:contact_social_media) { is_expected.to eq "01:15:00" }
-    its(:contact_time) { is_expected.to eq "03:27" }
+    its(:contact_time) { is_expected.to eq "00:03:27" }
     its(:guarantee_rating) { is_expected.to eq 3 }
     its(:overall_rating) { is_expected.to eq 4.8 }
     its(:id) { is_expected.to eq "an-energy-supplier-inc" }

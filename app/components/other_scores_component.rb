@@ -26,28 +26,28 @@ class OtherScoresComponent < ViewComponent::Base
 
   def guarantee_list
     {
-      term: content_tag(:h3, "Customer guarantees"),
+      term: content_tag(:h3, "Customer commitments"),
       description: content_tag(:p, guarantee_list_render)
     }
   end
 
   def complaints_number
     {
-      term: content_tag(:h3, "Complaints to Citizens Advice and the Energy Ombudsman"),
+      term: content_tag(:h3, "Complaints to Citizens Advice, Advice Direct Scotland and the Energy Ombudsman"),
       description: content_tag(:p, "#{supplier.complaints_number} per 10,000 customers")
     }
   end
 
   def contact_time
     {
-      term: content_tag(:h3, "Average call centre wait time (minutes and seconds)"),
+      term: content_tag(:h3, "Average call centre wait time (hours, minutes and seconds)"),
       description: content_tag(:p, supplier.contact_time)
     }
   end
 
   def contact_social_media
     {
-      term: content_tag(:h3, "Average response time to social media messages (hours and minutes)"),
+      term: content_tag(:h3, "Average response time to social media messages (hours, minutes and seconds)"),
       description: content_tag(:p, supplier.contact_social_media)
     }
   end

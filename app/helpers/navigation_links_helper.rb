@@ -2,12 +2,19 @@
 
 module NavigationLinksHelper
   def navigation_links
-    return country_navigation_links if current_country.blank?
+    return country_advice_links << more_from_us_link if current_country.blank?
 
-    country_navigation_links(country: "/#{current_country}")
+    country_advice_links(country: "/#{current_country}") << more_from_us_link(country: "/#{current_country}")
   end
 
-  def country_navigation_links(country: nil)
+  def more_from_us_link(country: nil)
+    {
+      url: "#{country}/about-us/",
+      title: "More from us"
+    }
+  end
+
+  def country_advice_links(country: nil)
     [
       {
         url: "#{country}/benefits/",
@@ -44,10 +51,6 @@ module NavigationLinksHelper
       {
         url: "#{country}/health/",
         title: "Health"
-      },
-      {
-        url: "#{country}/about-us/",
-        title: "More from us"
       }
     ]
   end
