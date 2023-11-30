@@ -6,6 +6,7 @@
 # See the Securing Rails Applications Guide for more information:
 # https://guides.rubyonrails.org/security.html#content-security-policy-header
 
+# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   config.content_security_policy do |policy|
     merge_into = lambda { |directive, *args|
@@ -61,6 +62,7 @@ Rails.application.configure do
     # Geolocation - NP-3018
     merge_into[:script_src, "'sha256-MtkotRM6KOAOo1saTZwgZ8kKWigT1Za4LlZ205dKQFo='"]
   end
+  # rubocop:enable Metrics/BlockLength
 
   # Generate session nonces for permitted importmap and inline scripts
   config.content_security_policy_nonce_generator = ->(_request) { SecureRandom.base64(16) }
