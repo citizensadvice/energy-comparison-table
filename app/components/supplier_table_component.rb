@@ -11,7 +11,7 @@ class SupplierTableComponent < ViewComponent::Base
   end
 
   def show_more_button_classes
-    base_button_classes << "js-show-more-suppliers"
+    base_button_classes << "js-show-more-suppliers" << "gtm-show-more-suppliers"
   end
 
   def show_fewer_button_classes
