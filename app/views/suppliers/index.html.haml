@@ -26,7 +26,7 @@
 
 %form.unranked-suppliers__form
   = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: unranked_supplier&.slug)
-  = render CitizensAdviceComponents::Button.new(variant: :primary, type: :submit) do
+  = render CitizensAdviceComponents::Button.new(variant: :primary, attributes: { class: unranked_supplier_button_classes }, type: :submit) do
     Search
 
 = render UnrankedSuppliers::DetailsComponent.new(unranked_supplier)
