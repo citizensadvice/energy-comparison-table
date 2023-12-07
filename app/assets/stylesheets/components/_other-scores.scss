@@ -24,13 +24,6 @@
       margin: 0;
     }
 
-    @include cads-media-breakpoint-up(md) {
-      border-bottom: $cads-border-width-small solid #a5c3cf;
-      padding-right: cads-rem(50px);
-    }
-  }
-
-  .descriptions__term {
     p {
       @extend %cads-paragraph;
 
