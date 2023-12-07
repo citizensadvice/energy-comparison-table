@@ -7,6 +7,7 @@ class SuppliersController < ApplicationController
   before_action :set_supplier, only: :show
   before_action :set_suppliers, :set_unranked_supplier, only: :index
   before_action :set_page_meta_tags, :set_swiftype_meta_tags
+  after_action :cache_control_header
 
   attr_accessor :supplier, :unranked_supplier
 
@@ -81,5 +82,15 @@ class SuppliersController < ApplicationController
         pageType: "Energy Customer Service Ratings - #{supplier.name}"
       }
     end
+  end
+  
+  def cache_control_header
+    # But do cache at the CDN level via s-maxage.
+    expires_in(
+      5.minutes,
+      public: true,
+      "s-maxage": 5.minutes,
+      must_revalidate: true
+    )
   end
 end
