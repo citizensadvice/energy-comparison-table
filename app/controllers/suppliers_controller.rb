@@ -85,7 +85,6 @@ class SuppliersController < ApplicationController
   end
   
   def cache_control_header
-    # But do cache at the CDN level via s-maxage.
     expires_in(
       5.minutes,
       public: true,
