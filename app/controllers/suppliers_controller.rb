@@ -68,4 +68,18 @@ class SuppliersController < ApplicationController
 
     "#{supplier.name} customer service performance"
   end
+
+  def custom_data_layer_properties
+    if supplier.blank?
+      {
+        pageTemplate: "Energy Customer Service Ratings Table",
+        pageType: "Energy Customer Service Ratings Table"
+      }
+    else
+      {
+        pageTemplate: "Energy Customer Service Ratings - #{supplier.name}",
+        pageType: "Energy Customer Service Ratings - #{supplier.name}"
+      }
+    end
+  end
 end

@@ -27,4 +27,12 @@ module ContentHelper
 
     "/#{current_country}#{path}"
   end
+
+  def unranked_supplier_button_classes
+    %w[
+      cads-button
+      cads-button__primary
+      gtm-select-unranked-supplier
+    ]
+  end
 end

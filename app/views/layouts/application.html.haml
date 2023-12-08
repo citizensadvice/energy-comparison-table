@@ -13,11 +13,11 @@
       - swiftype_meta.each do |item|
         %meta.swiftype{ name: item[:name], data: { type: item[:type] }, content: item[:content] }
 
-    = stylesheet_link_tag "application"
-
     %script{ id: "script-no-js", nonce: content_security_policy_nonce }
       document.querySelector('html').classList.remove('no-js');
     = render "shared/head_analytics"
+
+    = stylesheet_link_tag "application"
 
   %body{ class: ("cas" if scotland?) }
     = render "shared/google_tag_manager_no_script"
