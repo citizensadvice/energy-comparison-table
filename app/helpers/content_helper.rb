@@ -29,13 +29,10 @@ module ContentHelper
   end
 
   def unranked_supplier_button_classes
-    base_button_classes_primary << "gtm-select-unranked-supplier"
-  end
-
-  def base_button_classes_primary
     %w[
       cads-button
       cads-button__primary
+      gtm-select-unranked-supplier
     ]
   end
 end
