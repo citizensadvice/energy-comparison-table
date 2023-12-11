@@ -75,7 +75,6 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
     "Cache-Control": "public, max-age=#{1.year.to_i}, immutable"

@@ -83,7 +83,7 @@ class SuppliersController < ApplicationController
       }
     end
   end
-  
+
   def cache_control_header
     expires_in(
       5.minutes,
