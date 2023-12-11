@@ -73,5 +73,7 @@ module EnergyComparisonTable
         ddsource: ["ruby"]
       }
     end
+
+    config.session_store :disabled
   end
 end
