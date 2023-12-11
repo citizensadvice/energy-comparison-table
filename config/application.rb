@@ -73,9 +73,5 @@ module EnergyComparisonTable
         ddsource: ["ruby"]
       }
     end
-
-    config.public_file_server.headers = {
-      "Cache-Control": "public, max-age #{1.year.to_i}, immutable"
-    }
   end
 end
