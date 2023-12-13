@@ -12,3 +12,8 @@ ingress:
 
 envVars:
   RAILS_ENV: production
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 8
