@@ -32,7 +32,9 @@ module MetaTagsHelper
   end
 
   def format_canonical_url
-    url = request.url.split("?")[0]
-    url.ends_with?("/") ? url : "#{url}/"
+    path = request.path.split("?")[0]
+    normalised_path = path.ends_with?("/") ? path : "#{path}/"
+
+    "https://www.citizensadvice.org.uk#{normalised_path}"
   end
 end
