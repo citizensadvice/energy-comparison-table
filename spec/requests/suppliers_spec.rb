@@ -37,6 +37,12 @@ RSpec.describe "Suppliers" do
 
       expect(response).to have_http_status :successful
     end
+
+    it "contains the correct canoncial url" do
+      get CSR_APP_PATH
+
+      expect(response.body).to include("<link href='https://www.citizensadvice.org.uk#{CSR_APP_PATH}' rel='canonical'>")
+    end
   end
 
   context "when the country is Scotland" do
@@ -50,6 +56,12 @@ RSpec.describe "Suppliers" do
       get "/scotland/#{CSR_APP_PATH}/an-energy-supplier"
 
       expect(response).to have_http_status :successful
+    end
+
+    it "contains the correct canoncial url" do
+      get "/scotland/#{CSR_APP_PATH}"
+
+      expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/scotland#{CSR_APP_PATH}' rel='canonical'>")
     end
   end
 
@@ -70,6 +82,12 @@ RSpec.describe "Suppliers" do
       get "/wales/#{CSR_APP_PATH}"
 
       expect(response.body).to include("<meta class='swiftype' content='wales' data-type='string' name='audience_filter'>")
+    end
+
+    it "contains the correct canoncial url" do
+      get "/wales/#{CSR_APP_PATH}"
+
+      expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/wales#{CSR_APP_PATH}' rel='canonical'>")
     end
   end
 
