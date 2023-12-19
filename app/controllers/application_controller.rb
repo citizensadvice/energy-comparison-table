@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include SwiftypeMeta
   include DataLayer
 
+  rescue_from ActionView::Template::Error, with: :not_found
+
   def internal_server_error
     render template: "errors/500", status: :internal_server_error
   end
