@@ -66,10 +66,6 @@ module Contentful
       end
     end
 
-    def errors_present?(response)
-      response.respond_to?(:errors) && response.errors[:data].present?
-    end
-
     def log_and_reraise_error(error_type, error, error_message, expected: false)
       if expected
         Rails.logger.warn({ payload: error, message: error_message })
