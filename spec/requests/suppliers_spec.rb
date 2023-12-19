@@ -33,6 +33,12 @@ RSpec.describe "Suppliers" do
         expect(response.body).to include("<meta class='swiftype' content='england' data-type='string' name='audience_filter'>")
       end
 
+      it "contains the correct canoncial url" do
+        get CSR_APP_PATH
+
+        expect(response.body).to include("<link href='https://www.citizensadvice.org.uk#{CSR_APP_PATH}' rel='canonical'>")
+      end
+
       it "responds successfully to the unranked supplier detail route" do
         get "#{CSR_APP_PATH}/an-energy-supplier"
 
@@ -45,6 +51,12 @@ RSpec.describe "Suppliers" do
         get "/scotland/#{CSR_APP_PATH}"
 
         expect(response).to have_http_status :successful
+      end
+
+      it "contains the correct canoncial url" do
+        get "/scotland/#{CSR_APP_PATH}"
+
+        expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/scotland#{CSR_APP_PATH}' rel='canonical'>")
       end
 
       it "responds successfully to the unranked supplier detail route" do
@@ -65,6 +77,12 @@ RSpec.describe "Suppliers" do
         get "/wales/#{CSR_APP_PATH}/an-energy-supplier"
 
         expect(response).to have_http_status :successful
+      end
+
+      it "contains the correct canoncial url" do
+        get "/wales/#{CSR_APP_PATH}"
+
+        expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/wales#{CSR_APP_PATH}' rel='canonical'>")
       end
 
       it "renders the swiftype meta tags" do
