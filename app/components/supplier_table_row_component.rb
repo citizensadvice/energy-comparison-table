@@ -29,8 +29,12 @@ class SupplierTableRowComponent < ViewComponent::Base
       render ScoreComponent.new(score: supplier.overall_rating, show_decimal_score: true)
     else
       render ScoreComponent.new(score: supplier.overall_rating,
-                                show_decimal_score: true).with_content(link_to("More details",
-                                                                               supplier_path(supplier, { country: @current_country })))
+                                show_decimal_score: true).with_content(more_details_link)
     end
+  end
+
+  def more_details_link
+    link_to("More details",
+            supplier_path(supplier, { country: @current_country }), class: "gtm-#{supplier.name.parameterize}-details")
   end
 end
