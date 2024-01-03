@@ -17,18 +17,10 @@
   }
 
   .descriptions__term {
-    h3 {
-      @extend %cads-h4;
-
-      padding: $cads-spacing-4 0;
-      margin: 0;
-    }
-
     p {
       @extend %cads-paragraph;
 
       font-weight: 700;
-      line-height: 1.625rem;
       padding: $cads-spacing-4 0;
       margin: 0;
     }
@@ -51,7 +43,7 @@
     p {
       @extend %cads-paragraph;
 
-      margin-bottom: $cads-spacing-1;
+      margin-bottom: 0;
     }
   }
 }
