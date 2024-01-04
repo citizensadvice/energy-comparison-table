@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class SuppliersController < ApplicationController
+  class InvalidSupplierError < StandardError; end
+
   include SwiftypeMeta
   rescue_from Contentful::GraphqlAdapter::UnprocessableEntityError, with: :internal_server_error
   rescue_from Contentful::GraphqlAdapter::ApiError, with: :not_found
+  rescue_from InvalidSupplierError, with: :not_found
 
   before_action :set_supplier, only: :show
   before_action :set_suppliers, :set_unranked_supplier, only: :index
@@ -16,7 +19,9 @@ class SuppliersController < ApplicationController
 
   def index; end
 
-  def show; end
+  def show
+    raise InvalidSupplierError, "invalid supplier" unless @supplier
+  end
 
   private
 
