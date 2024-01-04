@@ -107,7 +107,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.2.0)
-    bigdecimal (3.1.4)
+    bigdecimal (3.1.5)
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
@@ -436,7 +436,7 @@ GEM
       tzinfo (>= 1.0.0)
     unicode-display_width (2.5.0)
     vcr (6.2.0)
-    view_component (3.8.0)
+    view_component (3.9.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -512,7 +512,7 @@ DEPENDENCIES
   sprockets-rails
   tzinfo-data
   vcr
-  view_component (~> 3.8)
+  view_component (~> 3.9)
   web-console
   webdrivers
   webmock
