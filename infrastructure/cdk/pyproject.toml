@@ -2,11 +2,11 @@
 name = "energy-comparison-table-cdk"
 version = "0.1.0"
 description = "CDK app for the Energy Comparison Table"
-authors = ["Your Name <you@example.com>"]
+authors = ["CA Content Platform Team <contentplatform@citizensadvice.org.uk>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11, <3.13"
+python = ">=3.12, <3.13"
 aws-cdk-lib = "2.103.0"
 constructs = ">=10.0.0,<11.0.0"
 pytest = "6.2.5"
