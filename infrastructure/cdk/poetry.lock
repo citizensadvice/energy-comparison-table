@@ -61,30 +61,30 @@ publication = ">=0.0.3"
 typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
-name = "aws-cdk-asset-node-proxy-agent-v5"
-version = "2.0.166"
-description = "@aws-cdk/asset-node-proxy-agent-v5"
+name = "aws-cdk-asset-node-proxy-agent-v6"
+version = "2.0.1"
+description = "@aws-cdk/asset-node-proxy-agent-v6"
 optional = false
 python-versions = "~=3.7"
 files = [
-    {file = "aws-cdk.asset-node-proxy-agent-v5-2.0.166.tar.gz", hash = "sha256:73d4a4f4bdeb3019779137e4b18d7c5efc8353dff673508bd8c584569ea18db6"},
-    {file = "aws_cdk.asset_node_proxy_agent_v5-2.0.166-py3-none-any.whl", hash = "sha256:d71d80710734c47f7114e3e51843c4a8ebae3bbe5032a5af40ca56ca611c0cfe"},
+    {file = "aws-cdk.asset-node-proxy-agent-v6-2.0.1.tar.gz", hash = "sha256:42cdbc1de2ed3f845e3eb883a72f58fc7e5554c2e0b6fcdb366c159778dce74d"},
+    {file = "aws_cdk.asset_node_proxy_agent_v6-2.0.1-py3-none-any.whl", hash = "sha256:e442673d4f93137ab165b75386761b1d46eea25fc5015e5145ae3afa9da06b6e"},
 ]
 
 [package.dependencies]
-jsii = ">=1.85.0,<2.0.0"
+jsii = ">=1.86.1,<2.0.0"
 publication = ">=0.0.3"
 typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
-name = "aws-cdk-lambda-layer-kubectl-v27"
-version = "2.0.0"
-description = "A Lambda Layer that contains kubectl v1.27"
+name = "aws-cdk-lambda-layer-kubectl-v28"
+version = "2.1.0"
+description = "A Lambda Layer that contains kubectl v1.28"
 optional = false
 python-versions = "~=3.7"
 files = [
-    {file = "aws-cdk.lambda-layer-kubectl-v27-2.0.0.tar.gz", hash = "sha256:eda4078c3c0c7a158c60ead83c410a1649839009e6636c613098c26319c6fa14"},
-    {file = "aws_cdk.lambda_layer_kubectl_v27-2.0.0-py3-none-any.whl", hash = "sha256:61b5c675ab24afef28be4f38ba2d7d77eee711019223483579e0aec3648fca9b"},
+    {file = "aws-cdk.lambda-layer-kubectl-v28-2.1.0.tar.gz", hash = "sha256:dc5c4d2c0f547561e7cb2352a4cbee79871b2635d784d6c5d905914ef2dbcf86"},
+    {file = "aws_cdk.lambda_layer_kubectl_v28-2.1.0-py3-none-any.whl", hash = "sha256:93961e17912ddc746bbe20222d57a81c90224088843a426ccbcde3bda539742e"},
 ]
 
 [package.dependencies]
@@ -96,45 +96,45 @@ typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
 name = "aws-cdk-lib"
-version = "2.90.0"
+version = "2.103.0"
 description = "Version 2 of the AWS Cloud Development Kit library"
 optional = false
 python-versions = "~=3.7"
 files = [
-    {file = "aws-cdk-lib-2.90.0.tar.gz", hash = "sha256:d99e304f96f1b04c41922cfa2fc98c1cdd7c88e45c6ebb980ecfc367cdc77e87"},
-    {file = "aws_cdk_lib-2.90.0-py3-none-any.whl", hash = "sha256:ef481a40c3ece38aeaf15706ecbfeea19860b8a7b789ea7b28056a9f456c65d1"},
+    {file = "aws-cdk-lib-2.103.0.tar.gz", hash = "sha256:20537833c3dc74223448aba9e604571ae002a86f3509daa6d0a0343d61fb36cb"},
+    {file = "aws_cdk_lib-2.103.0-py3-none-any.whl", hash = "sha256:e4db9f423506ca3bb7ded913f2bc430d5b8d4e83823d78de7fa10afc5ba8a5ba"},
 ]
 
 [package.dependencies]
 "aws-cdk.asset-awscli-v1" = ">=2.2.200,<3.0.0"
 "aws-cdk.asset-kubectl-v20" = ">=2.1.2,<3.0.0"
-"aws-cdk.asset-node-proxy-agent-v5" = ">=2.0.166,<3.0.0"
+"aws-cdk.asset-node-proxy-agent-v6" = ">=2.0.1,<3.0.0"
 constructs = ">=10.0.0,<11.0.0"
-jsii = ">=1.86.0,<2.0.0"
+jsii = ">=1.89.0,<2.0.0"
 publication = ">=0.0.3"
 typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
 name = "ca-cdk-constructs"
-version = "0.7.0"
+version = "0.8.0"
 description = "Shared CDK constructs"
 optional = false
-python-versions = "^3.10"
+python-versions = ">=3.10, <3.13"
 files = []
 develop = false
 
 [package.dependencies]
-aws-cdk-lambda-layer-kubectl-v27 = "^2.0.0"
-aws-cdk-lib = "~=2.77"
+aws-cdk-lambda-layer-kubectl-v28 = "^2.0.0"
+aws-cdk-lib = "~=2.103"
 cdk_remote_stack = "~=2.0"
-cdk8s-plus-26 = "~=2.3"
+cdk8s-plus-26 = "~=2.18"
 constructs = "~=10.1"
 
 [package.source]
 type = "git"
 url = "https://github.com/citizensadvice/ca-cdk-constructs"
-reference = "v0.7.0"
-resolved_reference = "a6ef60522b5bd1116792f5156b3caced1a623bff"
+reference = "v0.8.0"
+resolved_reference = "7579b3c06bf1cd468707609d5a924d70fa4c2880"
 
 [[package]]
 name = "cattrs"
@@ -617,4 +617,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11, <3.13"
-content-hash = "6a2b72ccc726db220be5b1265a93ba8d0cd927750006202cf2d8402d4c827238"
+content-hash = "95c946794052f9837f2745e040cecd1d32b79375ffd95b2c5dc8d5ba294a300c"
