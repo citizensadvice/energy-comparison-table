@@ -4,8 +4,6 @@ class SuppliersController < ApplicationController
   class InvalidSupplierError < StandardError; end
 
   include SwiftypeMeta
-  rescue_from Contentful::GraphqlAdapter::UnprocessableEntityError, with: :internal_server_error
-  rescue_from Contentful::GraphqlAdapter::ApiError, with: :not_found
   rescue_from InvalidSupplierError, with: :not_found
 
   before_action :set_supplier, only: :show
