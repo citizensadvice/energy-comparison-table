@@ -3,6 +3,8 @@
 module Contentful
   # https://github.com/github/graphql-client/blob/master/guides/remote-queries.md
   class GraphqlAdapter
+    class QueryError < StandardError; end
+
     def execute(document:, operation_name:, variables: {}, context: {})
       @connection ||= connection
 
@@ -16,6 +18,8 @@ module Contentful
       }) do |req|
         req.headers["Authorization"] = "Bearer #{access_token}"
       end
+
+      raise QueryError, response.errors[:data].join(", ") if errors_present?(response)
 
       response.body
     end
@@ -55,6 +59,10 @@ module Contentful
       else
         variables.merge({ top_three_ranks: [1, 2, 3], tag_filter: { id_contains_none: "test" } })
       end
+    end
+
+    def errors_present?(response)
+      response.respond_to?(:errors) && response.errors[:data].present?
     end
   end
 end

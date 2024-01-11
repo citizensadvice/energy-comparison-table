@@ -5,6 +5,7 @@ class SuppliersController < ApplicationController
 
   include SwiftypeMeta
   rescue_from InvalidSupplierError, with: :not_found
+  rescue_from Contentful::GraphqlAdapter::QueryError, with: :internal_server_error
 
   before_action :set_supplier, only: :show
   before_action :set_suppliers, :set_unranked_supplier, only: :index

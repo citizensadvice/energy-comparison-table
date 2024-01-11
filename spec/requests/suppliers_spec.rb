@@ -109,7 +109,7 @@ RSpec.describe "Suppliers" do
     context "when handling 500s" do
       before do
         # rubocop:disable RSpec/AnyInstance
-        allow_any_instance_of(SuppliersController).to receive(:index).and_raise(Contentful::GraphqlAdapter::UnprocessableEntityError)
+        allow_any_instance_of(SuppliersController).to receive(:index).and_raise(Contentful::GraphqlAdapter::QueryError)
         get "/"
         # rubocop:enable RSpec/AnyInstance
       end
