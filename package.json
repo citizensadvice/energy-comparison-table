@@ -3,9 +3,9 @@
   "private": "true",
   "dependencies": {
     "@citizensadvice/design-system": "^5.5.0-alpha.7",
-    "esbuild": "^0.19.8",
-    "eslint-plugin-import": "^2.29.0",
-    "sass": "^1.69.5"
+    "esbuild": "^0.19.11",
+    "eslint-plugin-import": "^2.29.1",
+    "sass": "^1.69.7"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
