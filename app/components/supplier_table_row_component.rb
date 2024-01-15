@@ -35,6 +35,6 @@ class SupplierTableRowComponent < ViewComponent::Base
 
   def more_details_link
     link_to("More details",
-            supplier_path(supplier, { country: @current_country }), "aria-labelledby": "More details about #{supplier.name}")
+            supplier_path(supplier, { country: @current_country }), class: "gtm-#{supplier.name.parameterize}-details", "aria-labelledby": "More details about #{supplier.name}")
   end
 end

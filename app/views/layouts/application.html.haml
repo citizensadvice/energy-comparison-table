@@ -1,5 +1,5 @@
 !!!
-%html.no-js
+%html.no-js{ lang: I18n.locale }
   %head
     %meta{ content: "text/html; charset=UTF-8", "http-equiv": "Content-Type" }
     %meta{ content: "width=device-width,initial-scale=1", name: "viewport" }
@@ -33,7 +33,7 @@
             .cads-grid-row
               %main.cads-grid-col-md-12
                 = yield
-                = render ImpactSurveyComponent.new(impact_survey_id: "J8PLH2H")
+                = render ImpactSurveyComponent.new(impact_survey_id: "PZ7TFCQ")
 
     - if scotland?
       = render FooterComponent.new(current_path: request.path,

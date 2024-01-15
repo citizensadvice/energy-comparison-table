@@ -3,7 +3,7 @@ run-name: Checking for expired review app environments
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: "0 1 * * *"
   workflow_dispatch:
 
 env:
@@ -22,9 +22,9 @@ jobs:
       matrix: ${{ steps.scan.outputs.matrix }}
     steps:
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: 'arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment'
+          role-to-assume: "arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment"
           role-session-name: energy-comparison-table-actions-workflow
           aws-region: eu-west-1
 

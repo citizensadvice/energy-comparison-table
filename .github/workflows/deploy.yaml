@@ -53,7 +53,7 @@ jobs:
               echo "$s" >> $GITHUB_ENV
           done
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: "arn:aws:iam::${{env.AWS_ACCOUNT}}:role/EnergyComparisonTableDeployment"
           role-session-name: ${{matrix.stage}}-energy-comparison-table-actions-workflow

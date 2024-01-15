@@ -59,8 +59,14 @@ class SuppliersController < ApplicationController
 
   def set_page_meta_tags
     # meta tags are set by the meta-tags gem.  See https://github.com/kpumuk/meta-tags
+    # Use existing Episerver path for favicon and touch icon
+
     set_meta_tags(
-      title: meta_title
+      title: meta_title,
+      icon: [
+        { href: "/static/layout/favicon.ico" },
+        { href: "/static/images/apple-touch-icon.png", rel: "apple-touch-icon", type: "image/png" }
+      ]
     )
   end
 

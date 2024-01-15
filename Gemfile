@@ -40,7 +40,7 @@ gem "citizens_advice_components",
     tag: "v5.5.0-alpha.7",
     glob: "engine/*.gemspec"
 
-gem "view_component", "~> 3.8"
+gem "view_component", "~> 3.9"
 
 gem "ddtrace"
 gem "factory_bot_rails"

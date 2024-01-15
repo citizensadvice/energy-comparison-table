@@ -24,7 +24,7 @@ module DataLayer
       siteType: "Public Website",
       # language confusingly represents the current country: England, Wales etc.
       # but needs to have this name to match up with Episerver page data.
-      language: helpers.current_country.to_s.capitalize
+      language: (helpers.current_country || "england").to_s.capitalize
     }
   end
 end
