@@ -4,103 +4,141 @@ require "rails_helper"
 
 RSpec.describe "Suppliers" do
   context "when visiting the suppliers route" do
-    before do
-      allow(Supplier).to receive(:fetch_all).and_return([])
-    end
-
     context "when no country is specified" do
       it "responds successfully to the suppliers route" do
-        get CSR_APP_PATH # defined in routes.rb
+        VCR.use_cassette("supplier/suppliers-index") do
+          get CSR_APP_PATH # defined in routes.rb
 
-        expect(response).to have_http_status :successful
+          expect(response).to have_http_status :successful
+        end
       end
 
-      it "render the swiftype search type advice metatag" do
-        get CSR_APP_PATH
+      it "renders the swiftype search type advice metatag" do
+        VCR.use_cassette("supplier/suppliers-index") do
+          get CSR_APP_PATH
 
-        expect(response.body).to include("<meta class='swiftype' content='advice' data-type='string' name='search_type_filter'>")
+          expect(response.body).to include("<meta class='swiftype' content='advice' data-type='string' name='search_type_filter'>")
+        end
       end
 
-      it "render the swiftype search type everything metatag" do
-        get CSR_APP_PATH
+      it "renders the correct page title" do
+        VCR.use_cassette("supplier/suppliers-index") do
+          get CSR_APP_PATH
 
-        expect(response.body).to include("<meta class='swiftype' content='everything' data-type='string' name='search_type_filter'>")
+          expect(response.body).to include("<title>Compare energy suppliers&#39; customer service - Citizens Advice</title>\n")
+        end
       end
 
-      it "render the swiftype audience england metatag" do
-        get CSR_APP_PATH
+      it "renders the swiftype search type everything metatag" do
+        VCR.use_cassette("supplier/suppliers-index") do
+          get CSR_APP_PATH
 
-        expect(response.body).to include("<meta class='swiftype' content='england' data-type='string' name='audience_filter'>")
+          expect(response.body).to include("<meta class='swiftype' content='everything' data-type='string' name='search_type_filter'>")
+        end
       end
 
-      it "contains the correct canoncial url" do
-        get CSR_APP_PATH
+      it "renders the swiftype audience england metatag" do
+        VCR.use_cassette("supplier/suppliers-index") do
+          get CSR_APP_PATH
 
-        expect(response.body).to include("<link href='https://www.citizensadvice.org.uk#{CSR_APP_PATH}' rel='canonical'>")
+          expect(response.body).to include("<meta class='swiftype' content='england' data-type='string' name='audience_filter'>")
+        end
       end
 
-      it "responds successfully to the unranked supplier detail route" do
-        get "#{CSR_APP_PATH}/an-energy-supplier"
+      it "contains the correct canonical url" do
+        VCR.use_cassette("supplier/suppliers-index") do
+          get CSR_APP_PATH
 
-        expect(response).to have_http_status :successful
+          expect(response.body).to include("<link href='https://www.citizensadvice.org.uk#{CSR_APP_PATH}' rel='canonical'>")
+        end
+      end
+
+      xit "renders 404 for an invalid path" do
+        VCR.use_cassette("supplier/path-not-found") do
+          get "#{CSR_APP_PATH}/invalid-path"
+
+          expect(response).to have_http_status :not_found
+        end
       end
     end
 
     context "when the country is Scotland" do
       it "responds successfully to the suppliers route" do
-        get "/scotland/#{CSR_APP_PATH}"
+        VCR.use_cassette("supplier/suppliers-index-scotland") do
+          get "/scotland#{CSR_APP_PATH}"
 
-        expect(response).to have_http_status :successful
+          expect(response).to have_http_status :successful
+        end
       end
 
-      it "contains the correct canoncial url" do
-        get "/scotland/#{CSR_APP_PATH}"
+      it "renders the swiftype audience scotland metatag" do
+        VCR.use_cassette("supplier/suppliers-index-scotland") do
+          get "/scotland#{CSR_APP_PATH}"
 
-        expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/scotland#{CSR_APP_PATH}' rel='canonical'>")
+          expect(response.body).to include("<meta class='swiftype' content='scotland' data-type='string' name='audience_filter'>")
+        end
       end
 
-      it "responds successfully to the unranked supplier detail route" do
-        get "/scotland/#{CSR_APP_PATH}/an-energy-supplier"
+      it "contains the correct canonical url" do
+        VCR.use_cassette("supplier/suppliers-index-scotland") do
+          get "/scotland#{CSR_APP_PATH}"
 
-        expect(response).to have_http_status :successful
+          expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/scotland#{CSR_APP_PATH}' rel='canonical'>")
+        end
+      end
+
+      xit "renders 404 for an invalid path" do
+        VCR.use_cassette("supplier/path-not-found-scotland") do
+          get "/scotland#{CSR_APP_PATH}/invalid-path"
+
+          expect(response).to have_http_status :not_found
+        end
       end
     end
 
     context "when the country is Wales" do
       it "responds successfully to the suppliers route" do
-        get "/wales/#{CSR_APP_PATH}"
+        VCR.use_cassette("supplier/suppliers-index-wales") do
+          get "/wales#{CSR_APP_PATH}"
 
-        expect(response).to have_http_status :successful
+          expect(response).to have_http_status :successful
+        end
       end
 
-      it "responds successfully to the unranked supplier detail route" do
-        get "/wales/#{CSR_APP_PATH}/an-energy-supplier"
+      it "renders the swiftype audience wales metatag" do
+        VCR.use_cassette("supplier/suppliers-index-wales") do
+          get "/wales#{CSR_APP_PATH}"
 
-        expect(response).to have_http_status :successful
+          expect(response.body).to include("<meta class='swiftype' content='wales' data-type='string' name='audience_filter'>")
+        end
       end
 
-      it "contains the correct canoncial url" do
-        get "/wales/#{CSR_APP_PATH}"
+      it "contains the correct canonical url" do
+        VCR.use_cassette("supplier/suppliers-index-wales") do
+          get "/wales#{CSR_APP_PATH}"
 
-        expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/wales#{CSR_APP_PATH}' rel='canonical'>")
+          expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/wales#{CSR_APP_PATH}' rel='canonical'>")
+        end
       end
 
-      it "renders the swiftype meta tags" do
-        get "/wales/#{CSR_APP_PATH}"
+      xit "renders 404 for an invalid path" do
+        VCR.use_cassette("supplier/path-not-found-wales") do
+          get "/wales#{CSR_APP_PATH}/invalid-path"
 
-        expect(response.body).to include("<meta class='swiftype' content='wales' data-type='string' name='audience_filter'>")
+          expect(response).to have_http_status :not_found
+        end
       end
     end
 
     context "when an invalid country is requested" do
-      it "responds successfully to the suppliers route" do
-        get "/france/#{CSR_APP_PATH}"
+      it "responds correctly to the suppliers route" do
+        get "/france#{CSR_APP_PATH}"
 
         expect(response).to have_http_status :not_found
       end
 
-      it "responds successfully to the unranked supplier detail route" do
-        get "/france/#{CSR_APP_PATH}/an-energy-supplier"
+      it "renders a 404 for an invalid path" do
+        get "/france#{CSR_APP_PATH}/invalid-path"
 
         expect(response).to have_http_status :not_found
       end
@@ -108,6 +146,7 @@ RSpec.describe "Suppliers" do
 
     context "when handling 500s" do
       before do
+        allow(Supplier).to receive(:fetch_all).and_return([])
         # rubocop:disable RSpec/AnyInstance
         allow_any_instance_of(SuppliersController).to receive(:index).and_raise(Contentful::GraphqlAdapter::QueryError)
         get CSR_APP_PATH
@@ -159,10 +198,11 @@ RSpec.describe "Suppliers" do
       end
 
       it "contains the correct canonical url" do
+        canonical_url = "<link href='https://www.citizensadvice.org.uk#{CSR_APP_PATH}big-energy-inc/details/' rel='canonical'>"
         VCR.use_cassette("supplier/big-energy-inc-details-page") do
           get "#{CSR_APP_PATH}big-energy-inc/details"
 
-          expect(response.body).to include("<link href='https://www.citizensadvice.org.uk#{CSR_APP_PATH}big-energy-inc/details/' rel='canonical'>")
+          expect(response.body).to include(canonical_url)
         end
       end
 
@@ -193,10 +233,11 @@ RSpec.describe "Suppliers" do
       end
 
       it "contains the correct canonical url" do
+        canonical_url = "<link href='https://www.citizensadvice.org.uk/scotland#{CSR_APP_PATH}big-energy-inc/details/' rel='canonical'>"
         VCR.use_cassette("supplier/big-energy-inc-details-page-scotland") do
           get "/scotland#{CSR_APP_PATH}big-energy-inc/details"
 
-          expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/scotland#{CSR_APP_PATH}big-energy-inc/details/' rel='canonical'>")
+          expect(response.body).to include(canonical_url)
         end
       end
 
@@ -227,10 +268,11 @@ RSpec.describe "Suppliers" do
       end
 
       it "contains the correct canonical url" do
+        canonical_url = "<link href='https://www.citizensadvice.org.uk/wales#{CSR_APP_PATH}big-energy-inc/details/' rel='canonical'>"
         VCR.use_cassette("supplier/big-energy-inc-details-page-wales") do
           get "/wales#{CSR_APP_PATH}big-energy-inc/details"
 
-          expect(response.body).to include("<link href='https://www.citizensadvice.org.uk/wales#{CSR_APP_PATH}big-energy-inc/details/' rel='canonical'>")
+          expect(response.body).to include(canonical_url)
         end
       end
 
