@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class SuppliersController < ApplicationController
-  class InvalidSupplierError < StandardError; end
+  class SupplierNotFoundError < StandardError; end
 
   include SwiftypeMeta
-  rescue_from InvalidSupplierError, with: :not_found
+  rescue_from SupplierNotFoundError, with: :not_found
   rescue_from Contentful::GraphqlAdapter::QueryError, with: :internal_server_error
 
   before_action :set_supplier, only: :show
@@ -19,7 +19,7 @@ class SuppliersController < ApplicationController
   def index; end
 
   def show
-    raise InvalidSupplierError, "invalid supplier" unless @supplier
+    raise SupplierNotFoundError, "Cannot find supplier with id #{params[:id]}" unless @supplier
   end
 
   private
