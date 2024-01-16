@@ -38,9 +38,6 @@ Rails.application.routes.draw do
         # full table page
         get CSR_APP_PATH, to: "suppliers#index", as: "suppliers"
 
-        # full table page with an unranked supplier details section showing
-        get "#{CSR_APP_PATH}/:id", to: "suppliers#index", as: "unranked_supplier"
-
         # details page for a ranked supplier
         get "#{CSR_APP_PATH}/:id/details", to: "suppliers#show", as: "supplier"
       end

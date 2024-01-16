@@ -53,12 +53,10 @@ RSpec.describe "Suppliers" do
         end
       end
 
-      xit "renders 404 for an invalid path" do
-        VCR.use_cassette("supplier/path-not-found") do
-          get "#{CSR_APP_PATH}/invalid-path"
+      it "renders 404 for an invalid path" do
+        get "#{CSR_APP_PATH}/invalid-path"
 
-          expect(response).to have_http_status :not_found
-        end
+        expect(response).to have_http_status :not_found
       end
     end
 
@@ -87,12 +85,10 @@ RSpec.describe "Suppliers" do
         end
       end
 
-      xit "renders 404 for an invalid path" do
-        VCR.use_cassette("supplier/path-not-found-scotland") do
-          get "/scotland#{CSR_APP_PATH}/invalid-path"
+      it "renders 404 for an invalid path" do
+        get "/scotland#{CSR_APP_PATH}/invalid-path"
 
-          expect(response).to have_http_status :not_found
-        end
+        expect(response).to have_http_status :not_found
       end
     end
 
@@ -121,12 +117,10 @@ RSpec.describe "Suppliers" do
         end
       end
 
-      xit "renders 404 for an invalid path" do
-        VCR.use_cassette("supplier/path-not-found-wales") do
-          get "/wales#{CSR_APP_PATH}/invalid-path"
+      it "renders 404 for an invalid path" do
+        get "/wales#{CSR_APP_PATH}/invalid-path"
 
-          expect(response).to have_http_status :not_found
-        end
+        expect(response).to have_http_status :not_found
       end
     end
 
