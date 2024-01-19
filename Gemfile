@@ -30,7 +30,7 @@ gem "tzinfo-data"
 
 gem "haml-rails", "~> 2.0"
 
-gem "meta-tags", "~> 2.19"
+gem "meta-tags", "~> 2.20"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
