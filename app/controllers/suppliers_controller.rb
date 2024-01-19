@@ -47,7 +47,10 @@ class SuppliersController < ApplicationController
   end
 
   def set_unranked_supplier
+    return if permitted_params[:id].blank?
+
     @unranked_supplier = unranked_suppliers.find { |s| s.slug == permitted_params[:id] }
+    raise SupplierNotFoundError, "Cannot find unranked supplier with id #{params[:id]}" unless @unranked_supplier
   end
 
   def supplier_with_top_three

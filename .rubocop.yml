@@ -23,3 +23,7 @@ Lint/UnusedBlockArgument:
     # It reads 'scenario' from the .feature files, but rubocop interprets
     # 'scenario' as an unused block argument
     - "features/support/hooks.rb"
+
+RSpec/NestedGroups:
+  # Set the max to a more reasonable limit of 4
+  Max: 4
