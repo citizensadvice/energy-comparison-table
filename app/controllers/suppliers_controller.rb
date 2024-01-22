@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class SuppliersController < ApplicationController
+  class SupplierNotFoundError < StandardError; end
+
   include SwiftypeMeta
-  rescue_from StandardError, with: :internal_server_error
+  rescue_from SupplierNotFoundError, with: :not_found
+  rescue_from Contentful::GraphqlAdapter::QueryError, with: :internal_server_error
 
   before_action :set_supplier, only: :show
   before_action :set_suppliers, :set_unranked_supplier, only: :index
@@ -15,7 +18,9 @@ class SuppliersController < ApplicationController
 
   def index; end
 
-  def show; end
+  def show
+    raise SupplierNotFoundError, "Cannot find supplier with id #{params[:id]}" unless @supplier
+  end
 
   private
 
@@ -42,7 +47,10 @@ class SuppliersController < ApplicationController
   end
 
   def set_unranked_supplier
+    return if permitted_params[:id].blank?
+
     @unranked_supplier = unranked_suppliers.find { |s| s.slug == permitted_params[:id] }
+    raise SupplierNotFoundError, "Cannot find unranked supplier with id #{params[:id]}" unless @unranked_supplier
   end
 
   def supplier_with_top_three

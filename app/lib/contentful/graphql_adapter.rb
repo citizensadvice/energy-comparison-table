@@ -3,11 +3,12 @@
 module Contentful
   # https://github.com/github/graphql-client/blob/master/guides/remote-queries.md
   class GraphqlAdapter
+    class QueryError < StandardError; end
+
     def execute(document:, operation_name:, variables: {}, context: {})
       @connection ||= connection
 
-      tagged_variables = add_tags_to_variables(variables)
-      ranked_variables = add_top_three_ranks_to_variables(tagged_variables)
+      ranked_variables = add_ranks_and_tags_to_variables(variables)
 
       response = @connection.post(api_url, {
         query: document.to_query_string,
@@ -52,19 +53,11 @@ module Contentful
       ENV.fetch("CONTENTFUL_CDA_TOKEN")
     end
 
-    def add_tags_to_variables(variables)
+    def add_ranks_and_tags_to_variables(variables)
       if Feature.enabled? "USE_TEST_SUPPLIERS"
-        variables.merge({ tag_filter: { id_contains_some: "test" } })
+        variables.merge({ top_three_ranks: [901, 902, 903], tag_filter: { id_contains_some: "test" } })
       else
-        variables.merge({ tag_filter: { id_contains_none: "test" } })
-      end
-    end
-
-    def add_top_three_ranks_to_variables(variables)
-      if Feature.enabled? "USE_TEST_SUPPLIERS"
-        variables.merge({ top_three_ranks: [901, 902, 903] })
-      else
-        variables.merge({ top_three_ranks: [1, 2, 3] })
+        variables.merge({ top_three_ranks: [1, 2, 3], tag_filter: { id_contains_none: "test" } })
       end
     end
 

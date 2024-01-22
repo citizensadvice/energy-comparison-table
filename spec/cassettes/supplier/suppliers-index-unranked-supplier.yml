@@ -42,7 +42,7 @@ http_interactions:
       Cache-Control:
       - max-age=0
       Etag:
-      - '"16004451052465511087-gzip"'
+      - '"8022128972522554932-gzip"'
       X-Contentful-Graphql-Query-Cost:
       - '300'
       X-Contentful-Route:
@@ -74,19 +74,19 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 19 Dec 2023 18:06:43 GMT
+      - Thu, 18 Jan 2024 10:14:57 GMT
       Age:
-      - '181'
+      - '339'
       X-Served-By:
-      - cache-ewr18120-EWR, cache-lcy-eglc8600072-LCY
+      - cache-ewr18120-EWR, cache-lcy-eglc8600057-LCY
       X-Cache-Hits:
-      - 0, 1
+      - 1, 2
       X-Timer:
-      - S1703009204.808218,VS0,VE6
+      - S1705572898.534517,VS0,VE0
       X-Cache:
       - HIT
       X-Contentful-Request-Id:
-      - 1d2b98fe-d511-4841-98e1-fa42d4c89d76
+      - 34f789aa-e855-46e1-8144-760c7d84737e
     body:
       encoding: UTF-8
       string: '{"data":{"energySupplierCollection":{"total":10,"items":[{"guaranteeList":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"Vulnerability
@@ -169,14 +169,6 @@ http_interactions:
         fuel: 64%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Nuclear:
         16%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Renewable:
         17%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Other:
-        4%","marks":[],"data":{}}]}]}]},{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"","marks":[],"data":{}}]}]}},"openingHours":null,"name":"Beach
-        Kenergy","whitelabelSupplier":null,"slug":"beach-kenergy","rank":null,"complaintsRating":null,"complaintsNumber":null,"contactEmail":null,"contactRating":null,"contactSocialMedia":null,"contactTime":null,"guaranteeRating":null,"overallRating":null,"dataAvailable":false,"contentfulMetadata":{"tags":[{"id":"test"}]}},{"guaranteeList":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"The\nGuarantee\nList","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"contactInfo":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"Telephone:
-        0330 1239540\nEmail: No\nWebsite: logicor-energy.co.uk\nWeb Chat: No\nRing
-        backs: Yes\nMobile hotline:  No\nMinicom / Text: No","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"otherContactInfo":null,"billingInfo":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"Direct
-        debit: Yes\nCash or cheque: No\nPrepayment: No","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"fuelMix":{"json":{"nodeType":"document","data":{},"content":[{"nodeType":"unordered-list","data":{},"content":[{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Fossil
-        fuel: 64%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Nuclear:
-        16%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Renewable:
-        17%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Other:
         4%","marks":[],"data":{}}]}]}]},{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"","marks":[],"data":{}}]}]}},"openingHours":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"Monday:
         8am - 8pm,\nTuesday: 8am - 8pm,\nWednesday: 8am - 8pm,\nThursday: 8am - 8pm,\nFriday:
         8am - 8pm,\nSaturday: 8am - 6pm,\nSunday: Closed,","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"name":"Kenergy
@@ -188,9 +180,17 @@ http_interactions:
         fuel: 64%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Nuclear:
         16%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Renewable:
         17%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Other:
+        4%","marks":[],"data":{}}]}]}]},{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"","marks":[],"data":{}}]}]}},"openingHours":null,"name":"Beach
+        Kenergy","whitelabelSupplier":null,"slug":"beach-kenergy","rank":null,"complaintsRating":null,"complaintsNumber":null,"contactEmail":null,"contactRating":null,"contactSocialMedia":null,"contactTime":null,"guaranteeRating":null,"overallRating":null,"dataAvailable":false,"contentfulMetadata":{"tags":[{"id":"test"}]}},{"guaranteeList":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"The\nGuarantee\nList","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"contactInfo":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"Telephone:
+        0330 1239540\nEmail: No\nWebsite: logicor-energy.co.uk\nWeb Chat: No\nRing
+        backs: Yes\nMobile hotline:  No\nMinicom / Text: No","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"otherContactInfo":null,"billingInfo":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"Direct
+        debit: Yes\nCash or cheque: No\nPrepayment: No","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"fuelMix":{"json":{"nodeType":"document","data":{},"content":[{"nodeType":"unordered-list","data":{},"content":[{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Fossil
+        fuel: 64%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Nuclear:
+        16%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Renewable:
+        17%","marks":[],"data":{}}]}]},{"nodeType":"list-item","data":{},"content":[{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"Other:
         4%","marks":[],"data":{}}]}]}]},{"nodeType":"paragraph","data":{},"content":[{"nodeType":"text","value":"","marks":[],"data":{}}]}]}},"openingHours":{"json":{"data":{},"content":[{"data":{},"content":[{"data":{},"marks":[],"value":"Monday:
         8am - 8pm,\nTuesday: 8am - 8pm,\nWednesday: 8am - 8pm,\nThursday: 8am - 8pm,\nFriday:
         8am - 8pm,\nSaturday: 8am - 6pm,\nSunday: Closed,","nodeType":"text"}],"nodeType":"paragraph"}],"nodeType":"document"}},"name":"Magic
         Earring Kenergy","whitelabelSupplier":null,"slug":"magic-earring-kenergy","rank":null,"complaintsRating":null,"complaintsNumber":null,"contactEmail":null,"contactRating":null,"contactSocialMedia":null,"contactTime":null,"guaranteeRating":null,"overallRating":null,"dataAvailable":false,"contentfulMetadata":{"tags":[{"id":"test"}]}}]}}}'
-  recorded_at: Tue, 19 Dec 2023 18:06:43 GMT
+  recorded_at: Thu, 18 Jan 2024 10:14:57 GMT
 recorded_with: VCR 6.2.0
