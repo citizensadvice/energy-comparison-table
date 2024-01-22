@@ -17,7 +17,7 @@ class OtherInfoComponent < ViewComponent::Base
   def descriptions
     [
       {
-        term: content_tag(:h2, "Customer service contact details for #{supplier.name}", { id: contact_details_fragment }),
+        term: content_tag(:h2, "Customer service contact details for #{supplier.name}", { id: contact_details_fragment, tabindex: -1 }),
         description: contact_info
       },
       {
