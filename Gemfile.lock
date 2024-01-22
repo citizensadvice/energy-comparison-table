@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/citizensadvice/capybara_accessible_selectors.git
-  revision: 55fa9e13f3c030787c0b36e168940dfc0ad74ebf
-  tag: v0.10.0
+  revision: 679abc42cce81b43ed81d31bbe7ad6a96dbe7fef
+  tag: v0.11.0
   specs:
-    capybara_accessible_selectors (0.10.0)
-      capybara (>= 3.36.0)
+    capybara_accessible_selectors (0.11.0)
+      capybara (~> 3.36)
 
 GIT
   remote: https://github.com/citizensadvice/citizens-advice-style-ruby.git
@@ -103,7 +103,7 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    addressable (2.8.5)
+    addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.2.0)
@@ -301,7 +301,7 @@ GEM
       slop (~> 3.0)
     psych (5.1.2)
       stringio
-    public_suffix (5.0.3)
+    public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
