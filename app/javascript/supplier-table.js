@@ -33,6 +33,8 @@ const showMoreSuppliers = () => {
 
   updateCountText(totalRows);
   showRows();
+  const showFewer = document.querySelector(selectors.showFewerButton);
+  showFewer.focus({ focusVisible: true });
 };
 
 const showFewerSuppliers = () => {
@@ -42,6 +44,8 @@ const showFewerSuppliers = () => {
 
   updateCountText(5);
   hideRows();
+  const showMore = document.querySelector(selectors.showMoreButton);
+  showMore.focus({ focusVisible: true });
 };
 
 const addButtonEventHandlers = () => {
