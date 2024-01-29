@@ -12,7 +12,7 @@ directory.
 
 ```sh
 # install python
-brew install python@3.11
+brew install python@3.12
 
 # install Poetry
 curl -sSL https://install.python-poetry.org | python3 -
