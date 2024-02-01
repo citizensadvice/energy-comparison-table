@@ -2,6 +2,8 @@
 
 A small rails app that generates the energy supplier comparison table found in the Consumer section of Citizens Advice public site.
 
+This repo contains example data for automated testing. For the latest energy supplier customer service ratings, see the Citizens Advice website. [https://www.citizensadvice.org.uk/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/](https://www.citizensadvice.org.uk/consumer/your-energy/get-a-better-energy-deal/compare-domestic-energy-suppliers-customer-service/)
+
 ## Getting started
 
 See [getting-started.md](./docs/getting-started.md)
@@ -12,7 +14,7 @@ This project uses view components for front end logic and rendering - see [view-
 
 ## Static assets
 
-See [static-assets-pipeline.md](./docs//static-asset-pipeline.md).
+See [static-assets-pipeline.md](./docs/static-asset-pipeline.md).
 
 ## GraphQL Queries
 
