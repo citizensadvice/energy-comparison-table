@@ -87,9 +87,11 @@ class SuppliersController < ApplicationController
 
   def meta_description
     # rubocop:disable Layout/LineLength
-    return "Don’t switch before you compare customer services. Large energy companies ranked by number of complaints, wait times and commitments. Check your supplier." if supplier.blank?
-
-    "Customer service contact details and scores for #{supplier.name}. Find out how well #{supplier.name} customer service performs and how to contact them."
+    if supplier.blank?
+      "Don’t switch before you compare customer services. Large energy companies ranked by number of complaints, wait times and commitments. Check your supplier."
+    else
+      "Customer service contact details and scores for #{supplier.name}. Find out how well #{supplier.name} customer service performs and how to contact them."
+    end
     # rubocop:enable Layout/LineLength
   end
 
