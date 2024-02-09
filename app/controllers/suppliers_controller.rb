@@ -71,6 +71,7 @@ class SuppliersController < ApplicationController
 
     set_meta_tags(
       title: meta_title,
+      description: meta_description,
       icon: [
         { href: "/static/layout/favicon.ico" },
         { href: "/static/images/apple-touch-icon.png", rel: "apple-touch-icon", type: "image/png" }
@@ -82,6 +83,16 @@ class SuppliersController < ApplicationController
     return "Compare energy suppliers' customer service" if supplier.blank?
 
     "#{supplier.name} customer service performance"
+  end
+
+  def meta_description
+    # rubocop:disable Layout/LineLength
+    if supplier.blank?
+      "Don’t switch before you compare customer services. Large energy companies ranked by number of complaints, wait times and commitments. Check your supplier."
+    else
+      "Customer service contact details and scores for #{supplier.name}. Find out how well #{supplier.name} customer service performs and how to contact them."
+    end
+    # rubocop:enable Layout/LineLength
   end
 
   def custom_data_layer_properties
