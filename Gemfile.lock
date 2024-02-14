@@ -200,10 +200,10 @@ GEM
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (2.2.7)
-    graphql-client (0.19.0)
+    graphql (2.2.8)
+    graphql-client (0.20.0)
       activesupport (>= 3.0)
-      graphql
+      graphql (>= 1.13.0)
     haml (6.1.2)
       temple (>= 0.8.2)
       thor
