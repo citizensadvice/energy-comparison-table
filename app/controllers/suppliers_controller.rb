@@ -99,12 +99,14 @@ class SuppliersController < ApplicationController
     if supplier.blank?
       {
         pageTemplate: "Energy Customer Service Ratings Table",
-        pageType: "Energy Customer Service Ratings Table"
+        pageType: "Energy Customer Service Ratings Table",
+        GUID: "energy-csr-table"
       }
     else
       {
         pageTemplate: "Energy Customer Service Ratings - #{supplier.name}",
-        pageType: "Energy Customer Service Ratings - #{supplier.name}"
+        pageType: "Energy Customer Service Ratings - #{supplier.name}",
+        GUID: "energy-csr-#{supplier.slug}"
       }
     end
   end
