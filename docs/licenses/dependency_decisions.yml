@@ -193,3 +193,15 @@
     :why:
     :versions: []
     :when: 2024-01-11 17:31:43.647069000 Z
+- - :approve
+  - jackspeak
+  - :who: provisional approval given by Suzanne Hamilton
+    :why: dependency for a stylelint package
+    :versions: []
+    :when: 2024-02-23 14:09:01.160861000 Z
+- - :approve
+  - path-scurry
+  - :who: provisional approval given by Suzanne Hamilton
+    :why: dependency for a stylelint package
+    :versions: []
+    :when: 2024-02-23 14:09:39.490147000 Z
