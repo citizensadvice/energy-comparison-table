@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/citizensadvice/design-system.git
-  revision: 6080fadd655898951fa2579f0d0723197badde0c
-  tag: v5.5.0-alpha.7
+  revision: 3900c39064b82f3e59d0b38c72f707bf1a21e0bf
+  tag: v5.7.0
   glob: engine/*.gemspec
   specs:
     citizens_advice_components (0.1.0)
