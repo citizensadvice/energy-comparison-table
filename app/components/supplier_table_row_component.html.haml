@@ -5,6 +5,9 @@
   %td.supplier-table__name
     %span.cads-table__content
       = supplier.name
+  %td
+    %span.cads-table__content
+      = render_overall_score
   %td.supplier-table__complaints
     %span.cads-table__content
       = render ScoreComponent.new(score: supplier.complaints_rating)
@@ -14,6 +17,3 @@
   %td.supplier-table__guarantee
     %span.cads-table__content
       = render ScoreComponent.new(score: supplier.guarantee_rating)
-  %td
-    %span.cads-table__content
-      = render_overall_score
