@@ -15,7 +15,6 @@ class FooterComponent < ViewComponent::Base
     render CitizensAdviceComponents::Footer.new do |c|
       c.with_feedback_link(url: research_uri.to_s,
                            title: @feedback_title,
-                           external: true,
                            new_tab: true)
       c.with_columns(@columns)
     end
