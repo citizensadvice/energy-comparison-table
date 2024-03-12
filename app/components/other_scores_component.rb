@@ -27,7 +27,7 @@ class OtherScoresComponent < ViewComponent::Base
   def guarantee_list
     {
       term: content_tag(:p, "Customer commitments"),
-      description: content_tag(:p, guarantee_list_render)
+      description: guarantee_list_render
     }
   end
 
@@ -60,6 +60,6 @@ class OtherScoresComponent < ViewComponent::Base
   end
 
   def guarantee_list_render
-    renderer.render_with_breaks(supplier.guarantee_list)
+    renderer.render_without_breaks(supplier.guarantee_list)
   end
 end

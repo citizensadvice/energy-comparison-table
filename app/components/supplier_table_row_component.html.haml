@@ -1,19 +1,19 @@
 %tr{ class: row_classes, "data-testid": "supplier-#{supplier.name.parameterize}" }
   %td.supplier-table__rank
-    %span.cads-table__content
+    .cads-table__content
       = supplier.rank
   %td.supplier-table__name
-    %span.cads-table__content
+    .cads-table__content
       = supplier.name
   %td.supplier-table__complaints
-    %span.cads-table__content
+    .cads-table__content
       = render ScoreComponent.new(score: supplier.complaints_rating)
   %td.supplier-table__response
-    %span.cads-table__content
+    .cads-table__content
       = render ScoreComponent.new(score: supplier.contact_rating)
   %td.supplier-table__guarantee
-    %span.cads-table__content
+    .cads-table__content
       = render ScoreComponent.new(score: supplier.guarantee_rating)
   %td
-    %span.cads-table__content
+    .cads-table__content
       = render_overall_score
