@@ -19,6 +19,7 @@ annotations:
 
 envVars:
   RAILS_ENV: production
+  USE_TEST_SUPPLIERS: ${{ vars.USE_TEST_SUPPLIERS }}
 
 autoscaling:
   enabled: true
