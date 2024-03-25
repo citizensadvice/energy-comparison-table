@@ -11,7 +11,7 @@ RSpec.describe ScoreSummaryComponent, type: :component do
     render_inline described_class.new(supplier)
   end
 
-  it { is_expected.to have_text "An Energy Supplier Inc scores for July to September 2023" }
+  it { is_expected.to have_text "An Energy Supplier Inc scores for October to December 2023" }
   it { is_expected.to have_selector ".stars", count: 4 }
 
   context "when there is no supplier" do
