@@ -34,6 +34,10 @@ module UnrankedSuppliers
           description: opening_hours
         },
         {
+          term: content_tag(:h4, "Ways to contact"),
+          description: other_contact_info
+        },
+        {
           term: content_tag(:h4, "Billing information"),
           description: billing_info
         },
@@ -46,6 +50,10 @@ module UnrankedSuppliers
 
     def contact_info
       renderer.render_with_breaks(supplier.contact_info)
+    end
+
+    def other_contact_info
+      renderer.render_with_breaks(supplier.other_contact_info)
     end
 
     def billing_info

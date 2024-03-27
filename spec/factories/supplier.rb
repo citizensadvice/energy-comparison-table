@@ -13,6 +13,7 @@ FactoryBot.define do
     opening_hours { { json: JSON.parse(File.read("spec/fixtures/opening_hours.json")) } }
     fuel_mix { { json: JSON.parse(File.read("spec/fixtures/fuel_mix.json")) } }
     guarantee_list { { json: JSON.parse(File.read("spec/fixtures/guarantee_list.json")) } }
+    other_contact_info { { json: JSON.parse(File.read("spec/fixtures/other_contact_info.json")) } }
 
     trait :ranked do
       data_available { true }

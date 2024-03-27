@@ -16,6 +16,7 @@ RSpec.describe UnrankedSuppliers::DetailsComponent, type: :component do
   it { is_expected.to have_text "some contact details" }
   it { is_expected.to have_text "some more" }
   it { is_expected.to have_selector "br" }
+  it { is_expected.to have_text "other ways to contact" }
   it { is_expected.to have_text "opening hours content" }
   it { is_expected.to have_text "fuel mix content" }
   it { is_expected.to have_text "billing info content" }
