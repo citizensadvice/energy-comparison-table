@@ -29,12 +29,12 @@ RSpec.describe DescriptionListComponent, type: :component do
   end
 
   it { is_expected.to have_text "Description list title" }
-  it { is_expected.to have_selector "dt", count: 2 }
-  it { is_expected.to have_selector "dt", text: "First term" }
-  it { is_expected.to have_selector "dt", text: "Second term" }
-  it { is_expected.to have_selector "dd", count: 2 }
-  it { is_expected.to have_selector "dd", text: "First term description" }
-  it { is_expected.to have_selector "dd", text: "Second term description" }
+  it { is_expected.to have_css "dt", count: 2 }
+  it { is_expected.to have_css "dt", text: "First term" }
+  it { is_expected.to have_css "dt", text: "Second term" }
+  it { is_expected.to have_css "dd", count: 2 }
+  it { is_expected.to have_css "dd", text: "First term description" }
+  it { is_expected.to have_css "dd", text: "Second term description" }
 
   context "when no descriptions are provided" do
     before do
@@ -45,6 +45,6 @@ RSpec.describe DescriptionListComponent, type: :component do
       end
     end
 
-    it { is_expected.not_to have_selector "body" }
+    it { is_expected.to have_no_css "body" }
   end
 end

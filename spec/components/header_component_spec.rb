@@ -11,6 +11,6 @@ RSpec.describe HeaderComponent, type: :component do
     before { render_inline component }
 
     it { is_expected.to have_link "Citizens Advice Homepage", href: "https://www.citizensadvice.org.uk" }
-    it { is_expected.to have_selector "[action='https://www.citizensadvice.org.uk/s']" }
+    it { is_expected.to have_css "[action='https://www.citizensadvice.org.uk/s']" }
   end
 end
