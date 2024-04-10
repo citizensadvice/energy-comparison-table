@@ -19,7 +19,7 @@ RSpec.describe(Supplier) do
       it { is_expected.to be_present }
 
       it "returns ranked suppliers in ascending rank order" do
-        expect(all_suppliers.map(&:rank).compact).to eql [901, 902, 903, 904, 905, 906, 907]
+        expect(all_suppliers.filter_map(&:rank)).to eql [901, 902, 903, 904, 905, 906, 907]
       end
 
       it "only return suppliers that have been tagged with 'test'" do

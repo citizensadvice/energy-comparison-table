@@ -15,7 +15,7 @@ RSpec.describe UnrankedSuppliers::DetailsComponent, type: :component do
   # content from Contentful
   it { is_expected.to have_text "some contact details" }
   it { is_expected.to have_text "some more" }
-  it { is_expected.to have_selector "br" }
+  it { is_expected.to have_css "br" }
   it { is_expected.to have_text "opening hours content" }
   it { is_expected.to have_text "fuel mix content" }
   it { is_expected.to have_text "billing info content" }
@@ -31,8 +31,8 @@ RSpec.describe UnrankedSuppliers::DetailsComponent, type: :component do
       render_inline described_class.new(build(:supplier, :missing_fuel_mix))
     end
 
-    it { is_expected.not_to have_text "Fuel mix" }
-    it { is_expected.not_to have_text "fuel mix content" }
+    it { is_expected.to have_no_text "Fuel mix" }
+    it { is_expected.to have_no_text "fuel mix content" }
   end
 
   context "when a supplier is whitelabelled" do
@@ -48,6 +48,6 @@ RSpec.describe UnrankedSuppliers::DetailsComponent, type: :component do
       render_inline described_class.new(nil)
     end
 
-    it { is_expected.not_to have_selector "body" }
+    it { is_expected.to have_no_css "body" }
   end
 end

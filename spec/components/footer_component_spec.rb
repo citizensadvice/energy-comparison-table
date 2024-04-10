@@ -39,6 +39,6 @@ RSpec.describe FooterComponent, type: :component do
   end
 
   describe "footer columns" do
-    it { is_expected.to have_selector "nav ul", count: 2 }
+    it { is_expected.to have_css "nav ul", count: 2 }
   end
 end
