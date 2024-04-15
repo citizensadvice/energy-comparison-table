@@ -202,7 +202,7 @@ GEM
       activesupport (>= 6.1)
     graphql (2.3.0)
       base64
-    graphql-client (0.21.0)
+    graphql-client (0.22.0)
       activesupport (>= 3.0)
       graphql (>= 1.13.0)
     haml (6.1.2)
