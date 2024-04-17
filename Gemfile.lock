@@ -264,7 +264,7 @@ GEM
     matrix (0.4.2)
     meta-tags (2.21.0)
       actionpack (>= 6.0.0, < 7.2)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
@@ -443,7 +443,7 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.13.0)
     vcr (6.2.0)
-    view_component (3.11.0)
+    view_component (3.12.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -519,7 +519,7 @@ DEPENDENCIES
   sprockets-rails
   tzinfo-data
   vcr
-  view_component (~> 3.11)
+  view_component (~> 3.12)
   web-console
   webdrivers
   webmock
