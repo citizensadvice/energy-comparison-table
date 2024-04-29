@@ -53,7 +53,7 @@ jobs:
           number: ${{ github.event.issue.number || github.event.pull_request.number || inputs.pr_number }}
 
       - name: Find Comment
-        uses: peter-evans/find-comment@v2
+        uses: peter-evans/find-comment@v3
         id: find-comment
         with:
           issue-number: ${{ env.PR_NUMBER }}
@@ -62,7 +62,7 @@ jobs:
           direction: last
 
       - name: Update Comment
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v4
         if: steps.find-comment.outputs.comment-id
         with:
           issue-number: ${{ env.PR_NUMBER }}
