@@ -43,7 +43,7 @@ jobs:
       name: ${{ matrix.stage }}
     steps:
       - name: Git Checkout energy comparison table
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: energy-comparison-table
       - name: Set environment variables from cdk context
