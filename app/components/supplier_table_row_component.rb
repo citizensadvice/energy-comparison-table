@@ -37,7 +37,7 @@ class SupplierTableRowComponent < ViewComponent::Base
 
   def more_details_link
     link_to("More details",
-            supplier_path(supplier, { country: @current_country }), class: more_details_class, "aria-labelledby": more_details_aria_label)
+            supplier_path(supplier, { country: @current_country }), class: more_details_class, "aria-label": more_details_aria_label)
   end
 
   def more_details_class
