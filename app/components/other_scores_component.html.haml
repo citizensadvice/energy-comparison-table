@@ -1,7 +1,7 @@
 .cads-grid-row
   .cads-grid-col-md-9
     .other-scores
-      %h2{ id: scores_fragment, tabindex: -1 } Other scores
+      %h2 Other scores
       .other-scores__descriptions
         = render DescriptionListComponent.new do |c|
           - c.with_descriptions(descriptions)

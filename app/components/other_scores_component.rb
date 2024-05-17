@@ -3,8 +3,6 @@
 class OtherScoresComponent < ViewComponent::Base
   attr_reader :supplier, :renderer
 
-  delegate :scores_fragment, to: :helpers
-
   def initialize(supplier)
     @supplier = supplier
     @renderer = Renderers::RichTextRenderer.new
