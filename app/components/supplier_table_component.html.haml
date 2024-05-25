@@ -8,6 +8,12 @@
         %th{ scope: "col" }
           .cads-table__content
             Supplier
+        %th{ scope: "col" }
+          .cads-table__content
+            .cads-hide-md-up
+              Rating
+            .cads-show-md-up
+              Overall rating
         %th.supplier-table__complaints{ scope: "col" }
           .cads-table__content
             Fewer complaints received
@@ -17,12 +23,6 @@
         %th.supplier-table__guarantee{ scope: "col" }
           .cads-table__content
             Customer commitments
-        %th{ scope: "col" }
-          .cads-table__content
-            .cads-hide-md-up
-              Rating
-            .cads-show-md-up
-              Overall rating
     %tbody.supplier-table__body
       - suppliers.each do |supplier|
         = render SupplierTableRowComponent.new(supplier, highlight: supplier.slug == highlight_supplier_with_slug, current_country:)

@@ -12,11 +12,7 @@
   .supplier-table__guarantee,
   .supplier-table__response,
   .supplier-table__complaints {
-    display: none;
-
-    @include cads-media-breakpoint-up(md) {
       display: table-cell;
-    }
   }
 
   .supplier-table__name {
