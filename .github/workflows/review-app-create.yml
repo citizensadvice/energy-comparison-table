@@ -119,7 +119,7 @@ jobs:
           body: |
             A review app has been created in the Kubernetes namespace `${{ env.NAMESPACE }}` in the `${{ env.CLUSTER }}` cluster.
 
-            It can be accessed at https://${{ env.HOST_NAME }}. Please note you will need to be assigned to the `Mokta` app in Okta Sandbox in order to sign in.
+            It can be accessed at https://${{ env.HOST_NAME }}.
 
             On first-time startup the environment may take 15-20 minutes to become accessable. Please see the [FAQ](https://citizensadvice.atlassian.net/wiki/spaces/OPS/pages/3769204741/Casebook+Review+Apps+FAQ) for more information.
 
