@@ -3,6 +3,7 @@
     display: table-cell;
     vertical-align: top;
     line-height: $cads-spacing-5;
+    white-space: nowrap;
 
     @include cads-media-breakpoint-up(md) {
       vertical-align: middle;
