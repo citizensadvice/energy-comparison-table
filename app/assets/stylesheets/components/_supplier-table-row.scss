@@ -10,14 +10,6 @@
     }
   }
 
-  .supplier-table__name {
-    max-width: 100px;
-
-    @include cads-media-breakpoint-up(md) {
-      max-width: none;
-    }
-  }
-
   .supplier-table__rank {
     text-align: center;
     font-weight: bold;

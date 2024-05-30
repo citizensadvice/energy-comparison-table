@@ -1,10 +1,8 @@
 .supplier-table {
   margin: $cads-spacing-6 0 $cads-spacing-3 0;
-  width: 768px;
 
   @include cads-media-breakpoint-up(md) {
     margin: $cads-spacing-6 0;
-    width: auto;
   }
 
   .supplier-table__head {
