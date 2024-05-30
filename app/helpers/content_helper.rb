@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module ContentHelper
-  def on_this_page_links(supplier_name)
+  def on_this_page_links(supplier_name, quarter_date)
     [
       {
         id: scores_fragment,
-        label: "#{supplier_name} score for October to December 2023"
+        label: "#{supplier_name} score for #{quarter_date.body}"
       },
       {
         id: contact_details_fragment,

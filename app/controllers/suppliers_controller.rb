@@ -8,13 +8,15 @@ class SuppliersController < ApplicationController
   rescue_from Contentful::GraphqlAdapter::QueryError, with: :internal_server_error
 
   before_action :set_supplier, only: :show
-  before_action :set_suppliers, :set_unranked_supplier, only: :index
+  before_action :set_suppliers, :set_unranked_supplier, :set_next_quarter_release, only: :index
+  before_action :set_quarter_date, only: %i[index show]
   before_action :set_page_meta_tags, :set_swiftype_meta_tags
   after_action :cache_control_header
 
-  attr_accessor :supplier, :unranked_supplier
+  attr_accessor :supplier, :unranked_supplier, :quarter_date, :next_quarter_release
 
-  helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier, :supplier_with_top_three
+  helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier, :supplier_with_top_three, :quarter_date,
+                :next_quarter_release
 
   def index; end
 
@@ -55,6 +57,14 @@ class SuppliersController < ApplicationController
 
   def supplier_with_top_three
     @supplier_with_top_three ||= Supplier.fetch_with_top_three(permitted_params[:id])
+  end
+
+  def set_quarter_date
+    @quarter_date = QuarterDate.fetch_quarter_dates_content("Energy CSR quarter dates")
+  end
+
+  def set_next_quarter_release
+    @next_quarter_release = QuarterDate.fetch_quarter_dates_content("Energy CSR next quarter release date")
   end
 
   def set_swiftype_meta_tags
