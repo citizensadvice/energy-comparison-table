@@ -15,16 +15,7 @@
 .cads-table tr:first-child th,
 .cads-table tr td {
   padding-left: $cads-spacing-3;
-}
-
-.cads-table tr:first-child th:nth-of-type(3),
-.cads-table tr:first-child th:nth-of-type(2) {
-  width: 125px;
-
-  @include cads-media-breakpoint-up(md) {
-    width: auto;
-  }
-
+  white-space: nowrap;
 }
 
 .supplier-table--show-more {
