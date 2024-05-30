@@ -60,11 +60,13 @@ class SuppliersController < ApplicationController
   end
 
   def set_quarter_date
-    @quarter_date = QuarterDate.fetch_quarter_dates_content("Energy CSR quarter dates")
+    # passes in contentful id for quarter dates content
+    @quarter_date = QuarterDate.fetch_quarter_dates_content("3OdGRuiq5a99kVxYpQQklF")
   end
 
   def set_next_quarter_release
-    @next_quarter_release = QuarterDate.fetch_quarter_dates_content("Energy CSR next quarter release date")
+    # passes in contentful id for next quarter date content
+    @next_quarter_release = QuarterDate.fetch_quarter_dates_content("230w36VUwaerIjibJYFoSG")
   end
 
   def set_swiftype_meta_tags

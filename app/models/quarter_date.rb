@@ -7,10 +7,10 @@ class QuarterDate
 
   delegate :content_pattern_string_name, :body, to: :data
 
-  def self.fetch_quarter_dates_content(content_name)
+  def self.fetch_quarter_dates_content(content_id)
     response = Contentful::Graphql::Client.query(
       Queries::QuarterDates,
-      variables: { content_name: }
+      variables: { content_id: }
     )
 
     data = response.data.content_pattern_string_collection&.items.to_a.first

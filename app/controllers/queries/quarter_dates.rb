@@ -2,10 +2,12 @@
 
 module Queries
   QuarterDates = Contentful::Graphql::Client.parse <<-GRAPHQL
-  query($content_name: String!, $preview: Boolean = false) {
+  query($content_id: String!, $preview: Boolean = false) {
     contentPatternStringCollection (
       where: {
-        contentPatternStringName: $content_name
+        sys: {
+          id: $content_id
+        }
       },
       preview: $preview
     ) {
