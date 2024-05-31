@@ -34,7 +34,7 @@ jobs:
       - name: Check Review Environments
         id: scan
         run: |
-          pip3 install git+https://github.com/citizensadvice/review-app-scan@v1.2.1
+          pip3 install git+https://github.com/citizensadvice/review-app-scan@v1.2.2
           python3 -m review_app_scan energy-comparison-table dev-energy-comparison-table
 
   trigger_destroy:
