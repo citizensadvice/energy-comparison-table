@@ -5,7 +5,7 @@ module ContentHelper
     [
       {
         id: scores_fragment,
-        label: "#{supplier_name} score for #{quarter_date.body}"
+        label: "#{supplier_name} score for #{quarter_date}"
       },
       {
         id: contact_details_fragment,

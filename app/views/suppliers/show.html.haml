@@ -3,8 +3,12 @@
     #{supplier.name} customer service
 
   = render LocationSwitcherComponent.new(current_country:)
-  = render CitizensAdviceComponents::OnThisPage.new do |c|
-    - c.with_links(on_this_page_links(supplier.name, quarter_date))
+  - if Feature.enabled? "FF_CONTENTFUL_QTR_DATES"
+    = render CitizensAdviceComponents::OnThisPage.new do |c|
+      - c.with_links(on_this_page_links(supplier.name, quarter_date.body))
+  - else
+    = render CitizensAdviceComponents::OnThisPage.new do |c|
+      - c.with_links(on_this_page_links(supplier.name, "October to December 2023"))
 
   .cads-prose
     %p
@@ -12,7 +16,10 @@
     %p
       The ratings are calculated using information from different sources, including Citizens Advice, Energy Ombudsman and the suppliers.
 
-  = render ScoreSummaryComponent.new(supplier, quarter_date)
+  - if Feature.enabled? "FF_CONTENTFUL_QTR_DATES"
+    = render ScoreSummaryComponent.new(supplier, quarter_date.body)
+  - else
+    = render ScoreSummaryComponent.new(supplier, "October to December 2023")
 
   .cads-prose
     %p

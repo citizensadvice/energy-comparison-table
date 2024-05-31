@@ -9,7 +9,7 @@ RSpec.describe ScoreSummaryComponent, type: :component do
   let(:quarter_date) { build(:quarter_date) }
 
   before do
-    render_inline described_class.new(supplier, quarter_date)
+    render_inline described_class.new(supplier, quarter_date.body)
   end
 
   it { is_expected.to have_text "An Energy Supplier Inc scores for October to December 2023" }
