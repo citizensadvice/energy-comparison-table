@@ -50,6 +50,8 @@
   }
 
   .js-show-fewer-suppliers {
+    position: absolute;
+    
     @include cads-media-breakpoint-up(md) {
       display: none;
     }
