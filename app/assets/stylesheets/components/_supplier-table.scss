@@ -16,7 +16,7 @@
 }
 
 .supplier-table--show-more {
-  padding-bottom: 75px;
+  padding-bottom: 110px;
 
   @include cads-media-breakpoint-up(md) {
     padding-bottom: 0;
@@ -25,6 +25,7 @@
   .js-show-more-suppliers {
     display: block;
     position: absolute;
+    margin-top: 45px;
 
     @include cads-media-breakpoint-up(md) {
       display: none;
@@ -41,7 +42,7 @@
 }
 
 .supplier-table--show-fewer {
-  padding-bottom: 75px;
+  padding-bottom: 110px;
   
   .js-show-more-suppliers {
     display: none;
@@ -53,6 +54,7 @@
 
   .js-show-fewer-suppliers {
     position: absolute;
+    margin-top: 45px;
     
     @include cads-media-breakpoint-up(md) {
       display: none;
@@ -79,4 +81,8 @@
   .supplier-table {
     margin: $cads-spacing-6 0;
   }
+}
+
+.js-supplier-table-count-text {
+  position: absolute;
 }
