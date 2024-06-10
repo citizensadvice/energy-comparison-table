@@ -1,6 +1,6 @@
 /** @define location-switcher */
 .location-switcher {
-  margin: 0 0 $cads-spacing-5 0;
+  margin: 0 0 $cads-spacing-5;
 
   &__text {
     @extend %cads-paragraph-small;
