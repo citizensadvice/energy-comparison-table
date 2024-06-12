@@ -18,6 +18,9 @@ class SuppliersController < ApplicationController
   helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier, :supplier_with_top_three, :quarter_date,
                 :next_quarter_release
 
+  QUARTER_DATE_CONTENT_ID = "3OdGRuiq5a99kVxYpQQklF"
+  NEXT_QUARTER_RELEASE_CONTENT_ID = "230w36VUwaerIjibJYFoSG"
+
   def index; end
 
   def show
@@ -61,12 +64,12 @@ class SuppliersController < ApplicationController
 
   def set_quarter_date
     # passes in contentful id for quarter dates content
-    @quarter_date = QuarterDate.fetch_quarter_dates_content("3OdGRuiq5a99kVxYpQQklF")
+    @quarter_date = QuarterDate.fetch_quarter_dates_content(QUARTER_DATE_CONTENT_ID)
   end
 
   def set_next_quarter_release
     # passes in contentful id for next quarter date content
-    @next_quarter_release = QuarterDate.fetch_quarter_dates_content("230w36VUwaerIjibJYFoSG")
+    @next_quarter_release = QuarterDate.fetch_quarter_dates_content(NEXT_QUARTER_RELEASE_CONTENT_ID)
   end
 
   def set_swiftype_meta_tags
