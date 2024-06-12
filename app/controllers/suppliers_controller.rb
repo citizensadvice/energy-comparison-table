@@ -8,13 +8,18 @@ class SuppliersController < ApplicationController
   rescue_from Contentful::GraphqlAdapter::QueryError, with: :internal_server_error
 
   before_action :set_supplier, only: :show
-  before_action :set_suppliers, :set_unranked_supplier, only: :index
+  before_action :set_suppliers, :set_unranked_supplier, :set_next_quarter_release, only: :index
+  before_action :set_quarter_date, only: %i[index show]
   before_action :set_page_meta_tags, :set_swiftype_meta_tags
   after_action :cache_control_header
 
-  attr_accessor :supplier, :unranked_supplier
+  attr_accessor :supplier, :unranked_supplier, :quarter_date, :next_quarter_release
 
-  helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier, :supplier_with_top_three
+  helper_method :supplier, :ranked_suppliers, :unranked_suppliers, :unranked_supplier, :supplier_with_top_three, :quarter_date,
+                :next_quarter_release
+
+  QUARTER_DATE_CONTENT_ID = "3OdGRuiq5a99kVxYpQQklF"
+  NEXT_QUARTER_RELEASE_CONTENT_ID = "230w36VUwaerIjibJYFoSG"
 
   def index; end
 
@@ -55,6 +60,16 @@ class SuppliersController < ApplicationController
 
   def supplier_with_top_three
     @supplier_with_top_three ||= Supplier.fetch_with_top_three(permitted_params[:id])
+  end
+
+  def set_quarter_date
+    # passes in contentful id for quarter dates content
+    @quarter_date = QuarterDate.fetch_quarter_dates_content(QUARTER_DATE_CONTENT_ID)
+  end
+
+  def set_next_quarter_release
+    # passes in contentful id for next quarter date content
+    @next_quarter_release = QuarterDate.fetch_quarter_dates_content(NEXT_QUARTER_RELEASE_CONTENT_ID)
   end
 
   def set_swiftype_meta_tags

@@ -127,6 +127,8 @@ RSpec.describe "Suppliers" do
       before do
         allow(Supplier).to receive(:fetch_all).and_return([])
         # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(SuppliersController).to receive(:set_quarter_date).and_return([])
+        allow_any_instance_of(SuppliersController).to receive(:set_next_quarter_release).and_return([])
         allow_any_instance_of(SuppliersController).to receive(:index).and_raise(Contentful::GraphqlAdapter::QueryError)
         get CSR_APP_PATH
         # rubocop:enable RSpec/AnyInstance
@@ -294,6 +296,7 @@ RSpec.describe "Suppliers" do
       before do
         allow(Supplier).to receive(:fetch_with_top_three).and_return([])
         # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(SuppliersController).to receive(:set_quarter_date).and_return([])
         allow_any_instance_of(SuppliersController).to receive(:show).with(any_args).and_raise(Contentful::GraphqlAdapter::QueryError)
         get "#{CSR_APP_PATH}/big-energy-inc/details"
         # rubocop:enable RSpec/AnyInstance
