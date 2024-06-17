@@ -51,7 +51,6 @@
   }
 
   .js-show-fewer-suppliers {
-    
     @include cads-media-breakpoint-up(md) {
       display: none;
     }
