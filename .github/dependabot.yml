@@ -7,30 +7,52 @@ updates:
     ignore:
       # Design system upgrade should be performed for npm and bundler at the same time, this should happen manually
       - dependency-name: 'citizens_advice_components'
+    commit-message:
+      prefix: '[dependabot:bundler] '
+    groups:
+      regular-updates: # Group everything except major version updates and security vulnerabilities
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: npm
     directory: '/'
     schedule:
       interval: weekly
-    groups:
-      js-dependencies:
-        patterns:
-          - '@babel/*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      testing-dependencies:
-        patterns:
-          - '@typescript-eslint/*'
-          - 'eslint*'
-          - 'stylelint*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      patch-dependencies:
-        patterns:
-          - '*'
-        update-types:
-          - 'patch'
     ignore:
       - dependency-name: '@citizensadvice/design-system'
+    commit-message:
+      prefix: '[dependabot:npm] '
+    groups:
+      regular-updates: # Group everything except major version updates and security vulnerabilities
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    commit-message:
+      prefix: '[dependabot:actions] '
+    groups:
+      regular-updates: # Group everything except major version updates and security vulnerabilities
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: 'pip'
+    directory: '/infrastructure/cdk'
+    schedule:
+      interval: 'weekly'
+    commit-message:
+      prefix: '[dependabot:pip] '
+    groups:
+      regular-updates: # Group everything except major version updates and security vulnerabilities
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          # Pre-release libraries should be handled individually
+          # to keep PRs easier to understand
+          - "ruff"
