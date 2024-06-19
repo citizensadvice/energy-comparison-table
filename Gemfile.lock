@@ -170,7 +170,7 @@ GEM
     datadog-ci (0.8.3)
       msgpack
     date (3.3.4)
-    ddtrace (1.23.1)
+    ddtrace (1.23.2)
       datadog-ci (~> 0.8.1)
       debase-ruby_core_source (= 3.3.1)
       libdatadog (~> 7.0.0.1.0)
@@ -206,9 +206,9 @@ GEM
     ffi (1.17.0-x86_64-linux-musl)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (2.3.0)
+    graphql (2.3.5)
       base64
-    graphql-client (0.22.0)
+    graphql-client (0.23.0)
       activesupport (>= 3.0)
       graphql (>= 1.13.0)
     haml (6.1.2)
