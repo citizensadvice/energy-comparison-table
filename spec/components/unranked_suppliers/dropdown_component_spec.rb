@@ -9,11 +9,12 @@ RSpec.describe UnrankedSuppliers::DropdownComponent, type: :component do
     build_list(:supplier, 10) do |record, i|
       # generate unique suppliers by adding a suffix letter
       # then shuffle out of alphabetical order
-      record.data.name = "An Energy Supplier Inc #{(i + 65).chr}"
-      record.data.slug = "an-energy-supplier-inc-#{(i + 97).chr}"
+      record.data.name = "An Energy Supplier Inc #{('A'..'Z').to_a[i]}"
+      record.data.slug = "an-energy-supplier-inc-#{('a'..'z').to_a[i]}"
       record.data.save!
     end.shuffle!
   end
+
   let(:chosen_supplier_slug) { nil }
 
   before do
