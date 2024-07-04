@@ -5,7 +5,6 @@ require "rails_helper"
 RSpec.describe UnrankedSuppliers::DropdownComponent, type: :component do
   subject { page }
 
-  # let(:suppliers) { build_list(:supplier, 10) }
   let(:suppliers) do
     build_list(:supplier, 10) do |record, i|
       # generate unique suppliers by adding a suffix letter
