@@ -19,7 +19,7 @@ module UnrankedSuppliers
 
     def supplier_options
       options = [["Please select", nil]]
-      options + @suppliers.map do |supplier|
+      options + sorted_suppliers.map do |supplier|
         [
           supplier.name,
           supplier.slug
@@ -37,6 +37,10 @@ module UnrankedSuppliers
           value: @chosen_supplier_slug
         }
       }
+    end
+
+    def sorted_suppliers
+      @suppliers.sort_by!(&:name)
     end
   end
 end
