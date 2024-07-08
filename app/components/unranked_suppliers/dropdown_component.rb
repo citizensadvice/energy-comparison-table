@@ -30,7 +30,7 @@ module UnrankedSuppliers
     def select_params
       {
         select_options: supplier_options,
-        label: "Find your supplier",
+        label: dropdown_label,
         name: "id",
         type: nil,
         options: {
@@ -41,6 +41,14 @@ module UnrankedSuppliers
 
     def sorted_suppliers
       @suppliers.sort_by!(&:name)
+    end
+
+    def dropdown_label
+      if Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
+        "Smaller suppliers"
+      else
+        "Find your supplier"
+      end
     end
   end
 end
