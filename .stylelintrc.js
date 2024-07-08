@@ -45,7 +45,7 @@ module.exports = {
 
     // Additional stylelint-scss rules
     'scss/selector-no-redundant-nesting-selector': true,
-    'scss/at-import-no-partial-leading-underscore': true,
+    'scss/load-no-partial-leading-underscore': true,
     'scss/at-extend-no-missing-placeholder': true,
 
     // Configure BEM pattern
