@@ -21,11 +21,33 @@ RSpec.describe UnrankedSuppliers::DropdownComponent, type: :component do
     render_inline described_class.new(suppliers.presence, chosen_supplier_slug:)
   end
 
-  it { is_expected.to have_text "Find your supplier" }
-  it { is_expected.to have_css "option", count: 11 }
-  it { is_expected.to have_text "Please select" }
-  it { is_expected.to have_text alphabetized_suppliers }
-  it { is_expected.to have_no_css "option[selected]" }
+  context "when FF_SMALL_SUPPLIER_STARS is enabled" do
+    around do |example|
+      ClimateControl.modify(FF_SMALL_SUPPLIER_STARS: "true") do
+        example.run
+      end
+    end
+
+    it { is_expected.to have_text "Smaller suppliers" }
+    it { is_expected.to have_css "option", count: 11 }
+    it { is_expected.to have_text "Please select" }
+    it { is_expected.to have_text alphabetized_suppliers }
+    it { is_expected.to have_no_css "option[selected]" }
+  end
+
+  context "when FF_SMALL_SUPPLIER_STARS is disabled" do
+    around do |example|
+      ClimateControl.modify(FF_SMALL_SUPPLIER_STARS: "false") do
+        example.run
+      end
+    end
+
+    it { is_expected.to have_text "Find your supplier" }
+    it { is_expected.to have_css "option", count: 11 }
+    it { is_expected.to have_text "Please select" }
+    it { is_expected.to have_text alphabetized_suppliers }
+    it { is_expected.to have_no_css "option[selected]" }
+  end
 
   context "when a chosen supplier slug is passed" do
     let(:chosen_supplier_slug) { "an-energy-supplier-inc-a" }
