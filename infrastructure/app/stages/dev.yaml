@@ -20,7 +20,6 @@ annotations:
 envVars:
   RAILS_ENV: production
   USE_TEST_SUPPLIERS: ${{ vars.USE_TEST_SUPPLIERS }}
-  FF_CONTENTFUL_QTR_DATES: ${{ vars.FF_CONTENTFUL_QTR_DATES }}
 
 autoscaling:
   enabled: true
