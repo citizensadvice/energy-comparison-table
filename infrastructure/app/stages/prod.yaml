@@ -12,7 +12,6 @@ ingress:
 
 envVars:
   RAILS_ENV: production
-  FF_CONTENTFUL_QTR_DATES: ${{ vars.FF_CONTENTFUL_QTR_DATES }}
 
 autoscaling:
   enabled: true

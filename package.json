@@ -3,7 +3,7 @@
   "private": "true",
   "dependencies": {
     "@citizensadvice/design-system": "^5.8.1",
-    "esbuild": "^0.22.0",
+    "esbuild": "^0.23.0",
     "eslint-plugin-import": "^2.29.1",
     "sass": "^1.77.6"
   },
