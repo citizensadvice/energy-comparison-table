@@ -20,10 +20,21 @@
 .cads-prose
   %h2
     Suppliers that aren’t included in the table
-  %p
-    We only give an overall customer service rating to larger suppliers. We include suppliers with over 25,000 customer accounts.
-  %p
-    Select the supplier you want to check using the dropdown to see any customer service information we have.
+  - if Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
+    %p
+      We only include suppliers with more than 25,000 customer accounts in the table above. This is because we can't compare the overall ratings of larger and smaller suppliers.
+    %p
+      Suppliers with fewer than 25,000 customer accounts are listed in the dropdown below. To see the customer service information we have:
+
+    %ol
+      %li Select the supplier you want to check, using the dropdown
+      %li Press ‘Search’
+
+  - else
+    %p
+      We only give an overall customer service rating to larger suppliers. We include suppliers with over 25,000 customer accounts.
+    %p
+      Select the supplier you want to check using the dropdown to see any customer service information we have.
 
 %form.unranked-suppliers__form
   = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: unranked_supplier&.slug)
