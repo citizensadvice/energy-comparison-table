@@ -5,7 +5,7 @@
     "@citizensadvice/design-system": "^5.8.1",
     "esbuild": "^0.23.0",
     "eslint-plugin-import": "^2.29.1",
-    "sass": "^1.77.6"
+    "sass": "^1.77.8"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
@@ -18,7 +18,7 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
-    "stylelint": "^16.6.1",
+    "stylelint": "^16.7.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-selector-bem-pattern": "^4.0.0"
