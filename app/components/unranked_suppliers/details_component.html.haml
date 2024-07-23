@@ -1,6 +1,9 @@
 .unranked-supplier__details.cads-prose
   .unranked-supplier__title{ "data-testid": "unranked-supplier-details-#{supplier.name.parameterize}" }
     = title
+  - if Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
+    %p
+      = link_to("Check the #{supplier.whitelabel_supplier.name} results to see how they rate.", supplier_path(supplier.whitelabel_supplier.name.parameterize, { country: @current_country }))
 
   = render DescriptionListComponent.new do |c|
     - c.with_title do
