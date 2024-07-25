@@ -2,8 +2,14 @@
   .unranked-supplier__title{ "data-testid": "unranked-supplier-details-#{supplier.name.parameterize}" }
     = title
   - if Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
-    %p
-      = whitelabel_supplier_link
+    -if whitelabelled?
+      %p
+        = whitelabel_supplier_link
+    -else
+      %p
+        The overall rating of smaller suppliers can’t be compared to the larger suppliers in the main table. Smaller suppliers’ overall ratings are calculated differently.
+      %p
+        You can compare the contact waiting time and customer commitments ratings with other suppliers.
 
   = render DescriptionListComponent.new do |c|
     - c.with_title do

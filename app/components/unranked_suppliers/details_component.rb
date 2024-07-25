@@ -14,18 +14,18 @@ module UnrankedSuppliers
     end
 
     def title
-      return @supplier.name unless whitelabelled?
-
       if Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
+        return unless whitelabelled?
+
         "#{supplier.whitelabel_supplier.name} provides energy and customer service for #{@supplier.name}"
       else
+        return @supplier.name unless whitelabelled?
+
         "#{supplier.whitelabel_supplier.name} provides energy for #{@supplier.name}"
       end
     end
 
     def whitelabel_supplier_link
-      return unless whitelabelled?
-
       return unless Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
 
       link_to(link_text, supplier_path(supplier.whitelabel_supplier.name.parameterize, { country: @current_country }))
