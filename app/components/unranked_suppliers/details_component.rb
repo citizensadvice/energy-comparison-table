@@ -23,6 +23,14 @@ module UnrankedSuppliers
       end
     end
 
+    def whitelabel_supplier_link
+      return unless whitelabelled?
+
+      return unless Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
+
+      link_to(link_text, supplier_path(supplier.whitelabel_supplier.name.parameterize, { country: @current_country }))
+    end
+
     def whitelabelled?
       @supplier.whitelabel_supplier.present?
     end
@@ -66,6 +74,10 @@ module UnrankedSuppliers
 
     def supplier_name
       @supplier.name
+    end
+
+    def link_text
+      "Check the #{supplier.whitelabel_supplier.name} results to see how they rate."
     end
   end
 end

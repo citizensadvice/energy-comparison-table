@@ -36,11 +36,33 @@ RSpec.describe UnrankedSuppliers::DetailsComponent, type: :component do
   end
 
   context "when a supplier is whitelabelled" do
-    before do
-      render_inline described_class.new(build(:supplier, :whitelabelled))
+    context "when FF_SMALL_SUPPLIER_STARS is enabled (disabled by default in tests)" do
+      around do |example|
+        ClimateControl.modify(FF_SMALL_SUPPLIER_STARS: "true") do
+          example.run
+        end
+      end
+
+      before do
+        render_inline described_class.new(build(:supplier, :whitelabelled))
+      end
+
+      it { is_expected.to have_text "White Label Energy Inc provides energy and customer service for An Energy Supplier Inc" }
     end
 
-    it { is_expected.to have_text "White Label Energy Inc provides energy for An Energy Supplier Inc" }
+    context "when FF_SMALL_SUPPLIER_STARS is disabled)" do
+      around do |example|
+        ClimateControl.modify(FF_SMALL_SUPPLIER_STARS: "false") do
+          example.run
+        end
+      end
+
+      before do
+        render_inline described_class.new(build(:supplier, :whitelabelled))
+      end
+
+      it { is_expected.to have_text "White Label Energy Inc provides energy for An Energy Supplier Inc" }
+    end
   end
 
   context "when no supplier is present" do
