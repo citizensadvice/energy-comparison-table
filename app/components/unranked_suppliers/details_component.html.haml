@@ -11,6 +11,8 @@
       %p
         You can compare the contact waiting time and customer commitments ratings with other suppliers.
 
+      = render UnrankedSuppliers::StarsSummaryComponent.new(supplier)
+
   = render DescriptionListComponent.new do |c|
     - c.with_title do
       %h3
