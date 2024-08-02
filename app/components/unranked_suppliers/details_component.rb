@@ -16,13 +16,7 @@ module UnrankedSuppliers
 
     def title
       if Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
-        if whitelabelled?
-          "#{supplier.whitelabel_supplier.name} provides energy and customer service for #{@supplier.name}"
-        elsif star_ratings?
-          star_component_title
-        else
-          @supplier.name
-        end
+        small_supplier_stars_title
       else
         return @supplier.name unless whitelabelled?
 
@@ -46,6 +40,16 @@ module UnrankedSuppliers
 
     def star_component_title
       "#{@supplier.name} scores for #{@quarter_date.body}"
+    end
+
+    def small_supplier_stars_title
+      if whitelabelled?
+        "#{supplier.whitelabel_supplier.name} provides energy and customer service for #{@supplier.name}"
+      elsif star_ratings?
+        star_component_title
+      else
+        @supplier.name
+      end
     end
 
     def descriptions
