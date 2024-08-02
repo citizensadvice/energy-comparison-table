@@ -6,7 +6,8 @@
       %p
         = whitelabel_supplier_link
     -else
-      = render UnrankedSuppliers::StarsSummaryComponent.new(supplier)
+      -if star_ratings?
+        = render UnrankedSuppliers::StarsSummaryComponent.new(supplier)
 
   = render DescriptionListComponent.new do |c|
     - c.with_title do

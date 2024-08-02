@@ -4,9 +4,10 @@ module UnrankedSuppliers
   class DetailsComponent < ViewComponent::Base
     attr_reader :renderer, :supplier
 
-    def initialize(supplier)
+    def initialize(supplier, quarter_date)
       @supplier = supplier
       @renderer = Renderers::RichTextRenderer.new
+      @quarter_date = quarter_date
     end
 
     def render?
@@ -15,9 +16,13 @@ module UnrankedSuppliers
 
     def title
       if Feature.enabled? "FF_SMALL_SUPPLIER_STARS"
-        return unless whitelabelled?
-
-        "#{supplier.whitelabel_supplier.name} provides energy and customer service for #{@supplier.name}"
+        if whitelabelled?
+          "#{supplier.whitelabel_supplier.name} provides energy and customer service for #{@supplier.name}"
+        elsif star_ratings?
+          star_component_title
+        else
+          @supplier.name
+        end
       else
         return @supplier.name unless whitelabelled?
 
@@ -33,6 +38,14 @@ module UnrankedSuppliers
 
     def whitelabelled?
       @supplier.whitelabel_supplier.present?
+    end
+
+    def star_ratings?
+      @supplier.overall_rating.present?
+    end
+
+    def star_component_title
+      "#{@supplier.name} scores for #{@quarter_date.body}"
     end
 
     def descriptions
