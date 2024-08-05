@@ -28,6 +28,10 @@ module ContentHelper
     "/#{current_country}#{path}"
   end
 
+  def star_ratings?(supplier)
+    supplier.overall_rating.present?
+  end
+
   def unranked_supplier_button_classes
     %w[
       cads-button

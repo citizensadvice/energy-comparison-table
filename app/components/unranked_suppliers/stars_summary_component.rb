@@ -2,6 +2,7 @@
 
 module UnrankedSuppliers
   class StarsSummaryComponent < ViewComponent::Base
+    delegate :star_ratings?, to: :helpers
     attr_reader :supplier
 
     def initialize(supplier)
@@ -9,7 +10,7 @@ module UnrankedSuppliers
     end
 
     def render?
-      supplier.present?
+      supplier.present? && star_ratings?(@supplier)
     end
   end
 end

@@ -2,6 +2,7 @@
 
 module UnrankedSuppliers
   class DetailsComponent < ViewComponent::Base
+    delegate :star_ratings?, to: :helpers
     attr_reader :renderer, :supplier
 
     def initialize(supplier, quarter_date)
@@ -34,10 +35,6 @@ module UnrankedSuppliers
       @supplier.whitelabel_supplier.present?
     end
 
-    def star_ratings?
-      @supplier.overall_rating.present?
-    end
-
     def star_component_title
       "#{@supplier.name} scores for #{@quarter_date.body}"
     end
@@ -45,7 +42,7 @@ module UnrankedSuppliers
     def small_supplier_stars_title
       if whitelabelled?
         "#{supplier.whitelabel_supplier.name} provides energy and customer service for #{@supplier.name}"
-      elsif star_ratings?
+      elsif star_ratings?(@supplier)
         star_component_title
       else
         @supplier.name
