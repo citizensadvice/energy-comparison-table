@@ -41,7 +41,7 @@
   = render CitizensAdviceComponents::Button.new(variant: :primary, attributes: { class: unranked_supplier_button_classes }, type: :submit) do
     Search
 
-= render UnrankedSuppliers::DetailsComponent.new(unranked_supplier)
+= render UnrankedSuppliers::DetailsComponent.new(unranked_supplier, quarter_date)
 
 .cads-prose
   %h2

@@ -8,6 +8,9 @@ FactoryBot.define do
     slug { "an-energy-supplier-inc" }
     id { slug }
     data_available { false }
+    contact_rating { 2.3 }
+    guarantee_rating { 3 }
+    overall_rating { 4.8 }
     contact_info { { json: JSON.parse(File.read("spec/fixtures/contact_info.json")) } }
     billing_info { { json: JSON.parse(File.read("spec/fixtures/billing_info.json")) } }
     opening_hours { { json: JSON.parse(File.read("spec/fixtures/opening_hours.json")) } }
@@ -19,16 +22,17 @@ FactoryBot.define do
       rank { 1 }
       complaints_rating { 4.3 }
       complaints_number { 172 }
-      contact_rating { 2.3 }
       contact_time { "00:03:27" }
       contact_email { 89 }
       contact_social_media { "01:15:00" }
-      guarantee_rating { 3 }
-      overall_rating { 4.8 }
     end
 
     trait :missing_fuel_mix do
       fuel_mix { nil }
+    end
+
+    trait :missing_overall_rating do
+      overall_rating { nil }
     end
 
     trait :whitelabelled do
@@ -53,6 +57,10 @@ FactoryBot.define do
 
     trait(:missing_fuel_mix) do
       data factory: %i[supplier_data missing_fuel_mix]
+    end
+
+    trait(:missing_overall_rating) do
+      data factory: %i[supplier_data missing_overall_rating]
     end
 
     trait(:low_ranking) do
