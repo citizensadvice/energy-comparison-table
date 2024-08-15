@@ -12,8 +12,7 @@ module FooterHelper
         links: [
           { title: "Adviser resources", url: "/about-us/adviser-resources/" },
           { title: "Education resources", url: "/about-us/how-we-provide-advice/our-prevention-work/education/" },
-          { title: "Site search", url: "/s" },
-          { title: "A to Z of advice", url: "/resources-and-tools/search-navigation-tools/a-to-z-of-advice/" }
+          { title: "Site search", url: "/s" }
         ]
       },
       {
@@ -52,8 +51,7 @@ module FooterHelper
         title: "Resources and tools",
         links: [
           { title: "Where to get advice", url: "/scotland/about-us/get-advice-s/" },
-          { title: "Template letters", url: "/scotland/consumer/template-letters/letters/" },
-          { title: "A to Z of advice", url: "/scotland/resources-and-tools/search-navigation-tools/a-to-z-of-advice/" }
+          { title: "Template letters", url: "/scotland/consumer/template-letters/letters/" }
         ]
       },
       {
