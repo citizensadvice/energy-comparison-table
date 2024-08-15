@@ -1,11 +1,15 @@
 .fuel-mix {
   .descriptions__list {
     margin: 0;
+  }
+
+  .descriptions__description {
+    margin: 0;
 
     @extend %cads-list-unordered;
   }
 
-  .descriptions__description {
+  .descriptions__intro {
     margin: 0;
   }
 }
