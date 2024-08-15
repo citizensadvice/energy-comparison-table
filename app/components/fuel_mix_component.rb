@@ -17,7 +17,8 @@ class FuelMixComponent < ViewComponent::Base
   def descriptions
     [
       {
-        term: content_tag(:h3, ""),
+        term: content_tag(:h3, "Fuel Mix"),
+        intro: fuel_mix_intro,
         description: fuel_mix
       }
     ].reject { |desc| desc[:description].blank? }
@@ -25,5 +26,9 @@ class FuelMixComponent < ViewComponent::Base
 
   def fuel_mix
     renderer.render_without_breaks(supplier.fuel_mix)
+  end
+
+  def fuel_mix_intro
+    content_tag(:p, "The fuel mix is the percentage of energy sources used by this supplier. #{supplier.name} uses:")
   end
 end
