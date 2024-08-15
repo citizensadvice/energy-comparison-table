@@ -10,6 +10,7 @@ RSpec.describe DescriptionListComponent, type: :component do
     [
       {
         term: "First term",
+        intro: "First term introduction",
         description: "First term description"
       },
       {
@@ -32,7 +33,9 @@ RSpec.describe DescriptionListComponent, type: :component do
   it { is_expected.to have_css "dt", count: 2 }
   it { is_expected.to have_css "dt", text: "First term" }
   it { is_expected.to have_css "dt", text: "Second term" }
-  it { is_expected.to have_css "dd", count: 2 }
+  it { is_expected.to have_css "dd", count: 4 }
+  it { is_expected.to have_css "dd", text: "First term introduction" }
+  it { is_expected.to have_css "dd", text: "" }
   it { is_expected.to have_css "dd", text: "First term description" }
   it { is_expected.to have_css "dd", text: "Second term description" }
 
