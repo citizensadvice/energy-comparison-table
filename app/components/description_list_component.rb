@@ -9,11 +9,12 @@ class DescriptionListComponent < ViewComponent::Base
   end
 
   class DescriptionComponent < ViewComponent::Base
-    attr_reader :term, :description
+    attr_reader :term, :description, :intro
 
-    def initialize(term:, description:)
+    def initialize(term:, description:, intro: nil)
       @term = term
       @description = description
+      @intro = intro
     end
   end
 end
