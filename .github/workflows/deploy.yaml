@@ -80,3 +80,32 @@ jobs:
           --timeout 15m \
           ${{matrix.stage}}-energy-comparison-table \
           energy-comparison-table/infrastructure/app/chart/energy-comparison-table
+  slack-success:
+    name: Slack Notification (Success)
+    runs-on: ubuntu-22.04
+    needs: deploy-energy-supplier-comparison
+    steps:
+      - name: Notify Slack
+        uses: citizensadvice/message-slack-action@v1
+        with:
+          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          channel_id: "C02K26YCER1" #content-platform_builds
+          title: ":rocket: Energy CSR Table Deployment Success :rocket:"
+          message: |
+            The Energy CSR Table has been successfully deployed to both QA and prod! | Please check your changes.
+  slack-failure:
+    name: Slack Notification (Failure)
+    runs-on: ubuntu-22.04
+    needs: deploy-energy-supplier-comparison
+    if: failure()
+    steps:
+      - name: Notify Slack
+        uses: citizensadvice/message-slack-action@v1
+        with:
+          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          channel_id: "C02K26YCER1" #content-platform_builds
+          title: ":fire: Energy CSR Table Deployment Failure :fire:"
+          message: |
+            The Energy CSR Table has failed to deploy!
