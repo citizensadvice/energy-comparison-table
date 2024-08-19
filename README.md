@@ -8,6 +8,10 @@ This repo contains example data for automated testing. For the latest energy sup
 
 See [getting-started.md](./docs/getting-started.md)
 
+## Environment variables & secrets
+
+Environment variables and secrets are stored within the relevant environment(s) in the GitHub repo, not in Vault. See [configuration section in Infrastructure docs.](./infrastructure/README.md#configuration)
+
 ## View components
 
 This project uses view components for front end logic and rendering - see [view-components.md](./docs/view-components.md)
