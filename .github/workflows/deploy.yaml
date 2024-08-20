@@ -65,6 +65,7 @@ jobs:
           helm upgrade --install \
           --namespace=${{matrix.stage}}-energy-comparison-table \
           --values energy-comparison-table/infrastructure/app/stages/${{matrix.stage}}.yaml \
+          --set secrets.RAILS_MASTER_KEY=${{secrets.RAILS_MASTER_KEY}} \
           --set secrets.CONTENTFUL_ENVIRONMENT_ID=${{secrets.CONTENTFUL_ENVIRONMENT_ID}} \
           --set secrets.CONTENTFUL_SPACE_ID=${{secrets.CONTENTFUL_SPACE_ID}} \
           --set secrets.CONTENTFUL_CDA_TOKEN=${{secrets.CONTENTFUL_CDA_TOKEN}} \
