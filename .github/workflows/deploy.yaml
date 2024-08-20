@@ -91,9 +91,9 @@ jobs:
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           channel_id: "C02K26YCER1" #content-platform_builds
-          title: ":rocket: Energy CSR Table Deployment Success :rocket:"
+          title: ":rocket: Energy CSR Table ${{matrix.stage}} Deployment Success :rocket:"
           message: |
-            The Energy CSR Table has been successfully deployed to both QA and prod! | Please check your changes.
+            The Energy CSR Table has been successfully deployed to ${{matrix.stage}}! | Please check your changes.
   slack-failure:
     name: Slack Notification (Failure)
     runs-on: ubuntu-22.04
@@ -106,6 +106,6 @@ jobs:
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           channel_id: "C02K26YCER1" #content-platform_builds
-          title: ":fire: Energy CSR Table Deployment Failure :fire:"
+          title: ":fire: Energy CSR Table ${{matrix.stage}} Deployment Failure :fire:"
           message: |
-            The Energy CSR Table has failed to deploy!
+            The Energy CSR Table has failed to deploy to ${{matrix.stage}}!
