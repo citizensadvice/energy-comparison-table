@@ -17,7 +17,6 @@ secrets:
   # CONTENTFUL_ENVIRONMENT_ID: contentful-env-id
   # CONTENTFUL_SPACE_ID: contentful-space-id
   # CONTENTFUL_CONTENTFUL_CDA_TOKEN: contentful-cda-token
-  # SLACK_BOT_TOKEN: slack-bot-token
 
 imagePullSecrets: []
 nameOverride: ""
