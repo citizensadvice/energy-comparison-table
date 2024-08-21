@@ -62,16 +62,13 @@ jobs:
         run: aws eks update-kubeconfig --name=${{ env.EKS_CLUSTER }}
       - name: Helm Deploy
         run: |
-          cat > secrets_${{matrix.stage}}.json << EOF
-          {
-            "secrets":  ${{toJson(secrets)}}
-          }
-          EOF
-
           helm upgrade --install \
           --namespace=${{matrix.stage}}-energy-comparison-table \
           --values energy-comparison-table/infrastructure/app/stages/${{matrix.stage}}.yaml \
-          --values secrets_${{matrix.stage}}.json \
+          --set secrets.RAILS_MASTER_KEY=${{secrets.RAILS_MASTER_KEY}} \
+          --set secrets.CONTENTFUL_ENVIRONMENT_ID=${{secrets.CONTENTFUL_ENVIRONMENT_ID}} \
+          --set secrets.CONTENTFUL_SPACE_ID=${{secrets.CONTENTFUL_SPACE_ID}} \
+          --set secrets.CONTENTFUL_CDA_TOKEN=${{secrets.CONTENTFUL_CDA_TOKEN}} \
           --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-comparison-table \
           --set image.tag=${{ env.IMAGE_TAG }} \
           --set ingress.hostname=energy-comparison-table.${{env.HOSTED_ZONE}} \
@@ -80,3 +77,32 @@ jobs:
           --timeout 15m \
           ${{matrix.stage}}-energy-comparison-table \
           energy-comparison-table/infrastructure/app/chart/energy-comparison-table
+  slack-success:
+    name: Slack Notification (Success)
+    runs-on: ubuntu-22.04
+    needs: deploy-energy-supplier-comparison
+    steps:
+      - name: Notify Slack
+        uses: citizensadvice/message-slack-action@v1
+        with:
+          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          channel_id: "C02K26YCER1" #content-platform_builds
+          title: ":rocket: Energy CSR Table ${{matrix.stage}} Deployment Success :rocket:"
+          message: |
+            The Energy CSR Table has been successfully deployed to ${{matrix.stage}}! | Please check your changes.
+  slack-failure:
+    name: Slack Notification (Failure)
+    runs-on: ubuntu-22.04
+    needs: deploy-energy-supplier-comparison
+    if: failure()
+    steps:
+      - name: Notify Slack
+        uses: citizensadvice/message-slack-action@v1
+        with:
+          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          channel_id: "C02K26YCER1" #content-platform_builds
+          title: ":fire: Energy CSR Table ${{matrix.stage}} Deployment Failure :fire:"
+          message: |
+            The Energy CSR Table has failed to deploy to ${{matrix.stage}}!
