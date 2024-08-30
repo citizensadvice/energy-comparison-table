@@ -18,7 +18,7 @@ require "view_component/test_helpers"
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Rails.root.glob("spec/support/**/*.rb").each { |f| require f }
 
 RSpec.configure do |config|
   # Remove this line to enable support for ActiveRecord
