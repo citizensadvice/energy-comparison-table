@@ -7,6 +7,9 @@ updates:
     ignore:
       # Design system upgrade should be performed for npm and bundler at the same time, this should happen manually
       - dependency-name: 'citizens_advice_components'
+      # For Rails, ignore all minor updates for version updates only
+      - dependency-name: "rails"
+        update-types: [ "version-update:semver-minor" ]
     commit-message:
       prefix: '[dependabot:bundler] '
     groups:
