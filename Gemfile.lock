@@ -456,7 +456,7 @@ GEM
     uri (0.13.1)
     vcr (6.3.1)
       base64
-    view_component (3.14.0)
+    view_component (3.15.1)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -532,7 +532,7 @@ DEPENDENCIES
   sprockets-rails
   tzinfo-data
   vcr
-  view_component (~> 3.14)
+  view_component (~> 3.15)
   web-console
   webdrivers
   webmock
