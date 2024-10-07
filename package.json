@@ -4,8 +4,8 @@
   "dependencies": {
     "@citizensadvice/design-system": "^5.8.1",
     "esbuild": "^0.24.0",
-    "eslint-plugin-import": "^2.30.0",
-    "sass": "^1.79.3"
+    "eslint-plugin-import": "^2.31.0",
+    "sass": "^1.79.4"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
