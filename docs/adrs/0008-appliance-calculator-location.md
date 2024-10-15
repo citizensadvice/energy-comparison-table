@@ -34,7 +34,7 @@ The appliance calculator itself will be rendered into an iframe on an advice col
 ### Positive
 
 - all energy apps (excluding the smart meter tool) are contained in the same place
-- we will only need to solve certain problems once for all energy apps (eg monitoring, authentication, header and footer, country route handling)
+- we will only need to solve certain problems once for all energy apps (eg monitoring, authentication, header and footer, country route handling, Contentful GraphQL queries)
 - little to no additional maintenance burden
 - can leverage the existing build and deployment workflows (which are robust and fast)
 - increased exposure to CDK and infrastructure configration for the energy team developer (the current infrastructure code was developed by the SRE team)
