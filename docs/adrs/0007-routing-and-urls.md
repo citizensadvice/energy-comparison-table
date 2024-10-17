@@ -1,4 +1,4 @@
-# 6. Routing and URLs
+# 7. Routing and URLs
 
 Date: 2023-09-12
 
