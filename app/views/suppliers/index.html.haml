@@ -36,7 +36,7 @@
     %p
       Select the supplier you want to check using the dropdown to see any customer service information we have.
 
-%form.unranked-suppliers__form
+%form.unranked-suppliers__form{ method: "GET", action: "#h-unranked-supplier", id: "h-unranked-supplier" }
   = render UnrankedSuppliers::DropdownComponent.new(unranked_suppliers, chosen_supplier_slug: unranked_supplier&.slug)
   = render CitizensAdviceComponents::Button.new(variant: :primary, attributes: { class: unranked_supplier_button_classes }, type: :submit) do
     Search
