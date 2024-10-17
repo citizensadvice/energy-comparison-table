@@ -1,4 +1,14 @@
 .other-info
   .cads-prose
-    = render DescriptionListComponent.new do |c|
-      - c.with_descriptions(descriptions)
+    %h2{ id: contact_details_fragment, tabindex: -1 }
+      Customer service contact details for #{supplier.name}
+    = contact_info
+
+    %h3 Opening Hours
+    = opening_hours
+
+    %h3 Ways to contact
+    = other_contact_info
+
+    %h3 Payment Information
+    = billing_info
