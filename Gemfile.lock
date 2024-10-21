@@ -113,7 +113,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.2.1)
+    brakeman (6.2.2)
       racc
     builder (3.3.0)
     bundler-audit (0.9.2)
@@ -456,7 +456,7 @@ GEM
     uri (0.13.1)
     vcr (6.3.1)
       base64
-    view_component (3.17.0)
+    view_component (3.18.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -532,7 +532,7 @@ DEPENDENCIES
   sprockets-rails
   tzinfo-data
   vcr
-  view_component (~> 3.17)
+  view_component (~> 3.18)
   web-console
   webdrivers
   webmock
