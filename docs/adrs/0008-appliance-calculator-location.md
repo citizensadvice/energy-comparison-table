@@ -4,7 +4,7 @@ Date: 2024-10-15
 
 ## Status
 
-Draft, Proposed
+Accepted
 
 ## Context
 
@@ -72,12 +72,11 @@ The appliance calculator is built completely seperately to everything else
 #### Positives
 
 - increased exposure to CDK and infrastructure configration for the energy team developer
-- best domain seperation
+- best domain separation
 
 #### Negatives
 
 - significantly increased code maintenace burden
 - increased content maintenance burden (header and footer updates)
-- ?increased hosting costs
 - code duplication in solving shared problems again (monitoring, authentication, header and footer, country route handling etc)
 - additional work to set up another new rails application
