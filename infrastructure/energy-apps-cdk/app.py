@@ -7,14 +7,14 @@ from stacks.ecr import EcrRepository
 
 app = cdk.App()
 
-dev_acount = app.node.get_context("dev")["AWS_ACCOUNT"]
-prod_acount = app.node.get_context("prod")["AWS_ACCOUNT"]
+dev_account = app.node.get_context("dev")["AWS_ACCOUNT"]
+prod_account = app.node.get_context("prod")["AWS_ACCOUNT"]
 
 EcrRepository(
     app,
     "EnergyAppsEcrRepo",
-    env=cdk.Environment(account=dev_acount, region="eu-west-1"),
-    pull_principals=[AccountPrincipal(prod_acount)],
+    env=cdk.Environment(account=dev_account, region="eu-west-1"),
+    pull_principals=[AccountPrincipal(prod_account)],
     tags={"Environment": "prod"},
 )
 
