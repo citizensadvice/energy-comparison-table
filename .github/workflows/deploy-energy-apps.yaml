@@ -48,7 +48,7 @@ jobs:
           path: energy-apps
       - name: Set environment variables from cdk context
         run: |
-          context_file=energy-comparison-table/infrastructure/energy-apps-cdk/cdk.json
+          context_file=energy-apps/infrastructure/energy-apps-cdk/cdk.json
           for s in $(cat $context_file | jq -r ".context.${{matrix.stage}} | to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
               echo "$s" >> $GITHUB_ENV
           done
