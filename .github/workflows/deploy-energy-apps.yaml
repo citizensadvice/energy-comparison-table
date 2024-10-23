@@ -1,0 +1,29 @@
+name: Deploy Energy Apps
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  build:
+    name: Build Image
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+      issues: read
+    steps:
+      - name: Build and push to ECR
+        uses: citizensadvice/build-and-private-ecr-push-action@v1
+        with:
+          dockerfile_context: "."
+          repository_name: energy-apps
+          multiarch_build: "disabled"
+          prod_image: true
+          role_arn: "arn:aws:iam::979633842206:role/EnergyAppsDeployment"
+          auth_token: ${{ secrets.GITHUB_TOKEN }}
+
