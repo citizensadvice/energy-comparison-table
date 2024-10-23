@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "energy-apps.labels" . | nindent 4 }}
     tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
-    tags.datadoghq.com/service: "energy-csr-table"
+    tags.datadoghq.com/service: "energy-apps"
     tags.datadoghq.com/version: {{ .Values.image.tag }}
   annotations:
 {{- if .Values.annotations -}}
