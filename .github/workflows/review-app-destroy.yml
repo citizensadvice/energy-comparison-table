@@ -29,20 +29,20 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: "arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment"
-          role-session-name: energy-comparison-table-actions-workflow
+          role-to-assume: "arn:aws:iam::979633842206:role/EnergyAppsDeployment"
+          role-session-name: energy-app-actions-workflow
           aws-region: eu-west-1
 
       - name: Get Kube Config
         run: aws eks update-kubeconfig --name=${{ env.CLUSTER }}
 
       - name: Set Environment Variables
-        run: echo "NAMESPACE=review-${{ env.PR_NUMBER }}-energy-comparison-table" >> $GITHUB_ENV
+        run: echo "NAMESPACE=review-${{ env.PR_NUMBER }}-energy-apps" >> $GITHUB_ENV
 
       - name: Destroy Review App
         run: |
           if [[ $(helm status -n ${{ env.NAMESPACE }} ${{ env.NAMESPACE }}) ]] ; then
-            kubectl delete subnamespaceanchor ${{ env.NAMESPACE }} -n dev-energy-comparison-table
+            kubectl delete subnamespaceanchor ${{ env.NAMESPACE }} -n dev-energy-apps
           fi
 
       - name: Remove Review app label
@@ -70,8 +70,6 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           body: |
             A review app has been created in the Kubernetes namespace `${{ env.NAMESPACE }}` in the `${{ env.CLUSTER }}` cluster.
-
-            Please see the [FAQ](https://citizensadvice.atlassian.net/wiki/spaces/OPS/pages/3769204741/Casebook+Review+Apps+FAQ) for more information.
 
             ---
 
