@@ -48,6 +48,8 @@ module EnergyComparisonTable
 
     # production host
     config.hosts << "energy-comparison-table.prod.content.citizensadvice.org.uk"
+    # new production host
+    config.hosts << "energy-apps.prod.content.citizensadvice.org.uk"
 
     # allow health check from private IP addresses
     config.hosts << /10\.\d+\.\d+\.\d+/
