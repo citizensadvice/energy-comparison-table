@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  NAMESPACE_REGEX: ^review-[0-9]{0,4}-{0,1}energy-comparison-table$
+  NAMESPACE_REGEX: ^review-[0-9]{0,4}-{0,1}energy-apps$
   MAX_AGE: 72 # Age in hours after last update
   CLUSTER: dev-eks-platform
 
@@ -24,8 +24,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: "arn:aws:iam::979633842206:role/EnergyComparisonTableDeployment"
-          role-session-name: energy-comparison-table-actions-workflow
+          role-to-assume: "arn:aws:iam::979633842206:role/EnergyAppsDeployment"
+          role-session-name: energy-apps-actions-workflow
           aws-region: eu-west-1
 
       - name: Get Kube Config
@@ -35,7 +35,7 @@ jobs:
         id: scan
         run: |
           pip3 install git+https://github.com/citizensadvice/review-app-scan@v1.2.2
-          python3 -m review_app_scan energy-comparison-table dev-energy-comparison-table
+          python3 -m review_app_scan energy-apps dev-energy-apps
 
   trigger_destroy:
     if: needs.scan.outputs.matrix != '{"pr_numbers":[]}'
