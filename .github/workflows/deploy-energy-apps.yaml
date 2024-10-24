@@ -26,4 +26,59 @@ jobs:
           prod_image: true
           role_arn: "arn:aws:iam::979633842206:role/EnergyAppsDeployment"
           auth_token: ${{ secrets.GITHUB_TOKEN }}
+  deploy-energy-apps:
+    name: Deploy energy apps chart
+    needs:
+      - build
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        stage: ["dev"]
+    environment:
+      name: ${{ matrix.stage }}
+    steps:
+      - name: Git Checkout energy apps
+        uses: actions/checkout@v4
+        with:
+          path: energy-apps
+      - name: Set environment variables from cdk context
+        run: |
+          context_file=energy-apps/infrastructure/energy-apps-cdk/cdk.json
+          for s in $(cat $context_file | jq -r ".context.${{matrix.stage}} | to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+              echo "$s" >> $GITHUB_ENV
+          done
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: "arn:aws:iam::${{env.AWS_ACCOUNT}}:role/EnergyAppsDeployment"
+          role-session-name: ${{matrix.stage}}-energy-apps-actions-workflow
+          aws-region: eu-west-1
+      - name: Generate Kube Config
+        run: aws eks update-kubeconfig --name=${{ env.EKS_CLUSTER }}
+      - name: Helm Deploy
+        run: |
+          cat > secrets_${{matrix.stage}}.json << EOF
+          {
+            "secrets":  ${{toJson(secrets)}}
+          }
+          EOF
+
+          helm upgrade --install \
+          --namespace=${{matrix.stage}}-energy-apps \
+          --values energy-apps/infrastructure/app/stages/${{matrix.stage}}.yaml \
+          --values secrets_${{matrix.stage}}.json \
+          --set image.repository=979633842206.dkr.ecr.eu-west-1.amazonaws.com/energy-apps \
+          --set image.tag=${{ env.IMAGE_TAG }} \
+          --set ingress.hostname=energy-apps.${{env.HOSTED_ZONE}} \
+          --set datadog.labels.env=${{matrix.stage}} \
+          --atomic \
+          --timeout 15m \
+          ${{matrix.stage}}-energy-apps \
+          energy-apps/infrastructure/app/chart/energy-apps
+
 
