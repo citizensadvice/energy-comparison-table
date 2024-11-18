@@ -2,7 +2,7 @@
   "name": "app",
   "private": "true",
   "dependencies": {
-    "@citizensadvice/design-system": "^6.1.0",
+    "@citizensadvice/design-system": "^6.2.0",
     "esbuild": "^0.24.0",
     "eslint-plugin-import": "^2.31.0",
     "sass": "^1.80.6"

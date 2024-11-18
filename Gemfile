@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 
 gem "citizens_advice_components",
     github: "citizensadvice/design-system",
-    tag: "v6.1.0",
+    tag: "v6.2.0",
     glob: "engine/*.gemspec"
 
 gem "view_component", "~> 3.20"

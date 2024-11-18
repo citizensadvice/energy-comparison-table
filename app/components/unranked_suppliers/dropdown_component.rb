@@ -12,7 +12,7 @@ module UnrankedSuppliers
     end
 
     def call
-      render Input::SelectComponent.new(**select_params)
+      render CitizensAdviceComponents::Select.new(**select_params)
     end
 
     private
