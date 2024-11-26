@@ -45,6 +45,8 @@ Rails.application.routes.draw do
 
     get "/status", to: "status#index"
 
+    get "/appliance-calculator", to: "appliance_calculator#index", as: "appliance_calculator"
+
     constraints ->(req) { req.format == :html } do
       # Custom error handler pages, these work because
       # config.exceptions_app = routes is set in application.rb
