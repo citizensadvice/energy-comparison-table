@@ -2,8 +2,12 @@
 
 module Queries
   Appliances = Contentful::Graphql::Client.parse <<-GRAPHQL
-  query {
-    applianceCollection {
+  query($tag_filter: ContentfulMetadataTagsFilter) {
+    applianceCollection (
+      where: {
+        contentfulMetadata:{ tags: $tag_filter }
+      }
+    ) {
       items {
         name
         category
@@ -12,6 +16,11 @@ module Queries
         additionalUsage
         sys {
           id
+        }
+        contentfulMetadata {
+          tags {
+            id
+          }
         }
       }
     }

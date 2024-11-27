@@ -18,4 +18,8 @@ class Appliance
   def id
     data.sys.id
   end
+
+  def cyclical?
+    usage_type == "Cycles"
+  end
 end
