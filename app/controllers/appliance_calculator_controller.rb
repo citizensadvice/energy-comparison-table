@@ -3,5 +3,15 @@
 class ApplianceCalculatorController < ApplicationController
   layout "appliance_calculator"
 
-  def index; end
+  after_action :set_headers
+
+  def index
+    @appliances = Appliance.fetch_all
+  end
+
+  private
+
+  def set_headers
+    response.headers["cache-control"] = "no-store"
+  end
 end
