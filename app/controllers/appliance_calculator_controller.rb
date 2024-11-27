@@ -5,7 +5,9 @@ class ApplianceCalculatorController < ApplicationController
 
   after_action :set_headers
 
-  def index; end
+  def index
+    @appliances = Appliance.fetch_all
+  end
 
   private
 
