@@ -1,0 +1,16 @@
+!!!
+%html.no-js{ lang: I18n.locale }
+  %head
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv": "Content-Type" }
+    -# %meta{ content: "width=device-width,initial-scale=1", name: "viewport" }
+    %meta{ name: "robots", content: "noindex,nofollow" }
+
+    %script{ id: "script-no-js", nonce: content_security_policy_nonce }
+      document.querySelector('html').classList.remove('no-js');
+
+    = stylesheet_link_tag "application"
+
+  %body
+    = yield
+
+    = javascript_include_tag "appliance-calculator", defer: true

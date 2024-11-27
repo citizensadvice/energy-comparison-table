@@ -22,6 +22,8 @@ Rails.application.configure do
     policy.object_src  :none
     policy.script_src  :self, :https
     policy.style_src   :self, :https
+    policy.frame_src   :self
+    policy.frame_ancestors :self, "*.citizensadvice.org.uk"
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
 
@@ -61,6 +63,8 @@ Rails.application.configure do
 
     # Geolocation - NP-3018
     merge_into[:script_src, "'sha256-MtkotRM6KOAOo1saTZwgZ8kKWigT1Za4LlZ205dKQFo='"]
+
+    merge_into[:frame_ancestors, "localhost:*"] if Rails.env.development?
   end
   # rubocop:enable Metrics/BlockLength
 
