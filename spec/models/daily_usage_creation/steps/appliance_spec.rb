@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "pry"
 
 RSpec.describe DailyUsageCreation::Steps::Appliance do
   describe "valid?" do
