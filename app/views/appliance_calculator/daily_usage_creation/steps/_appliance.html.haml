@@ -1,1 +1,3 @@
-= form.cads_text_field :appliance_id, label: "Select an appliance", required: true
+= render GroupedSelectComponent.new(**current_step.select_params)
+
+= form.cads_text_field :quantity, label: "How many of these appliances do you use?", width: :two_chars
