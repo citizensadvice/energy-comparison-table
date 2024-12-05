@@ -1,1 +1,12 @@
-%h2 How long do you use it for
+.cads-form-field
+  .cads-form-field__content
+    %fieldset.cads-form-group
+      %legend.cads-form-field__label
+        = current_step.label
+      .cads-date-input
+        .cads-date-input__item
+          = form.cads_text_field :hours, label: "Hours", width: :two_chars, required: true
+        .cads-date-input__item
+          = form.cads_text_field :minutes, label: "Minutes", width: :two_chars, required: true
+        .cads-date-input__item
+          = form.cads_collection_select :frequency, label: "Frequency", required: true, collection: current_step.frequency_options, text_method: :text, value_method: :value
