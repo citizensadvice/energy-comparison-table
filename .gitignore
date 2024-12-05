@@ -23,6 +23,7 @@
 
 /public/assets
 /public/energy-csr-assets
+/public/energy-apps-assets
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
