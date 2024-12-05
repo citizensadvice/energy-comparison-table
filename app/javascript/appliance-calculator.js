@@ -4,7 +4,7 @@ try {
     initErrorSummary();
     window.parent.postMessage(
     {
-      id: "#appliance-calculator",
+      id: "#appliance_calculator",
       height: document.body.scrollHeight,
     },
     "*"
