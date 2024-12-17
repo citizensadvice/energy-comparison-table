@@ -1,0 +1,21 @@
+.frequency-inputs {
+  @extend .cads-date-input /* stylelint-disable-line scss/at-extend-no-missing-placeholder */
+
+}
+
+.frequency-inputs__item {
+  @extend .cads-date-input__item; /* stylelint-disable-line scss/at-extend-no-missing-placeholder */
+
+
+  .cads-form-field__content {
+    padding-left: 0 !important;
+  }
+
+  .cads-form-field {
+    margin-bottom: 0;
+  }
+}
+
+.cads-form-field--has-error .frequency-inputs__item input {
+  border: $cads-border-width-medium solid $cads-language__warning-colour;
+}
